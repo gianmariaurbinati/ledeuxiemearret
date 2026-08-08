@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="_ds/design-system-bb8f143d-3616-4ceb-a438-a67ad75fadb8/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>body { margin:0; background:#1a0f30; }
+a { color:inherit; text-decoration:none; }
+@keyframes subscribe-blink { 0%, 100% { opacity:1; } 50% { opacity:0.4; } }
+@keyframes neon-shift { 0% { background-position:0% 50%; } 100% { background-position:200% 50%; } }
+@keyframes neon-pulse { 0%, 100% { box-shadow:0 0 6px 2px rgba(255,255,255,0.25); } 50% { box-shadow:0 0 20px 7px rgba(255,255,255,0.55); } }
+</style>
+</helmet>
+
+<div data-screen-label="Comandante — Film" style="--gold:#d4af37; --gold-hover:#edcd63; --bordeaux:#6d1f2f; --purple:#4a2b7a; --purple-deep:#2c1a4d; --purple-darkest:#1a0f30; --cream:#e2d5be; --cream-hover:#f0e7d6; --card-bg:#fbfaf7; --text-body:#4f4d47; --text-meta:#9a978f; --text-on-gold:#1c1b19; --accent-bar:linear-gradient(90deg,#6d1f2f,#d4af37 55%,#4a2b7a); --font-display:'Cinzel',Georgia,serif; --font-serif:'Cormorant Garamond',Georgia,serif; --font-sans:Arial,Helvetica,sans-serif; --font-mono:ui-monospace,Menlo,monospace; background:linear-gradient(165deg, var(--purple) 0%, var(--purple-deep) 55%, var(--purple-darkest) 100%); min-height:100vh; padding:clamp(32px,6vh,72px) clamp(16px,4vw,32px) 80px">
+
+  <div style="max-width:900px; margin:0 auto">
+
+    <div style="text-align:center; margin-bottom:28px">
+      <div style="font-family:var(--font-display); font-size:13px; letter-spacing:4px; text-transform:uppercase; color:var(--gold)">Le deuxième arrêt — Dossier film</div>
+      <div style="height:4px; width:120px; margin:14px auto 0; border-radius:2px; background:var(--accent-bar)"></div>
+    </div>
+
+    <article style="background:var(--card-bg); border-radius:20px; overflow:hidden; box-shadow:0 18px 50px rgba(0,0,0,0.45)">
+
+      <figure style="margin:0; position:relative; height:clamp(220px,38vw,380px)">
+        <img src="img/comandante-film-bg.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block">
+        <span style="position:absolute; left:0; right:0; bottom:0; height:5px; background:var(--accent-bar)"></span>
+        <div style="position:absolute; top:20px; right:20px; width:88px; height:88px; border-radius:50%; border:3px solid var(--cream); display:flex; align-items:center; justify-content:center; text-align:center; transform:rotate(-12deg); background:rgba(26,15,48,0.55); backdrop-filter:blur(2px)">
+          <span style="font-family:var(--font-display); font-size:10px; letter-spacing:1.5px; color:var(--cream); line-height:1.35; text-transform:uppercase">Autori<br>Italiani</span>
+        </div>
+      </figure>
+      <figcaption style="padding:10px 32px 0; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.5px; color:var(--text-meta)">Ninfee, Claude Monet, 1915. Wikimedia Commons</figcaption>
+
+      <div style="padding:22px clamp(24px,5vw,48px) 48px; display:flex; flex-direction:column; gap:20px">
+
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px">
+          <span style="background:var(--bordeaux); color:#fff; font-family:var(--font-sans); font-weight:bold; font-size:10px; letter-spacing:1px; padding:6px 14px; border-radius:999px; text-transform:uppercase">Documentario</span>
+          <span style="font-family:var(--font-sans); font-size:10px; letter-spacing:1.5px; color:var(--text-meta); text-transform:uppercase">Enrico Maisto · 2014</span>
+        </div>
+
+        <h1 style="margin:0; font-family:var(--font-display); font-weight:700; font-size:clamp(34px,5vw,54px); line-height:1.05; color:var(--purple-darkest)">Comandante</h1>
+
+        <div style="font-family:var(--font-serif); font-style:italic; font-size:clamp(18px,2vw,23px); line-height:1.5; color:var(--purple-darkest); border-left:4px solid var(--gold); padding-left:20px">Un profilo dignitoso per l'esordio al lungometraggio.</div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; margin-top:8px">
+          <image-slot id="foto-1" src="img/mosca-sul-muro.jpg" shape="rounded" radius="4" placeholder="Fermo immagine" style="width:170px; height:210px; flex-shrink:0; transform:rotate(-3deg); box-shadow:0 10px 24px rgba(0,0,0,0.28); border:6px solid #fff; align-self:flex-start"></image-slot>
+          <div style="flex:1; min-width:240px; font-family:var(--font-serif); font-size:clamp(17px,1.6vw,19px); font-weight:500; line-height:1.75; color:var(--text-body); text-wrap:pretty">
+            <p style="margin:0 0 18px"><span style="float:left; font-family:var(--font-display); font-weight:700; font-size:64px; line-height:0.8; padding:6px 10px 0 0; color:var(--bordeaux)">I</span>n un gioco di prestigio qui la macchina scompare e, facendosi leggera come una foglia, si poggia sul muro ed ascolta, come la mosca. Eppure è viva, sporca mentre indugia sul giudice che nel ricordo di un vecchio libro ingiallito ne sfoglia le pagine che volano come piume nella penombra. È Francesco Maisto, il padre del ragazzo che continua a chiedere, ha vissuto gli anni di piombo, tra polvere da sparo e i pupi del tempo, gli uomini della politica rinchiusi nel carcere di San Vittore.</p>
+            <p style="margin:0">Io non so chi sia Felice ma lo conosco da molto tempo, il dolce alternarsi dei suoi silenzi alle domande di Enrico mi parla di lui, in quelle poche parole che vengono su dall'anima, perché degli occhi la lente me ne priva. Eccoli, per un istante, poi ancora la nuca riversa di lato me li cela di nuovo, quasi fossero un dono prezioso. E lo sono, me ne accorgo nei piani d'ascolto, quando la macchina si ferma vicino, stretta stretta a fargli compagnia. Sta ascoltando se stesso.</p>
+          </div>
+        </div>
+
+        <div style="font-family:var(--font-serif); font-size:clamp(17px,1.6vw,19px); font-weight:500; line-height:1.75; color:var(--text-body); text-wrap:pretty; display:flex; flex-direction:column; gap:18px">
+          <p style="margin:0">Chissà quante volte quello sguardo avrà incrociato quello del giudice, al quale una vera amicizia lo ha sempre legato, fin dai tempi in cui prese a far parte di Lotta Continua. Perché l'amico, nonostante le divergenze, come dice Francesco: «non ti crea paratie, non ti crea ostacoli… neanche quando ha fallito come uomo, trascinandosi dietro il Comunismo intero».</p>
+
+          <p style="margin:0">A me piace starmene qui con loro ma ogni tanto la vista mi inganna e per un istante non riesco a distinguere le forme, sarà colpa del fuoco. Ora comincio ad aver paura però, non so più dove sono, le luci sono quelle di casa mia, sento lo stesso suono di quando mio nonno sposta le sedie coi piedi di ferro in cucina. Ora sono in cortile, è notte. No no fermi tutti, non può essere. Devo essere in un sogno, ma è tutto così uguale alla realtà. Devo essere finito nella notte del mondo di Enrico, dove di luce ce n'è abbastanza per vedere chi stiamo seguendo di spalle, come in un film dei fratelli Dardenne, in uno spazio di cui Enrico sembra essere così consapevole da poggiarci il viso del papà per metà di fuori, tagliandolo, come qualche pittore espressionista giapponese componeva il quadro.</p>
+
+          <p style="margin:0">Me ne starei seduto in cortile a sentire i passi del giudice per ore, sembrano così morbidi da poterli persino sfiorare.</p>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap-reverse; gap:24px; align-items:flex-start; margin-top:4px">
+          <div style="flex:1; min-width:240px; font-family:var(--font-serif); font-size:clamp(17px,1.6vw,19px); font-weight:500; line-height:1.75; color:var(--text-body); text-wrap:pretty; display:flex; flex-direction:column; gap:18px">
+            <p style="margin:0">Fuori è buio pesto, Enrico dà una sbirciatina in officina, poi esce di colpo all'esterno dove il racconto non riesce a prendere il dovuto respiro che subito la notte lo colora di blu.</p>
+            <p style="margin:0">Di fronte a sé un paesaggio incantevole, qualche briciolo di luce in lontananza fa fatica a distinguersi. Ma che notte, sembrano due opere d'arte quel cielo, una con la notte poggiata sul Rodano e l'altra come quelle che si vedono dagli scorci tra le case proprio prima dell'ospedale di Saint-Rémy.</p>
+          </div>
+          <image-slot id="foto-2" src="img/parco-groane-illustrazione.png" shape="rounded" radius="4" placeholder="Fermo immagine" style="width:170px; height:210px; flex-shrink:0; transform:rotate(3deg); box-shadow:0 10px 24px rgba(0,0,0,0.28); border:6px solid #fff; align-self:flex-start"></image-slot>
+        </div>
+
+        <div style="font-family:var(--font-serif); font-size:clamp(17px,1.6vw,19px); font-weight:500; line-height:1.75; color:var(--text-body); text-wrap:pretty; display:flex; flex-direction:column; gap:18px">
+          <p style="margin:0">Mentre le parole mi accompagnano al Mulino Doppio, ora parte del Parco delle Groane, dove negli anni Settanta ci si vedeva per discutere a prescindere da quale braccio si alzasse per salutarsi, i dolori del giovane Enrico si fanno parola e, rivolgendosi al vecchio Felice, si tramutano di colpo in malinconici pensieri: «(questo luogo) era un po' un mondo fiabesco e adesso stava affiorando la sua zona d'ombra, e pensavo al Mulino Doppio, l'osteria dove tu e mio padre vi siete conosciuti, oggi non esiste più. IO ME LO IMMAGINAVO COME UNA FRONTIERA DOVE SI ORGANIZZAVANO FESTE DI CARNEVALE A CUI PARTECIPAVANO GIUDICI E TERRORISTI, E NON SI CAPIVA PIÙ CHI C'ERA DIETRO ALLE MASCHERE».</p>
+
+          <p style="margin:0">Dietro ad una di quelle maschere c'era sicuramente il papà Francesco, fortemente convinto che il giudice fosse prima artista, perché la legge non la si applica come la grammatica: la legge è mutevole e il giudice è il suo vero e proprio ermeneuta. È poeta perché l'interpretazione è attività di ingegno, di mente e di cuore.</p>
+
+          <p style="margin:0">Più si va avanti, più Teseo fa del racconto un grande universo intriso di significati. Scommetto che se la camera inquadrasse una parete vuota per 15 minuti lo spettatore non si accorgerebbe di nulla, anzi. Tranne qualche rara eccezione, ogni volta che la scena passa a quella successiva il suono s'interrompe bruscamente non lasciando lo strascico di un minimo spiffero, ma lo fa con tanta grazia quanta i maestri del paese della luce grigia insegnano.</p>
+
+          <p style="margin:0">Il personaggio di Felice è realismo puro, le sue azioni indice di grande maestria nella direzione, come per quanto riguarda il padre di Enrico che, altra cosa degna di nota, non importa dove vada ad occupare lo spazio, troverà sempre una camera calma e precisa nel suo linguaggio ad aspettarlo, comporre e vivere in sua funzione. Per la precisione un certo tipo di camera a spalla, decifrabile nell'autorevolezza, nel comporre e fermarsi e poi tornare a muoversi, mai facendolo sgarbatamente costruendo un linguaggio a posteriori, perché bisogna ricordare che sempre di un documentario stiamo parlando, e per un documentario di quel tipo, anche se si poteva fare diversamente, il linguaggio è venuto ad essere girando, spingendo verso un realismo che sinceramente non mi aspettavo.</p>
+
+          <p style="margin:0">Drammaturgicamente il setup è una passeggiata in un giorno soleggiato di primavera. I protagonisti fanno il loro ingresso sempre mano nella mano di un traghettatore, una donna per Felice, Enrico per Francesco; il montaggio all'inizio accoglie, le parole si alternano ai silenzi che qui sì che sono strumento del racconto, non vezzo. La linea del racconto è invisibile, ci si ritrova ad ascoltare l'ex militante comunista che riconosce di non aver mai avuto il coraggio di uccidere, di sparare, senza rendersene conto, guidati da uno sviluppo narrativo lineare che procede come le acque di un ruscello silenzioso. Le parole cadono come gocce d'acqua d'una docile pioggia con la precisione di un metronomo.</p>
+
+          <p style="margin:0">E non sbaglio a ripetermi quando dico che persino l'accenno del suono di un respiro affannato che viene dal più anziano fa tenerezza e racconta allo stesso tempo: è voluto, avrebbe potuto toglierlo e invece lo ha lasciato. È una scelta comunicativa.</p>
+
+          <div style="display:flex; flex-wrap:wrap-reverse; gap:24px; align-items:flex-start">
+            <p style="margin:0; flex:1; min-width:240px">Dal punto di vista tematico tutto ruota inevitabilmente attorno all'attuale distinzione politica che fa capo alle dinamiche fascismo-comunismo. Come oggi ci troviamo di fronte alla rivendicazione di attitudine fascista se guardiamo a temi come immigrazione, cittadinanza, discriminazione, integrazione, legittima difesa, patriottismo, nazionalismi, per non parlare del movimento MAGA e dell'ICE negli Stati Uniti. Temi estremamente attuali che meritano di essere trattati quotidianamente, perché l'uomo dimentica tutto.</p>
+            <image-slot id="foto-3" src="img/maga-illustrazione.png" shape="rounded" radius="4" placeholder="Fermo immagine" style="width:170px; height:210px; flex-shrink:0; transform:rotate(-2deg); box-shadow:0 10px 24px rgba(0,0,0,0.28); border:6px solid #fff; align-self:flex-start"></image-slot>
+          </div>
+
+          <p style="margin:0">Un bilaterale manicheismo senza freni, la formula fascismo-comunismo, che è propria della nostra storia e torna a ripetersi in politica e nella società odierna negli estremismi sia di destra che di sinistra. Dietro a questo dualismo conflittuale si nasconde la differenza degli antipodi che ritroviamo nelle pericolose ideologie. Comune in tutto il mondo questa fascinazione della distanza incolmabile e del posizionamento nel quale finalmente ci si riconosce, perché finalmente certi che la personalità abbia acquisito una caratteristica. Quella della diversità: non sono più nulla, adesso sono qualcosa. Ho importanza, sono diverso da te. È questa una realtà fittizia, quella propria delle ombre della caverna della quale fanno parte gli individui che aderiscono alla differenziazione totale assoluta che diventerà autocratica; sanno che stanno guardando le ombre, ma uscire fuori dalla caverna fa più paura.</p>
+
+          <p style="margin:0">C'è poi un odisseico ritorno del giudice con il figlio presso il carcere di San Vittore, dove avranno modo di confrontarsi sulla dialettica come strumento di confronto tra uomini di legge come il giudice Francesco e i detenuti, che non deve arrivare mai allo scontro vita-morte, pur raggiungendo a volte un grado feroce di confronto.</p>
+
+          <p style="margin:0">Il cerchio si chiude in modo commovente, mostrando uomini alle prese con l'attacchinaggio, con tanto di scopa, colla e piccoli manifesti, che rappresenta la più alta espressione di azione politica democratica, pacifica e aggregativa che io conosca. Esprimere il proprio consenso attraverso il rituale, strumento adottato da tutte le civiltà.</p>
+        </div>
+
+        <div style="margin-top:6px; padding-top:22px; border-top:1px solid rgba(0,0,0,0.1); font-family:var(--font-serif); font-style:italic; font-size:clamp(16px,1.5vw,18px); line-height:1.7; color:var(--text-body)">Enrico Maisto, classe '88, è laureato in filosofia estetica presso l'Università degli Studi di Milano, ha un approccio estetico meraviglioso sia in campo figurativo che letterario.</div>
+
+        <div style="font-family:var(--font-sans); font-size:11px; letter-spacing:1px; color:var(--text-meta); text-transform:uppercase">Budget: 30.000 euro — stima riportata da IMDb.<br>Dove puoi vederlo: Comandante (2014) è disponibile sul canale CG Collection di Amazon Prime.</div>
+
+        <div style="display:flex; flex-direction:column; align-items:center; gap:14px; margin-top:8px">
+          <div style="font-family:var(--font-display); font-weight:700; font-size:16px; letter-spacing:5px; text-transform:uppercase; color:var(--bordeaux); animation:subscribe-blink 1.6s ease-in-out infinite">Iscriviti</div>
+          <div style="display:flex; align-items:center; justify-content:center; gap:36px; width:100%; flex-wrap:wrap">
+            <a href="https://www.primevideo.com/-/it/channel/8a7acb8c-7790-4ae9-9373-1ba9ec81c91f?ref_=atv_sr_fle_c_sr823714_HS4dfa21_1_1" target="_blank" rel="noopener" style="padding:4px; border-radius:18px; background:linear-gradient(270deg,#ff2d75,#ffd400,#00e5ff,#7cff00,#ff2d75); background-size:400% 400%; animation:neon-shift 4s linear infinite, neon-pulse 1.8s ease-in-out infinite; transition:transform .2s" style-hover="transform:translateY(-2px)">
+              <span style="display:flex; align-items:center; justify-content:center; width:180px; height:64px; border-radius:14px; background:#0b0b0b; overflow:hidden">
+                <img src="img/cg-collection-logo.png" alt="CG Collection" style="width:90%; height:90%; object-fit:contain">
+              </span>
+            </a>
+            <a href="https://www.primevideo.com/offers/nonprimehomepage?gad_source=1&amp;gbraid=0AAAAADQh2XK6uu_eKzYE8Uv3aoRVmQmS4&amp;gad_campaignid=962821359&amp;gclid=Cj0KCQjwp9vTBhCWARIsANaUrjtcquUHwqJq1QZNUsjkKks6akfNwcx7Uqy7N845J3Ks8pJSY5MzVTsaApApEALw_wcB&amp;ref_=dvm_pds_amz_IT_lb_s_g_mkw_p509-kw11023-cr263199-c&amp;mrntrk=go_cmp-962821359_adg-53440325735_ad-766671884087_kwd-799334177443_dev-c_ext-" target="_blank" rel="noopener" style="padding:4px; border-radius:18px; background:linear-gradient(270deg,#ff2d75,#ffd400,#00e5ff,#7cff00,#ff2d75); background-size:400% 400%; animation:neon-shift 4s linear infinite reverse, neon-pulse 1.8s ease-in-out infinite; transition:transform .2s" style-hover="transform:translateY(-2px)">
+              <span style="display:flex; align-items:center; justify-content:center; width:180px; height:64px; border-radius:14px; background:#1774c4; overflow:hidden">
+                <img src="img/prime-video-badge.png" alt="Iscriviti a Prime" style="width:88%; height:88%; object-fit:contain">
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <a href="https://www.primevideo.com/detail/0JOSEOMZPIGBPBHMD02EKOKY41?ref_=atv_dp_share_cu_r" target="_blank" rel="noopener" style="align-self:center; display:flex; align-items:center; gap:10px; margin-top:14px; background:#ffd400; color:var(--text-on-gold); font-family:var(--font-sans); font-weight:bold; font-size:12px; letter-spacing:1px; padding:15px 30px; border-radius:999px; text-transform:uppercase; transition:background .3s" style-hover="background:#ffe14d">
+          <span>Guarda su Prime Video</span><span style="font-size:15px">↗</span>
+        </a>
+
+      </div>
+    </article>
+
+    <div style="text-align:center; margin-top:28px; font-family:var(--font-sans); font-size:10px; letter-spacing:1.5px; color:rgba(226,213,190,0.55); text-transform:uppercase">Le deuxième arrêt — Ridistribuzione film di valore</div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>

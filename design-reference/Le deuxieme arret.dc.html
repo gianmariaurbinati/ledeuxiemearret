@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:wght@300;400;500;600&family=Cormorant:ital@1&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#0f0d0b; }
+  a { color:#2f2c26; text-decoration:none; }
+  a:hover { color:#8a7448; }
+</style>
+</helmet>
+
+<div style="font-family:'Cormorant Garamond', Georgia, serif">
+
+  <section data-screen-label="Hero" style="position:relative; height:100vh; min-height:620px; overflow:hidden; background:#0f0d0b">
+    <div style="position:absolute; inset:0">
+      <video ref="{{ heroRef }}" src="video/hero_desktop.mp4" muted="{{ true }}" playsInline="{{ true }}" preload="auto" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; background:#0f0d0b"></video>
+      <video ref="{{ heroRefB }}" src="video/hero_desktop.mp4" muted="{{ true }}" playsInline="{{ true }}" preload="auto" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0; background:#0f0d0b"></video>
+    </div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(12,10,8,0.42) 0%, rgba(12,10,8,0.34) 45%, rgba(12,10,8,0.72) 100%); pointer-events:none"></div>
+    <div style="position:absolute; left:0; right:0; bottom:0; height:14vh; min-height:90px; background:linear-gradient(180deg, transparent, #0f0d0b 92%); pointer-events:none"></div>
+
+    <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; padding:0 32px; pointer-events:none">
+      <h1 style="font-family:'Parisienne', cursive; font-weight:400; font-size:clamp(56px, 8.5vw, 112px); line-height:1.05; color:#f7f1e4; margin:0; text-align:center; text-shadow:0 2px 28px rgba(0,0,0,0.55)">Le deuxième arrêt</h1>
+      <p style="margin:0; white-space:nowrap; font-size:clamp(18px, 1.9vw, 26px); font-weight:500; letter-spacing:4px; color:#fdf8ec; text-align:center; text-shadow:0 1px 2px rgba(0,0,0,0.85), 0 4px 24px rgba(0,0,0,0.75)">Everyone deserves a second chance.</p>
+    </div>
+
+    <div style="position:absolute; left:0; right:0; bottom:38px; display:flex; justify-content:center">
+      <a href="#home" style="font-size:12px; letter-spacing:4px; text-transform:uppercase; color:rgba(247,241,228,0.82); border-bottom:1px solid rgba(247,241,228,0.35); padding-bottom:6px" style-hover="color:#f7f1e4; border-bottom-color:#f7f1e4">Menu</a>
+    </div>
+
+    <div style="position:absolute; right:clamp(20px,4vw,48px); top:clamp(28px,5vh,56px); display:flex; flex-direction:column; align-items:flex-end; gap:2px; padding:14px 22px; background:rgba(74,144,196,0.4); border:1px solid rgba(200,232,255,0.35); border-radius:8px; backdrop-filter:blur(4px); font-family:'Cormorant Garamond', Georgia, serif; text-align:right">
+      <span style="white-space:nowrap; font-size:14px; letter-spacing:2px; color:#fdf8ec">8 Agosto 2026</span>
+      <span style="white-space:nowrap; font-size:13px; letter-spacing:2px; color:rgba(253,248,236,0.75)">04:41 — Roma</span>
+    </div>
+  </section>
+
+  <section id="home" data-screen-label="Home" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:space-between; gap:64px; padding:clamp(72px,12vh,140px) 40px clamp(72px,12vh,132px); overflow:hidden">
+    <div style="position:absolute; inset:0">
+      <img src="img/monet-bg.jpg" alt="" style="width:100%; height:100%; object-fit:cover; display:block">
+    </div>
+    <div style="position:absolute; left:0; right:0; top:0; height:14vh; min-height:90px; background:linear-gradient(180deg, #0f0d0b, transparent); pointer-events:none"></div>
+
+    <div style="position:relative; align-self:center; display:flex; flex-direction:column; align-items:center; gap:16px; margin:14vh 0 0; max-width:min(76vw, 820px); text-align:center; font-family:'Cormorant Garamond', Georgia, serif">
+      <p style="margin:0; font-size:clamp(18px,1.9vw,26px); font-weight:500; line-height:1.55; color:#2b2620; text-wrap:pretty">Ogni anno in Italia si finiscono film che non vedrà nessuno.</p>
+      <p style="margin:0; font-size:clamp(18px,1.9vw,26px); font-weight:500; line-height:1.55; color:#2b2620; text-wrap:pretty">Non film sbagliati. Film compiuti, pagati, premiati dentro sale da duecento posti — e poi fermi.</p>
+      <p style="margin:0; font-size:clamp(18px,1.9vw,26px); font-weight:500; line-height:1.55; color:#2b2620; text-wrap:pretty">Noi torniamo a guardarli. E facciamo in modo che li guardino gli altri.</p>
+      <p style="margin:22px 0 0; font-size:clamp(14px,1.3vw,17px); font-style:italic; font-weight:400; line-height:1.5; color:#7a7266; text-wrap:pretty">Per gli autori e i produttori che hanno un'opera ferma.</p>
+    </div>
+
+    <figure style="position:relative; margin:48px 0 0; align-self:center; display:flex; flex-direction:column; align-items:center; gap:18px">
+      <blockquote style="position:relative; margin:0; max-width:min(70vw, 900px); font-size:min(calc(3.4vw), 48px); letter-spacing:0.5px; font-family:'Cormorant', Georgia, serif; font-weight:500; font-style:italic; line-height:1.4; color:#2b2620; text-align:center; text-wrap:pretty">La pittura è silenziosa, il cinema ha una voce che viene dal colore e dalla luce.</blockquote>
+      <div style="position:relative; width:clamp(80px,10vw,160px); height:1px; background:linear-gradient(90deg, transparent, rgba(43,38,32,0.45), transparent)"></div>
+      <figcaption style="position:relative; white-space:nowrap; font-size:16px; letter-spacing:4px; text-transform:uppercase; color:#4a443a">Michelangelo Antonioni</figcaption>
+    </figure>
+
+    <nav style="position:relative; align-self:center; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; row-gap:14px; column-gap:clamp(24px, 3vw, 48px)">
+      <a href="#" style="position:relative; font-size:clamp(15px, 1.35vw, 19px); font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:#2b2620; padding:6px 2px; border-bottom:1px solid transparent" style-hover="color:#000000; border-bottom-color:rgba(43,38,32,0.55)">Il Treno</a>
+      <a href="#" style="position:relative; font-size:clamp(15px, 1.35vw, 19px); font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:#2b2620; padding:6px 2px; border-bottom:1px solid transparent" style-hover="color:#000000; border-bottom-color:rgba(43,38,32,0.55)">Consigliati</a>
+      <a href="#" style="position:relative; font-size:clamp(15px, 1.35vw, 19px); font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:#2b2620; padding:6px 2px; border-bottom:1px solid transparent" style-hover="color:#000000; border-bottom-color:rgba(43,38,32,0.55)">News</a>
+      <a href="#" style="position:relative; font-size:clamp(15px, 1.35vw, 19px); font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:#2b2620; padding:6px 2px; border-bottom:1px solid transparent" style-hover="color:#000000; border-bottom-color:rgba(43,38,32,0.55)">Autori Emergenti</a>
+      <a href="Passeggeri.dc.html" style="position:relative; font-size:clamp(15px, 1.35vw, 19px); font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:#2b2620; padding:6px 2px; border-bottom:1px solid transparent" style-hover="color:#000000; border-bottom-color:rgba(43,38,32,0.55)">Passeggeri</a>
+    </nav>
+  </section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">class Component extends DCLogic {
+  heroRef = React.createRef();
+  heroRefB = React.createRef();
+  RATE = 0.5;
+  FADE = 1.0; // secondi di crossfade (tempo reale)
+
+  componentDidMount() {
+    const a = this.heroRef.current, b = this.heroRefB.current;
+    if (!a || !b) return;
+    [a, b].forEach(v => {
+      // muto garantito PRIMA di qualsiasi riproduzione: attributo + proprietà
+      v.setAttribute('muted', '');
+      v.defaultMuted = true;
+      v.muted = true;
+      v.volume = 0;
+      v.removeAttribute('controls');
+      v.addEventListener('volumechange', () => { v.muted = true; v.volume = 0; });
+      v.loop = false;
+      v.defaultPlaybackRate = this.RATE;
+      v.playbackRate = this.RATE;
+      v.style.transition = 'opacity ' + this.FADE + 's linear';
+      v.addEventListener('ratechange', () => { if (v.playbackRate !== this.RATE) v.playbackRate = this.RATE; });
+      // rete di sicurezza: se il crossfade salta (tab in background, rAF sospeso) il loop riparte comunque
+      v.addEventListener('ended', () => {
+        if (this.front !== v) { v.pause(); v.currentTime = 0; return; }
+        v.currentTime = 0;
+        v.style.opacity = '1';
+        this.back.style.opacity = '0';
+        this.fading = false;
+        v.play().catch(() => {});
+      });
+    });
+    this.front = a; this.back = b;
+    a.style.opacity = '1'; b.style.opacity = '0';
+    a.play().catch(() => {});
+    this.tick = this.tick.bind(this);
+    this.raf = requestAnimationFrame(this.tick);
+    // se il browser sospende rAF (tab nascosta) riprendo alla riattivazione
+    this.onVis = () => { if (!document.hidden && this.front && this.front.paused) this.front.play().catch(() => {}); };
+    document.addEventListener('visibilitychange', this.onVis);
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    document.removeEventListener('visibilitychange', this.onVis);
+  }
+
+  // Il crossfade copre il salto fra ultimo e primo frame: sembra un unico piano sequenza.
+  tick() {
+    const f = this.front, b = this.back;
+    if (f && b && f.duration) {
+      const remainingReal = (f.duration - f.currentTime) / this.RATE;
+      if (!this.fading && remainingReal <= this.FADE) {
+        this.fading = true;
+        b.currentTime = 0;
+        b.playbackRate = this.RATE;
+        b.play().catch(() => {});
+        b.style.opacity = '1';
+        f.style.opacity = '0';
+        setTimeout(() => {
+          f.pause();
+          this.front = b; this.back = f;
+          this.fading = false;
+        }, this.FADE * 1000);
+      }
+    }
+    this.raf = requestAnimationFrame(this.tick);
+  }
+
+  renderVals() { return { heroRef: this.heroRef, heroRefB: this.heroRefB }; }
+}</script>
+</body>
+</html>

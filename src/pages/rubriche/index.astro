@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const rubriche = [
+  {
+    slug: 'comandante',
+    titolo: 'Comandante',
+    regista: 'Enrico Maisto, 2014',
+    descrizione: "Il giudice e il militante. Un'amicizia attraverso gli anni di piombo.",
+    img: '/img/comandante-bg.jpg',
+    live: true,
+  },
+  {
+    slug: 'arianna',
+    titolo: 'Arianna',
+    regista: 'Arianna Lavagna, 2015',
+    descrizione: "Prossimamente. La rubrica di Arianna Lavagna.",
+    live: false,
+    gradient: 'linear-gradient(135deg, #4a2b7a, #0e3a54)',
+  },
+  {
+    slug: 'kripton',
+    titolo: 'Kripton',
+    regista: 'Francesco Munzi, 2024',
+    descrizione: "Prossimamente. La rubrica di Francesco Munzi.",
+    live: false,
+    gradient: 'linear-gradient(135deg, #6d1f2f, #2b1f1f)',
+  },
+];
+---
+<Layout title="Rubriche — Le deuxième arrêt">
+  <section class="rubriche">
+    <div class="bg" style="background-image:url('/img/monet-bg.jpg')"></div>
+
+    <div class="inner">
+      <header>
+        <h1>Rubriche</h1>
+        <div class="rule"></div>
+        <p>Film compiuti, invisibili, che meritano una seconda lettura</p>
+      </header>
+
+      <div class="grid">
+        {rubriche.map((r) => (
+          <a
+            href={r.live ? `/rubriche/${r.slug}` : '#'}
+            class:list={['card', { placeholder: !r.live }]}
+          >
+            <div class="card-image" style={r.img ? `background-image:url('${r.img}')` : `background:${r.gradient}`}>
+              {!r.live && <span class="badge-placeholder">In preparazione</span>}
+              <div class="card-scrim"></div>
+              <span class="card-tag">{r.regista}</span>
+            </div>
+            <div class="card-body">
+              <h2>{r.titolo}</h2>
+              <p>{r.descrizione}</p>
+              <span class="cta">{r.live ? 'Leggi la rubrica →' : 'Presto →'}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .rubriche {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #0f0d0b;
+    padding: clamp(72px,12vh,140px) 40px;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
+  }
+  .inner {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: clamp(48px, 6vw, 84px);
+    font-family: 'Parisienne', cursive;
+    font-weight: 400;
+    color: #f7f1e4;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .rule {
+    width: clamp(80px,10vw,160px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
+  header p {
+    margin: 0;
+    max-width: 700px;
+    font-size: clamp(16px, 1.5vw, 22px);
+    color: #d4af37;
+    text-align: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-decoration: none;
+    transition: transform .3s ease;
+    cursor: pointer;
+  }
+  .card:hover { transform: translateY(-6px); }
+  .card.placeholder { opacity: 0.7; cursor: default; }
+  .card.placeholder:hover { transform: none; }
+
+  .card-image {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(15,13,11,0.8));
+  }
+  .card-tag {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d4af37;
+    font-weight: 600;
+  }
+  .badge-placeholder {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: rgba(247,241,228,0.4);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card-body h2 {
+    margin: 0;
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #f7f1e4;
+    font-family: 'Cinzel', Georgia, serif;
+  }
+  .card-body p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #b8a88a;
+  }
+  .cta {
+    margin-top: 8px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d4af37;
+    font-weight: 500;
+  }
+</style>

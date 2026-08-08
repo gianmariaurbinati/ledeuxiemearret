@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#0f0d0b; }
+  @keyframes cta-blink { 0%, 100% { opacity:1; } 50% { opacity:0.3; } }
+</style>
+</helmet>
+
+<section data-screen-label="Comandante" style="position:relative; min-height:100vh; overflow:hidden">
+  <img src="img/comandante-bg.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block">
+  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,8,8,0.78) 0%, rgba(8,8,8,0.42) 55%, rgba(8,8,8,0.15) 100%); pointer-events:none"></div>
+
+  <div style="position:relative; max-width:980px; margin:0 auto; padding:clamp(48px,7vh,88px) clamp(28px,6vw,72px) calc(clamp(28px,5vh,64px) + 70px); font-family:'Cormorant Garamond', Georgia, serif; color:#f7f3e8">
+    <img src="img/maisto.png" alt="Enrico Maisto" style="float:right; margin:6px 0 22px 36px; height:min(28vh,260px); width:auto; object-fit:contain; mask-image:linear-gradient(180deg, black 62%, transparent 100%); -webkit-mask-image:linear-gradient(180deg, black 62%, transparent 100%); opacity:0.88">
+    <div style="font-size:13px; letter-spacing:4px; text-transform:uppercase; color:rgba(247,243,232,0.8); margin-bottom:10px; text-shadow:0 1px 4px rgba(0,0,0,0.6)">Biografia</div>
+    <h1 style="margin:0 0 26px; font-size:clamp(32px,4vw,52px); font-weight:500; letter-spacing:1px; line-height:1.1; color:#f7f3e8; text-shadow:0 2px 12px rgba(0,0,0,0.7)">Enrico Maisto</h1>
+    <p style="margin:0 0 20px; font-size:clamp(19px,1.75vw,23px); font-weight:400; line-height:1.8; text-wrap:pretty; text-shadow:0 1px 6px rgba(0,0,0,0.75), 0 1px 2px rgba(0,0,0,0.9)">Enrico Maisto è un regista e documentarista milanese, nato nel 1988. Dopo la laurea in Filosofia estetica all'Università degli Studi di Milano, si avvicina professionalmente al cinema partecipando alla lavorazione di <em>Vincere</em> di Marco Bellocchio, per il quale realizza il backstage. Questa esperienza orienta il suo interesse verso il documentario, inteso come uno strumento per esplorare la memoria, le istituzioni e le relazioni familiari.</p>
+    <p style="margin:0 0 20px; font-size:clamp(19px,1.75vw,23px); font-weight:400; line-height:1.8; text-wrap:pretty; text-shadow:0 1px 6px rgba(0,0,0,0.75), 0 1px 2px rgba(0,0,0,0.9)">Dopo il cortometraggio Kinoe del 2009, esordisce nel lungometraggio con <em>Comandante</em> (2014), racconto ambientato nel clima degli anni di piombo e incentrato sul rapporto tra suo padre, il magistrato Francesco Maisto, e Felice Esposito, ex militante di Lotta Continua. Il film vince il Premio Aprile al Milano Film Festival. Nel 2017 realizza <em>La convocazione</em>, dedicato alla selezione dei giudici popolari presso la Corte d'Assise d'Appello di Milano. Attraverso le reazioni dei cittadini convocati, Maisto riflette sulla responsabilità individuale e sulla dimensione umana della giustizia. Il documentario riceve diversi riconoscimenti, tra cui il premio del pubblico al Festival dei Popoli.</p>
+    <p style="margin:0 0 40px; font-size:clamp(19px,1.75vw,23px); font-weight:400; line-height:1.8; text-wrap:pretty; text-shadow:0 1px 6px rgba(0,0,0,0.75), 0 1px 2px rgba(0,0,0,0.9)">Con <em>L'età dell'innocenza</em> (2021), il regista rivolge infine la macchina da presa verso la propria famiglia. Seguendo la madre magistrata nel passaggio alla pensione, costruisce un racconto personale sul rapporto tra genitori e figli, sulla crescita e sulla difficoltà di diventare adulti. Il film viene premiato come miglior documentario italiano al Festival dei Popoli. Nel complesso, il cinema di Maisto unisce osservazione sociale e autobiografia, trasformando vicende private in riflessioni più ampie sulla memoria, sulla giustizia e sui legami affettivi.</p>
+  </div>
+
+  <a href="Comandante Film.dc.html" style="position:absolute; right:clamp(24px,5vw,72px); bottom:clamp(28px,5vh,64px); display:inline-flex; align-items:center; gap:12px; padding:14px 26px; background:rgba(15,13,10,0.55); border:1px solid rgba(247,243,232,0.4); border-radius:999px; backdrop-filter:blur(4px); font-family:'Cormorant Garamond', Georgia, serif; font-size:15px; letter-spacing:1.5px; text-transform:uppercase; color:#f7f3e8; text-decoration:none; transition:background .3s, border-color .3s; animation:cta-blink 3.2s ease-in-out infinite" style-hover="background:rgba(15,13,10,0.75); border-color:rgba(247,243,232,0.75)">
+    <span>Vai al film «Comandante»</span>
+    <span style="font-size:26px; line-height:1; color:#e0453a">→</span>
+  </a>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>

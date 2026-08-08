@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&amp;family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Cinzel:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#0f0d0b; }
+  a { color:#2b2620; text-decoration:none; }
+</style>
+</helmet>
+
+<section data-screen-label="Passeggeri" style="position:relative; min-height:100vh; overflow:hidden">
+  <div style="position:absolute; inset:0">
+    <img src="img/gare-saint-lazare.jpg" alt="" style="width:100%; height:100%; object-fit:cover; display:block">
+  </div>
+  <div style="position:absolute; inset:0; background:rgba(20,18,14,0.12); pointer-events:none"></div>
+
+  
+<div style="position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 6vw; margin-top:-16vh">
+
+    <div ref="{{ rowRef }}" style="position:relative; width:100%; max-width:1400px; display:flex; align-items:flex-start; justify-content:space-between; gap:24px; flex-wrap:nowrap">
+      <div style="display:flex; flex-direction:column; align-items:flex-start; gap:14px">
+        <button onClick="{{ toggleAttesa }}" style="background:none; border:none; padding:0; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:6px" style-hover="opacity:0.75">
+          
+          <img ref="{{ iconRef }}" src="img/pennello-click.png" alt="" style="width: 64px; height: 64px; object-fit: contain; opacity: 0.82; transition: transform .3s ease; transform: rotate({{ chevronDeg }}deg)"><span ref="{{ attesaTextRef }}" style="white-space:nowrap; font-family:'Cormorant Garamond', Georgia, serif; font-size:clamp(18px, 2.4vw, 38px); font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#2b2620; text-shadow:0 1px 2px rgba(255,255,255,0.4)">Passeggeri in Attesa</span>
+        </button>
+        <sc-if value="{{ attesaOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; align-items:flex-start; gap:14px; margin-top:52px; max-width:520px">
+            <span style="font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:clamp(19px, 2vw, 24px); letter-spacing:1.5px; color:#241f19; text-shadow:0 1px 3px rgba(255,255,255,0.55)">Prossimamente</span>
+            <span style="font-family:'Cormorant Garamond', Georgia, serif; font-size:clamp(17px, 1.7vw, 21px); line-height:1.5; color:#241f19; text-shadow:0 1px 3px rgba(255,255,255,0.55); text-wrap:pretty">Una rubrica per i registi che hanno un'opera ferma.</span>
+            <span style="font-family:'Cormorant Garamond', Georgia, serif; font-size:clamp(17px, 1.7vw, 21px); line-height:1.5; color:#241f19; text-shadow:0 1px 3px rgba(255,255,255,0.55); text-wrap:pretty">Scriviamo di film che il mercato ha dimenticato.</span>
+          </div>
+        </sc-if>
+      </div>
+      <span style="white-space:nowrap; font-family:'Cormorant Garamond', Georgia, serif; font-size:clamp(18px, 2.4vw, 38px); font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:#2b2620; text-shadow:0 1px 2px rgba(255,255,255,0.4); margin-top:{{ bordoOffset }}px; transition:margin-top .3s ease">Passeggeri a Bordo</span>
+    </div>
+  </div></section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { attesaOpen: false, bordoOffset: 0 };
+  iconRef = React.createRef();
+  attesaTextRef = React.createRef();
+  rowRef = React.createRef();
+
+  componentDidMount() {
+    this.measure();
+    window.addEventListener('resize', this.measure);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.measure);
+  }
+  componentDidUpdate() { this.measure(); }
+
+  measure = () => {
+    const row = this.rowRef.current, txt = this.attesaTextRef.current;
+    if (!row || !txt) return;
+    // offset di "Passeggeri a Bordo" = distanza tra il top della riga e il top del testo "Passeggeri in Attesa"
+    const offset = Math.round(txt.getBoundingClientRect().top - row.getBoundingClientRect().top);
+    if (offset !== this.state.bordoOffset) this.setState({ bordoOffset: offset });
+  };
+
+  renderVals() {
+    return {
+      attesaOpen: this.state.attesaOpen,
+      chevronDeg: this.state.attesaOpen ? 180 : 0,
+      bordoOffset: this.state.bordoOffset,
+      iconRef: this.iconRef,
+      attesaTextRef: this.attesaTextRef,
+      rowRef: this.rowRef,
+      toggleAttesa: () => this.setState(s => ({ attesaOpen: !s.attesaOpen }))
+    };
+  }
+}
+</script>
+</body>
+</html>

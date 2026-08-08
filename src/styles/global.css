@@ -1,0 +1,26 @@
+:root {
+  --gold: #d4af37;
+  --gold-hover: #edcd63;
+  --bordeaux: #6d1f2f;
+  --purple: #4a2b7a;
+  --purple-deep: #2c1a4d;
+  --purple-darkest: #1a0f30;
+  --cream: #e2d5be;
+  --card-bg: #fbfaf7;
+  --text-body: #4f4d47;
+  --text-meta: #9a978f;
+  --ink: #0f0d0b;
+  --ink-warm: #2b2620;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--ink);
+  color: var(--ink-warm);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+a { color: inherit; text-decoration: none; }

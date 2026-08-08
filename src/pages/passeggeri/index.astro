@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Passeggeri — Le deuxième arrêt">
+  <section class="passeggeri">
+    <div class="bg" style="background-image:url('/img/gare-saint-lazare.jpg')"></div>
+    <div class="scrim"></div>
+
+    <div class="inner">
+      <div class="row">
+        <div class="col">
+          <button id="toggle" class="toggle-btn">
+            <img src="/img/pennello-click.png" alt="" id="icon" />
+            <span>Passeggeri in Attesa</span>
+          </button>
+          <div id="reveal" class="reveal" hidden>
+            <p class="prossimamente">Prossimamente</p>
+            <p class="bold">Una rubrica per i registi che hanno un'opera ferma.</p>
+            <p class="italic">Scriviamo di film che il mercato ha dimenticato.</p>
+          </div>
+        </div>
+        <span class="a-bordo">Passeggeri a Bordo</span>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const btn = document.getElementById('toggle');
+  const icon = document.getElementById('icon');
+  const reveal = document.getElementById('reveal');
+  let open = false;
+  btn?.addEventListener('click', () => {
+    open = !open;
+    if (reveal) reveal.hidden = !open;
+    if (icon) icon.style.transform = `rotate(${open ? 180 : 0}deg)`;
+  });
+</script>
+
+<style>
+  .passeggeri {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(20,18,14,0.12);
+  }
+  .inner {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6vw;
+  }
+  .row {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: nowrap;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .toggle-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .toggle-btn:hover { opacity: 0.75; }
+  .toggle-btn img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    opacity: 0.82;
+    transition: transform .3s ease;
+  }
+  .toggle-btn span {
+    white-space: nowrap;
+    font-size: clamp(18px, 2.4vw, 38px);
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #2b2620;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+  }
+  .a-bordo {
+    white-space: nowrap;
+    font-size: clamp(18px, 2.4vw, 38px);
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #2b2620;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+  }
+  .reveal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 52px;
+    font-size: clamp(17px, 1.9vw, 24px);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    color: #241f19;
+    text-shadow: 0 1px 3px rgba(255,255,255,0.55);
+  }
+  .reveal p { margin: 0; }
+  .prossimamente { font-style: italic; }
+  .bold { font-weight: 500; }
+  .italic {
+    font-size: clamp(14px, 1.6vw, 19px);
+    font-style: italic;
+    opacity: 0.85;
+  }
+</style>

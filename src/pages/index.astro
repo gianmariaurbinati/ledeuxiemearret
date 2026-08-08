@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Le deuxième arrêt">
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('/img/gare-saint-lazare.jpg')"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-fade"></div>
+
+    <div class="hero-content">
+      <h1>Le deuxième arrêt</h1>
+      <p class="hero-subtitle">Ogni film merita una seconda fermata.</p>
+    </div>
+
+    <a href="#home" class="hero-menu">Menu</a>
+
+    <div class="hero-date">
+      <span>8 Agosto 2026</span>
+      <span class="hero-time">04:41 — Roma</span>
+    </div>
+  </section>
+
+  <section id="home" class="home">
+    <div class="home-bg" style="background-image:url('/img/monet-bg.jpg')"></div>
+    <div class="home-fade-top"></div>
+
+    <div class="home-inner">
+      <div class="mission">
+        <p>Ogni anno in Italia si finiscono film che non vedrà nessuno.</p>
+        <p>Non film sbagliati. Film compiuti, pagati, premiati dentro sale da duecento posti — e poi fermi.</p>
+        <p>Noi torniamo a guardarli. E facciamo in modo che li guardino gli altri.</p>
+        <p class="mission-note">Per gli autori e i produttori che hanno un'opera ferma.</p>
+      </div>
+
+      <figure class="quote">
+        <blockquote>La pittura è silenziosa, il cinema ha una voce che viene dal colore e dalla luce.</blockquote>
+        <div class="quote-rule"></div>
+        <figcaption>Michelangelo Antonioni</figcaption>
+      </figure>
+
+      <nav class="site-nav">
+        <a href="#">Il Treno</a>
+        <a href="/rubriche">Rubriche</a>
+        <a href="#">News</a>
+        <a href="#">Autori Emergenti</a>
+        <a href="/passeggeri">Passeggeri</a>
+      </nav>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 620px;
+    overflow: hidden;
+    background: #0f0d0b;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(12,10,8,0.42) 0%, rgba(12,10,8,0.34) 45%, rgba(12,10,8,0.72) 100%);
+    pointer-events: none;
+  }
+  .hero-fade {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 14vh;
+    min-height: 90px;
+    background: linear-gradient(180deg, transparent, #0f0d0b 92%);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 0 32px;
+    pointer-events: none;
+    text-align: center;
+  }
+  .hero-content h1 {
+    font-family: 'Parisienne', cursive;
+    font-weight: 400;
+    font-size: clamp(56px, 8.5vw, 112px);
+    line-height: 1.05;
+    color: #f7f1e4;
+    margin: 0 0 0 0;
+    text-shadow: 0 2px 28px rgba(0,0,0,0.55);
+  }
+  .hero-subtitle {
+    margin: -8vh 0 0 0;
+    font-size: clamp(18px, 1.9vw, 26px);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fdf8ec;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.85), 0 4px 24px rgba(0,0,0,0.75);
+  }
+  .hero-menu {
+    position: absolute;
+    left: 0; right: 0; bottom: 38px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(247,241,228,0.82);
+    border-bottom: 1px solid rgba(247,241,228,0.35);
+    padding-bottom: 6px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .hero-date {
+    position: absolute;
+    right: clamp(20px,4vw,48px);
+    top: clamp(28px,5vh,56px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    padding: 14px 22px;
+    background: rgba(74,144,196,0.4);
+    border: 1px solid rgba(200,232,255,0.35);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    text-align: right;
+  }
+  .hero-date span:first-child {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #fdf8ec;
+  }
+  .hero-time {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: rgba(253,248,236,0.75);
+  }
+
+  .home {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: clamp(72px,12vh,140px) 40px clamp(72px,12vh,132px);
+  }
+  .home-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .home-fade-top {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 14vh;
+    min-height: 90px;
+    background: linear-gradient(180deg, #0f0d0b, transparent);
+    pointer-events: none;
+  }
+  .home-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .mission {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: min(85vw, 1000px);
+  }
+  .mission p {
+    margin: 0;
+    font-size: min(1.3vw, 20px);
+    line-height: 1.6;
+    color: #2b2620;
+    text-align: center;
+    text-wrap: pretty;
+  }
+  .mission-note {
+    margin-top: 24px !important;
+    font-size: min(1vw, 16px) !important;
+    font-style: italic;
+    color: #7a7266 !important;
+  }
+
+  .quote {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .quote blockquote {
+    margin: 0;
+    max-width: min(70vw, 900px);
+    font-size: min(3.4vw, 48px);
+    letter-spacing: 0.5px;
+    font-family: 'Cormorant', Georgia, serif;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.4;
+    color: #2b2620;
+    text-align: center;
+    text-wrap: pretty;
+  }
+  .quote-rule {
+    width: clamp(80px,10vw,160px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(43,38,32,0.45), transparent);
+  }
+  .quote figcaption {
+    white-space: nowrap;
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #4a443a;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 14px;
+    column-gap: clamp(24px, 3vw, 48px);
+  }
+  .site-nav a {
+    font-size: clamp(15px, 1.35vw, 19px);
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #2b2620;
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+  }
+  .site-nav a:hover {
+    color: #000000;
+    border-bottom-color: rgba(43,38,32,0.55);
+  }
+</style>
