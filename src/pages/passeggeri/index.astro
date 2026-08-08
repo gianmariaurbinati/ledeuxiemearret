@@ -3,15 +3,16 @@ import Layout from '../../layouts/Layout.astro';
 ---
 <Layout title="Passeggeri — Le deuxième arrêt">
   <section class="passeggeri">
-    <div class="bg" style="background-image:url('/img/gare-saint-lazare.jpg')"></div>
+    <img src="/img/gare-saint-lazare.jpg" alt="" class="bg" />
     <div class="scrim"></div>
 
     <div class="inner">
       <div class="row">
+
         <div class="col">
           <button id="toggle" class="toggle-btn">
-            <img src="/img/pennello-click.png" alt="" id="icon" />
-            <span>Passeggeri in Attesa</span>
+            <img src="/img/pennello-click.png" alt="" id="icon" class="brush" />
+            <span class="titolo">Passeggeri in Attesa</span>
           </button>
           <div id="reveal" class="reveal" hidden>
             <p class="prossimamente">Prossimamente</p>
@@ -19,7 +20,12 @@ import Layout from '../../layouts/Layout.astro';
             <p class="italic">Scriviamo di film che il mercato ha dimenticato.</p>
           </div>
         </div>
-        <span class="a-bordo">Passeggeri a Bordo</span>
+
+        <div class="col col-right">
+          <div class="spacer" aria-hidden="true"></div>
+          <span class="titolo">Passeggeri a Bordo</span>
+        </div>
+
       </div>
     </div>
   </section>
@@ -46,25 +52,26 @@ import Layout from '../../layouts/Layout.astro';
   .bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .scrim {
     position: absolute;
     inset: 0;
     background: rgba(20,18,14,0.12);
+    pointer-events: none;
   }
   .inner {
     position: relative;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0 6vw;
   }
   .row {
-    position: relative;
     width: 100%;
     max-width: 1400px;
     display: flex;
@@ -73,12 +80,22 @@ import Layout from '../../layouts/Layout.astro';
     gap: 24px;
     flex-wrap: nowrap;
   }
+
   .col {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
   }
+  .col-right { align-items: flex-end; }
+
+  /* Occupa esattamente lo spazio del pennello + gap, così i due titoli
+     restano sulla stessa riga di base in ogni stato. */
+  .spacer {
+    height: 64px;
+    margin-bottom: 6px;
+  }
+
   .toggle-btn {
     background: none;
     border: none;
@@ -88,16 +105,19 @@ import Layout from '../../layouts/Layout.astro';
     flex-direction: column;
     align-items: center;
     gap: 6px;
+    font-family: inherit;
   }
   .toggle-btn:hover { opacity: 0.75; }
-  .toggle-btn img {
+  .brush {
     width: 64px;
     height: 64px;
     object-fit: contain;
     opacity: 0.82;
     transition: transform .3s ease;
   }
-  .toggle-btn span {
+
+  .titolo {
+    display: block;
     white-space: nowrap;
     font-size: clamp(18px, 2.4vw, 38px);
     font-weight: 600;
@@ -105,16 +125,9 @@ import Layout from '../../layouts/Layout.astro';
     text-transform: uppercase;
     color: #2b2620;
     text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+    line-height: 1.2;
   }
-  .a-bordo {
-    white-space: nowrap;
-    font-size: clamp(18px, 2.4vw, 38px);
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #2b2620;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.4);
-  }
+
   .reveal {
     display: flex;
     flex-direction: column;

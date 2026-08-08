@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Enrico Maisto — Le deuxième arrêt">
+  <section class="bio-page">
+    <img src="/img/comandante-bg.jpg" alt="" class="bg" />
+    <div class="scrim"></div>
+
+    <div class="content">
+      <img src="/img/maisto.png" alt="Enrico Maisto" class="portrait" />
+
+      <div class="eyebrow">Biografia</div>
+      <h1>Enrico Maisto</h1>
+
+      <p>Enrico Maisto è un regista e documentarista milanese, nato nel 1988. Dopo la laurea in Filosofia estetica all'Università degli Studi di Milano, si avvicina professionalmente al cinema partecipando alla lavorazione di <em>Vincere</em> di Marco Bellocchio, per il quale realizza il backstage. Questa esperienza orienta il suo interesse verso il documentario, inteso come uno strumento per esplorare la memoria, le istituzioni e le relazioni familiari.</p>
+
+      <p>Dopo il cortometraggio <em>Kinoe</em> del 2009, esordisce nel lungometraggio con <em>Comandante</em> (2014), racconto ambientato nel clima degli anni di piombo e incentrato sul rapporto tra suo padre, il magistrato Francesco Maisto, e Felice Esposito, ex militante di Lotta Continua. Il film vince il Premio Aprile al Milano Film Festival. Nel 2017 realizza <em>La convocazione</em>, dedicato alla selezione dei giudici popolari presso la Corte d'Assise d'Appello di Milano. Attraverso le reazioni dei cittadini convocati, Maisto riflette sulla responsabilità individuale e sulla dimensione umana della giustizia. Il documentario riceve diversi riconoscimenti, tra cui il premio del pubblico al Festival dei Popoli.</p>
+
+      <p>Con <em>L'età dell'innocenza</em> (2021), il regista rivolge infine la macchina da presa verso la propria famiglia. Seguendo la madre magistrata nel passaggio alla pensione, costruisce un racconto personale sul rapporto tra genitori e figli, sulla crescita e sulla difficoltà di diventare adulti. Il film viene premiato come miglior documentario italiano al Festival dei Popoli. Nel complesso, il cinema di Maisto unisce osservazione sociale e autobiografia, trasformando vicende private in riflessioni più ampie sulla memoria, sulla giustizia e sui legami affettivi.</p>
+
+      <a href="/rubriche/comandante" class="cta">
+        <span>Vai al film «Comandante»</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .bio-page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.35) 100%);
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(48px,7vh,88px) clamp(28px,6vw,72px) clamp(60px,10vh,110px);
+    color: #f7f3e8;
+  }
+
+  .portrait {
+    float: right;
+    margin: 6px 0 28px 40px;
+    height: min(30vh,280px);
+    width: auto;
+    object-fit: contain;
+    mask-image: linear-gradient(180deg, black 62%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, black 62%, transparent 100%);
+    opacity: 0.9;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(247,243,232,0.8);
+    margin-bottom: 14px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  }
+
+  h1 {
+    margin: 0 0 34px;
+    font-size: clamp(32px,4vw,52px);
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    color: #f7f3e8;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+  }
+
+  .content p {
+    margin: 0 0 28px;
+    font-size: clamp(19px,1.75vw,23px);
+    font-weight: 400;
+    line-height: 1.85;
+    text-wrap: pretty;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.95);
+  }
+
+  .cta {
+    clear: both;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 15px 28px;
+    background: rgba(15,13,10,0.6);
+    border: 1px solid rgba(247,243,232,0.4);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #f7f3e8;
+    transition: background .3s, border-color .3s;
+    animation: cta-blink 3.2s ease-in-out infinite;
+  }
+  .cta:hover {
+    background: rgba(15,13,10,0.8);
+    border-color: rgba(247,243,232,0.75);
+  }
+  .cta .arrow {
+    font-size: 26px;
+    line-height: 1;
+    color: #e0453a;
+  }
+
+  @keyframes cta-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  @media (max-width: 700px) {
+    .portrait {
+      float: none;
+      display: block;
+      margin: 0 auto 24px;
+    }
+  }
+</style>

@@ -9,6 +9,8 @@ const rubriche = [
     descrizione: "Il giudice e il militante. Un'amicizia attraverso gli anni di piombo.",
     img: '/img/comandante-bg.jpg',
     live: true,
+    registaNome: 'Enrico Maisto',
+    registaUrl: '/registi/enrico-maisto',
   },
   {
     slug: 'arianna',
@@ -36,26 +38,31 @@ const rubriche = [
       <header>
         <h1>Rubriche</h1>
         <div class="rule"></div>
-        <p>Film compiuti, invisibili, che meritano una seconda lettura</p>
+        <p>Film compiuti che meritano una seconda lettura</p>
       </header>
 
       <div class="grid">
         {rubriche.map((r) => (
-          <a
-            href={r.live ? `/rubriche/${r.slug}` : '#'}
-            class:list={['card', { placeholder: !r.live }]}
-          >
-            <div class="card-image" style={r.img ? `background-image:url('${r.img}')` : `background:${r.gradient}`}>
-              {!r.live && <span class="badge-placeholder">In preparazione</span>}
-              <div class="card-scrim"></div>
-              <span class="card-tag">{r.regista}</span>
-            </div>
-            <div class="card-body">
-              <h2>{r.titolo}</h2>
-              <p>{r.descrizione}</p>
-              <span class="cta">{r.live ? 'Leggi la rubrica →' : 'Presto →'}</span>
-            </div>
-          </a>
+          <article class:list={['card', { placeholder: !r.live }]}>
+            <a href={r.live ? `/rubriche/${r.slug}` : '#'} class="card-link">
+              <div class="card-image" style={r.img ? `background-image:url('${r.img}')` : `background:${r.gradient}`}>
+                {!r.live && <span class="badge-placeholder">In preparazione</span>}
+                <div class="card-scrim"></div>
+                <span class="card-tag">{r.regista}</span>
+              </div>
+              <div class="card-body">
+                <h2>{r.titolo}</h2>
+                <p>{r.descrizione}</p>
+                <span class="cta">{r.live ? 'Leggi la rubrica →' : 'Presto →'}</span>
+              </div>
+            </a>
+            {r.registaUrl && (
+              <a href={r.registaUrl} class="regista-link">
+                <span class="regista-eyebrow">Biografia</span>
+                <span class="regista-nome">{r.registaNome} →</span>
+              </a>
+            )}
+          </article>
         ))}
       </div>
     </div>
@@ -67,7 +74,7 @@ const rubriche = [
     position: relative;
     min-height: 100vh;
     overflow: hidden;
-    background: #0f0d0b;
+    background: linear-gradient(165deg, #24304a 0%, #1c2438 45%, #171b2b 100%);
     padding: clamp(72px,12vh,140px) 40px;
   }
   .bg {
@@ -75,7 +82,8 @@ const rubriche = [
     inset: 0;
     background-size: cover;
     background-position: center;
-    opacity: 0.15;
+    opacity: 0.28;
+    mix-blend-mode: soft-light;
     z-index: 0;
   }
   .inner {
@@ -124,13 +132,47 @@ const rubriche = [
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+  .card-link {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     text-decoration: none;
     transition: transform .3s ease;
     cursor: pointer;
   }
-  .card:hover { transform: translateY(-6px); }
-  .card.placeholder { opacity: 0.7; cursor: default; }
-  .card.placeholder:hover { transform: none; }
+  .card-link:hover { transform: translateY(-6px); }
+  .card.placeholder { opacity: 0.7; }
+  .card.placeholder .card-link { cursor: default; }
+  .card.placeholder .card-link:hover { transform: none; }
+
+  .regista-link {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 12px;
+    border: 1px solid rgba(212,175,55,0.28);
+    border-radius: 3px;
+    background: rgba(0,0,0,0.22);
+    transition: border-color .3s, background .3s;
+  }
+  .regista-link:hover {
+    border-color: rgba(212,175,55,0.65);
+    background: rgba(0,0,0,0.35);
+  }
+  .regista-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-meta);
+  }
+  .regista-nome {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #d4af37;
+  }
 
   .card-image {
     position: relative;

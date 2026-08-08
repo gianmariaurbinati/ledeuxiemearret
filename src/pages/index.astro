@@ -3,51 +3,145 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Le deuxième arrêt">
   <section class="hero">
-    <div class="hero-bg" style="background-image:url('/img/gare-saint-lazare.jpg')"></div>
+    <div class="hero-videos">
+      <video id="heroA" src="/video/hero_desktop.mp4" muted playsinline preload="auto"></video>
+      <video id="heroB" src="/video/hero_desktop.mp4" muted playsinline preload="auto"></video>
+    </div>
     <div class="hero-scrim"></div>
     <div class="hero-fade"></div>
 
     <div class="hero-content">
       <h1>Le deuxième arrêt</h1>
-      <p class="hero-subtitle">Ogni film merita una seconda fermata.</p>
+      <p class="hero-subtitle">Everyone deserves a second chance.</p>
     </div>
 
-    <a href="#home" class="hero-menu">Menu</a>
+    <div class="hero-menu-wrap">
+      <a href="#home" class="hero-menu">Menu</a>
+    </div>
 
     <div class="hero-date">
-      <span>8 Agosto 2026</span>
-      <span class="hero-time">04:41 — Roma</span>
+      <span class="hero-day" id="heroDay">&nbsp;</span>
+      <span class="hero-time" id="heroTime">&nbsp;</span>
     </div>
   </section>
 
   <section id="home" class="home">
-    <div class="home-bg" style="background-image:url('/img/monet-bg.jpg')"></div>
+    <img src="/img/monet-bg.jpg" alt="" class="home-bg" />
     <div class="home-fade-top"></div>
 
-    <div class="home-inner">
-      <div class="mission">
-        <p>Ogni anno in Italia si finiscono film che non vedrà nessuno.</p>
-        <p>Non film sbagliati. Film compiuti, pagati, premiati dentro sale da duecento posti — e poi fermi.</p>
-        <p>Noi torniamo a guardarli. E facciamo in modo che li guardino gli altri.</p>
-        <p class="mission-note">Per gli autori e i produttori che hanno un'opera ferma.</p>
-      </div>
-
-      <figure class="quote">
-        <blockquote>La pittura è silenziosa, il cinema ha una voce che viene dal colore e dalla luce.</blockquote>
-        <div class="quote-rule"></div>
-        <figcaption>Michelangelo Antonioni</figcaption>
-      </figure>
-
-      <nav class="site-nav">
-        <a href="#">Il Treno</a>
-        <a href="/rubriche">Rubriche</a>
-        <a href="#">News</a>
-        <a href="#">Autori Emergenti</a>
-        <a href="/passeggeri">Passeggeri</a>
-      </nav>
+    <div class="mission">
+      <p>Ogni anno in Italia si finiscono film che non vedrà nessuno.</p>
+      <p>Non film sbagliati. Film compiuti, pagati, premiati dentro sale da duecento posti — e poi fermi.</p>
+      <p>Noi torniamo a guardarli. E facciamo in modo che li guardino gli altri.</p>
+      <p class="mission-note">Per gli autori e i produttori che hanno un'opera ferma.</p>
     </div>
+
+    <figure class="quote">
+      <blockquote>La pittura è silenziosa, il cinema ha una voce che viene dal colore e dalla luce.</blockquote>
+      <div class="quote-rule"></div>
+      <figcaption>Michelangelo Antonioni</figcaption>
+    </figure>
+
+    <nav class="site-nav">
+      <a href="#">Il Treno</a>
+      <a href="/rubriche">Rubriche</a>
+      <a href="#">News</a>
+      <a href="#">Autori Emergenti</a>
+      <a href="/passeggeri">Passeggeri</a>
+    </nav>
   </section>
 </Layout>
+
+<script>
+  // Orologio vivo, ora di Roma
+  const dayEl = document.getElementById('heroDay');
+  const timeEl = document.getElementById('heroTime');
+
+  const updateClock = () => {
+    const now = new Date();
+    const data = new Intl.DateTimeFormat('it-IT', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'Europe/Rome',
+    }).format(now);
+    const ora = new Intl.DateTimeFormat('it-IT', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'Europe/Rome',
+    }).format(now);
+    const dataCap = data.charAt(0).toUpperCase() + data.slice(1);
+    if (dayEl) dayEl.textContent = dataCap;
+    if (timeEl) timeEl.textContent = `${ora} — Roma`;
+  };
+  updateClock();
+  setInterval(updateClock, 30000);
+
+  const RATE = 0.5;
+  const FADE = 1.0;
+
+  const a = document.getElementById('heroA') as HTMLVideoElement | null;
+  const b = document.getElementById('heroB') as HTMLVideoElement | null;
+
+  if (a && b) {
+    let front = a;
+    let back = b;
+    let fading = false;
+
+    [a, b].forEach((v) => {
+      v.muted = true;
+      v.volume = 0;
+      v.loop = false;
+      v.defaultPlaybackRate = RATE;
+      v.playbackRate = RATE;
+      v.style.transition = `opacity ${FADE}s linear`;
+      v.addEventListener('ratechange', () => {
+        if (v.playbackRate !== RATE) v.playbackRate = RATE;
+      });
+      v.addEventListener('ended', () => {
+        if (front !== v) { v.pause(); v.currentTime = 0; return; }
+        v.currentTime = 0;
+        v.style.opacity = '1';
+        back.style.opacity = '0';
+        fading = false;
+        v.play().catch(() => {});
+      });
+    });
+
+    a.style.opacity = '1';
+    b.style.opacity = '0';
+    a.play().catch(() => {});
+
+    const tick = () => {
+      if (front.duration) {
+        const remaining = (front.duration - front.currentTime) / RATE;
+        if (!fading && remaining <= FADE) {
+          fading = true;
+          back.currentTime = 0;
+          back.playbackRate = RATE;
+          back.play().catch(() => {});
+          back.style.opacity = '1';
+          front.style.opacity = '0';
+          const prevFront = front;
+          setTimeout(() => {
+            prevFront.pause();
+            const tmp = front;
+            front = back;
+            back = tmp;
+            fading = false;
+          }, FADE * 1000);
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && front.paused) front.play().catch(() => {});
+    });
+  }
+</script>
 
 <style>
   .hero {
@@ -57,11 +151,15 @@ import Layout from '../layouts/Layout.astro';
     overflow: hidden;
     background: #0f0d0b;
   }
-  .hero-bg {
+  .hero-videos { position: absolute; inset: 0; }
+  .hero-videos video {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #0f0d0b;
   }
   .hero-scrim {
     position: absolute;
@@ -87,7 +185,6 @@ import Layout from '../layouts/Layout.astro';
     gap: 22px;
     padding: 0 32px;
     pointer-events: none;
-    text-align: center;
   }
   .hero-content h1 {
     font-family: 'Parisienne', cursive;
@@ -95,31 +192,35 @@ import Layout from '../layouts/Layout.astro';
     font-size: clamp(56px, 8.5vw, 112px);
     line-height: 1.05;
     color: #f7f1e4;
-    margin: 0 0 0 0;
+    margin: 0;
+    text-align: center;
     text-shadow: 0 2px 28px rgba(0,0,0,0.55);
   }
   .hero-subtitle {
-    margin: -8vh 0 0 0;
+    margin: 0;
+    white-space: nowrap;
     font-size: clamp(18px, 1.9vw, 26px);
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-weight: 500;
+    letter-spacing: 4px;
     color: #fdf8ec;
+    text-align: center;
     text-shadow: 0 1px 2px rgba(0,0,0,0.85), 0 4px 24px rgba(0,0,0,0.75);
   }
-  .hero-menu {
+  .hero-menu-wrap {
     position: absolute;
     left: 0; right: 0; bottom: 38px;
     display: flex;
     justify-content: center;
+  }
+  .hero-menu {
     font-size: 12px;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: rgba(247,241,228,0.82);
     border-bottom: 1px solid rgba(247,241,228,0.35);
     padding-bottom: 6px;
-    width: fit-content;
-    margin: 0 auto;
   }
+  .hero-menu:hover { color: #f7f1e4; border-bottom-color: #f7f1e4; }
   .hero-date {
     position: absolute;
     right: clamp(20px,4vw,48px);
@@ -127,36 +228,44 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 2px;
-    padding: 14px 22px;
+    gap: 6px;
+    padding: 20px 32px;
     background: rgba(74,144,196,0.4);
     border: 1px solid rgba(200,232,255,0.35);
-    border-radius: 8px;
+    border-radius: 10px;
     backdrop-filter: blur(4px);
     text-align: right;
   }
-  .hero-date span:first-child {
-    font-size: 14px;
-    letter-spacing: 2px;
+  .hero-day {
+    white-space: nowrap;
+    font-size: 21px;
+    letter-spacing: 2.5px;
     color: #fdf8ec;
   }
   .hero-time {
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: rgba(253,248,236,0.75);
+    white-space: nowrap;
+    font-size: 19px;
+    letter-spacing: 2.5px;
+    color: rgba(253,248,236,0.82);
   }
 
   .home {
     position: relative;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 96px;
+    padding: clamp(72px,12vh,140px) 40px clamp(90px,14vh,150px);
     overflow: hidden;
-    padding: clamp(72px,12vh,140px) 40px clamp(72px,12vh,132px);
   }
   .home-bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .home-fade-top {
     position: absolute;
@@ -166,44 +275,46 @@ import Layout from '../layouts/Layout.astro';
     background: linear-gradient(180deg, #0f0d0b, transparent);
     pointer-events: none;
   }
-  .home-inner {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 64px;
-  }
 
   .mission {
+    position: relative;
+    align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    max-width: min(85vw, 1000px);
+    gap: 42px;
+    margin: 16vh 0 0;
+    max-width: min(76vw, 820px);
+    text-align: center;
   }
   .mission p {
     margin: 0;
-    font-size: min(1.3vw, 20px);
-    line-height: 1.6;
+    font-size: clamp(18px,1.9vw,26px);
+    font-weight: 500;
+    line-height: 1.55;
     color: #2b2620;
-    text-align: center;
     text-wrap: pretty;
   }
   .mission-note {
-    margin-top: 24px !important;
-    font-size: min(1vw, 16px) !important;
+    margin: 26px 0 0 !important;
+    font-size: clamp(15px,1.4vw,18px) !important;
     font-style: italic;
-    color: #7a7266 !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #6f675c !important;
   }
 
   .quote {
-    margin: 0;
+    position: relative;
+    margin: 12vh 0 0;
+    align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 18px;
   }
   .quote blockquote {
+    position: relative;
     margin: 0;
     max-width: min(70vw, 900px);
     font-size: min(3.4vw, 48px);
@@ -217,11 +328,13 @@ import Layout from '../layouts/Layout.astro';
     text-wrap: pretty;
   }
   .quote-rule {
+    position: relative;
     width: clamp(80px,10vw,160px);
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(43,38,32,0.45), transparent);
   }
   .quote figcaption {
+    position: relative;
     white-space: nowrap;
     font-size: 16px;
     letter-spacing: 4px;
@@ -230,6 +343,8 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .site-nav {
+    position: relative;
+    align-self: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -238,6 +353,7 @@ import Layout from '../layouts/Layout.astro';
     column-gap: clamp(24px, 3vw, 48px);
   }
   .site-nav a {
+    position: relative;
     font-size: clamp(15px, 1.35vw, 19px);
     font-weight: 600;
     letter-spacing: 3.5px;
