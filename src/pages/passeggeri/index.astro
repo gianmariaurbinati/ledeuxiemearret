@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 ---
 <Layout title="Passeggeri — Le deuxième arrêt">
   <section class="passeggeri">
-    <img src="/img/gare-saint-lazare.jpg" alt="" class="bg" />
+    <img src={`${base}/img/gare-saint-lazare.jpg`} alt="" class="bg" />
     <div class="scrim"></div>
 
     <div class="inner">
@@ -11,7 +12,7 @@ import Layout from '../../layouts/Layout.astro';
 
         <div class="col">
           <button id="toggle" class="toggle-btn">
-            <img src="/img/pennello-click.png" alt="" id="icon" class="brush" />
+            <img src={`${base}/img/pennello-click.png`} alt="" id="icon" class="brush" />
             <span class="titolo">Passeggeri in Attesa</span>
           </button>
           <div id="reveal" class="reveal" hidden>

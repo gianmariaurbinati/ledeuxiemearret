@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 ---
 <Layout title="Le deuxième arrêt">
   <section class="hero">
     <div class="hero-videos">
-      <video id="heroA" src="/video/hero_desktop.mp4" muted playsinline preload="auto"></video>
-      <video id="heroB" src="/video/hero_desktop.mp4" muted playsinline preload="auto"></video>
+      <video id="heroA" src={`${base}/video/hero_desktop.mp4`} muted playsinline preload="auto"></video>
+      <video id="heroB" src={`${base}/video/hero_desktop.mp4`} muted playsinline preload="auto"></video>
     </div>
     <div class="hero-scrim"></div>
     <div class="hero-fade"></div>
@@ -26,7 +27,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <section id="home" class="home">
-    <img src="/img/monet-bg.jpg" alt="" class="home-bg" />
+    <img src={`${base}/img/monet-bg.jpg`} alt="" class="home-bg" />
     <div class="home-fade-top"></div>
 
     <div class="mission">
@@ -44,10 +45,10 @@ import Layout from '../layouts/Layout.astro';
 
     <nav class="site-nav">
       <a href="#">Il Treno</a>
-      <a href="/rubriche">Rubriche</a>
+      <a href={`${base}/rubriche`}>Rubriche</a>
       <a href="#">News</a>
       <a href="#">Autori Emergenti</a>
-      <a href="/passeggeri">Passeggeri</a>
+      <a href={`${base}/passeggeri`}>Passeggeri</a>
     </nav>
   </section>
 </Layout>

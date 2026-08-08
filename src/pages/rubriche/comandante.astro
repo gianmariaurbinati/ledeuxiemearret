@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 ---
 <Layout title="Comandante — Le deuxième arrêt">
   <div class="page">
@@ -13,7 +14,7 @@ import Layout from '../../layouts/Layout.astro';
       <article class="card">
 
         <figure class="hero-fig">
-          <img src="/img/comandante-film-bg.jpg" alt="" />
+          <img src={`${base}/img/comandante-film-bg.jpg`} alt="" />
           <span class="hero-bar"></span>
           <div class="badge">
             <span>Autori<br />Italiani</span>
@@ -33,7 +34,7 @@ import Layout from '../../layouts/Layout.astro';
           <div class="dek">Un profilo dignitoso per l'esordio al lungometraggio.</div>
 
           <div class="para-with-image">
-            <img src="/img/mosca-sul-muro.jpg" alt="" class="polaroid polaroid-1" />
+            <img src={`${base}/img/mosca-sul-muro.jpg`} alt="" class="polaroid polaroid-1" />
             <div class="text">
               <p><span class="dropcap">I</span>n un gioco di prestigio qui la macchina scompare e, facendosi leggera come una foglia, si poggia sul muro ed ascolta, come la mosca. Eppure è viva, sporca mentre indugia sul giudice che nel ricordo di un vecchio libro ingiallito ne sfoglia le pagine che volano come piume nella penombra. È Francesco Maisto, il padre del ragazzo che continua a chiedere, ha vissuto gli anni di piombo, tra polvere da sparo e i pupi del tempo, gli uomini della politica rinchiusi nel carcere di San Vittore.</p>
               <p>Io non so chi sia Felice ma lo conosco da molto tempo, il dolce alternarsi dei suoi silenzi alle domande di Enrico mi parla di lui, in quelle poche parole che vengono su dall'anima, perché degli occhi la lente me ne priva. Eccoli, per un istante, poi ancora la nuca riversa di lato me li cela di nuovo, quasi fossero un dono prezioso. E lo sono, me ne accorgo nei piani d'ascolto, quando la macchina si ferma vicino, stretta stretta a fargli compagnia. Sta ascoltando se stesso.</p>
@@ -53,7 +54,7 @@ import Layout from '../../layouts/Layout.astro';
               <p>Fuori è buio pesto, Enrico dà una sbirciatina in officina, poi esce di colpo all'esterno dove il racconto non riesce a prendere il dovuto respiro che subito la notte lo colora di blu.</p>
               <p>Di fronte a sé un paesaggio incantevole, qualche briciolo di luce in lontananza fa fatica a distinguersi. Ma che notte, sembrano due opere d'arte quel cielo, una con la notte poggiata sul Rodano e l'altra come quelle che si vedono dagli scorci tra le case proprio prima dell'ospedale di Saint-Rémy.</p>
             </div>
-            <img src="/img/parco-groane-illustrazione.png" alt="" class="polaroid polaroid-2" />
+            <img src={`${base}/img/parco-groane-illustrazione.png`} alt="" class="polaroid polaroid-2" />
           </div>
 
           <div class="text-block">
@@ -71,7 +72,7 @@ import Layout from '../../layouts/Layout.astro';
 
             <div class="para-with-image inline">
               <p class="flex-text">Dal punto di vista tematico tutto ruota inevitabilmente attorno all'attuale distinzione politica che fa capo alle dinamiche fascismo-comunismo. Come oggi ci troviamo di fronte alla rivendicazione di attitudine fascista se guardiamo a temi come immigrazione, cittadinanza, discriminazione, integrazione, legittima difesa, patriottismo, nazionalismi, per non parlare del movimento MAGA e dell'ICE negli Stati Uniti. Temi estremamente attuali che meritano di essere trattati quotidianamente, perché l'uomo dimentica tutto.</p>
-              <img src="/img/maga-illustrazione.png" alt="" class="polaroid polaroid-3" />
+              <img src={`${base}/img/maga-illustrazione.png`} alt="" class="polaroid polaroid-3" />
             </div>
 
             <p>Un bilaterale manicheismo senza freni, la formula fascismo-comunismo, che è propria della nostra storia e torna a ripetersi in politica e nella società odierna negli estremismi sia di destra che di sinistra. Dietro a questo dualismo conflittuale si nasconde la differenza degli antipodi che ritroviamo nelle pericolose ideologie. Comune in tutto il mondo questa fascinazione della distanza incolmabile e del posizionamento nel quale finalmente ci si riconosce, perché finalmente certi che la personalità abbia acquisito una caratteristica. Quella della diversità: non sono più nulla, adesso sono qualcosa. Ho importanza, sono diverso da te. È questa una realtà fittizia, quella propria delle ombre della caverna della quale fanno parte gli individui che aderiscono alla differenziazione totale assoluta che diventerà autocratica; sanno che stanno guardando le ombre, ma uscire fuori dalla caverna fa più paura.</p>
@@ -90,12 +91,12 @@ import Layout from '../../layouts/Layout.astro';
             <div class="neon-row">
               <a href="https://www.primevideo.com/-/it/channel/8a7acb8c-7790-4ae9-9373-1ba9ec81c91f?ref_=atv_sr_fle_c_sr823714_HS4dfa21_1_1" target="_blank" rel="noopener" class="neon-btn neon-btn-a">
                 <span class="neon-inner neon-inner-dark">
-                  <img src="/img/cg-collection-logo.png" alt="CG Collection" />
+                  <img src={`${base}/img/cg-collection-logo.png`} alt="CG Collection" />
                 </span>
               </a>
               <a href="https://www.primevideo.com/offers/nonprimehomepage?gad_source=1&gbraid=0AAAAADQh2XK6uu_eKzYE8Uv3aoRVmQmS4&gad_campaignid=962821359&gclid=Cj0KCQjwp9vTBhCWARIsANaUrjtcquUHwqJq1QZNUsjkKks6akfNwcx7Uqy7N845J3Ks8pJSY5MzVTsaApApEALw_wcB&ref_=dvm_pds_amz_IT_lb_s_g_mkw_p509-kw11023-cr263199-c&mrntrk=go_cmp-962821359_adg-53440325735_ad-766671884087_kwd-799334177443_dev-c_ext-" target="_blank" rel="noopener" class="neon-btn neon-btn-b">
                 <span class="neon-inner neon-inner-blue">
-                  <img src="/img/prime-video-badge.png" alt="Iscriviti a Prime" />
+                  <img src={`${base}/img/prime-video-badge.png`} alt="Iscriviti a Prime" />
                 </span>
               </a>
             </div>

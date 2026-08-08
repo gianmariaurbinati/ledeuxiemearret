@@ -1,13 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 ---
 <Layout title="Enrico Maisto — Le deuxième arrêt">
   <section class="bio-page">
-    <img src="/img/comandante-bg.jpg" alt="" class="bg" />
+    <img src={`${base}/img/comandante-bg.jpg`} alt="" class="bg" />
     <div class="scrim"></div>
 
     <div class="content">
-      <img src="/img/maisto.png" alt="Enrico Maisto" class="portrait" />
+      <img src={`${base}/img/maisto.png`} alt="Enrico Maisto" class="portrait" />
 
       <div class="eyebrow">Biografia</div>
       <h1>Enrico Maisto</h1>
@@ -18,7 +19,7 @@ import Layout from '../../layouts/Layout.astro';
 
       <p>Con <em>L'età dell'innocenza</em> (2021), il regista rivolge infine la macchina da presa verso la propria famiglia. Seguendo la madre magistrata nel passaggio alla pensione, costruisce un racconto personale sul rapporto tra genitori e figli, sulla crescita e sulla difficoltà di diventare adulti. Il film viene premiato come miglior documentario italiano al Festival dei Popoli. Nel complesso, il cinema di Maisto unisce osservazione sociale e autobiografia, trasformando vicende private in riflessioni più ampie sulla memoria, sulla giustizia e sui legami affettivi.</p>
 
-      <a href="/rubriche/comandante" class="cta">
+      <a href={`${base}/rubriche/comandante`} class="cta">
         <span>Vai al film «Comandante»</span>
         <span class="arrow">→</span>
       </a>

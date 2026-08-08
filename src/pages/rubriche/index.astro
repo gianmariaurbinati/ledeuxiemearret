@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 
 const rubriche = [
   {
@@ -32,7 +33,7 @@ const rubriche = [
 ---
 <Layout title="Rubriche — Le deuxième arrêt">
   <section class="rubriche">
-    <div class="bg" style="background-image:url('/img/monet-bg.jpg')"></div>
+    <div class="bg" style={`background-image:url('${base}/img/monet-bg.jpg')`}></div>
 
     <div class="inner">
       <header>
@@ -44,8 +45,8 @@ const rubriche = [
       <div class="grid">
         {rubriche.map((r) => (
           <article class:list={['card', { placeholder: !r.live }]}>
-            <a href={r.live ? `/rubriche/${r.slug}` : '#'} class="card-link">
-              <div class="card-image" style={r.img ? `background-image:url('${r.img}')` : `background:${r.gradient}`}>
+            <a href={r.live ? `${base}/rubriche/${r.slug}` : '#'} class="card-link">
+              <div class="card-image" style={r.img ? `background-image:url('${base}${r.img}')` : `background:${r.gradient}`}>
                 {!r.live && <span class="badge-placeholder">In preparazione</span>}
                 <div class="card-scrim"></div>
                 <span class="card-tag">{r.regista}</span>
@@ -57,7 +58,7 @@ const rubriche = [
               </div>
             </a>
             {r.registaUrl && (
-              <a href={r.registaUrl} class="regista-link">
+              <a href={`${base}${r.registaUrl}`} class="regista-link">
                 <span class="regista-eyebrow">Biografia</span>
                 <span class="regista-nome">{r.registaNome} →</span>
               </a>
