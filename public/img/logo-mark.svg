@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="215.5 20 569 405"
+     width="569" height="405" role="img" aria-label="Le deuxième arrêt">
+  <title>Le deuxième arrêt</title>
+  <g id="m-emblem">
+    <circle cx="498" cy="217" r="167" fill="#6C80A7"/>
+    <clipPath id="m-fanL"><path d="M 400,222 C 370,214 325,196 292,190 C 304,225 304,265 292,300 C 325,294 370,276 400,268 Z"/></clipPath>
+    <path d="M 400,222 C 370,214 325,196 292,190 C 304,225 304,265 292,300 C 325,294 370,276 400,268 Z" fill="#1E2D4E"/>
+    <g clip-path="url(#m-fanL)" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round">
+      <line x1="370.1" y1="216.4" x2="268" y2="194.0"/><line x1="370.1" y1="226.0" x2="268" y2="211.0"/><line x1="370.1" y1="235.5" x2="268" y2="228.0"/><line x1="370.1" y1="245.0" x2="268" y2="245.0"/><line x1="370.1" y1="254.5" x2="268" y2="262.0"/><line x1="370.1" y1="264.0" x2="268" y2="279.0"/><line x1="370.1" y1="273.6" x2="268" y2="296.0"/>
+    </g>
+    <clipPath id="m-fanR"><path d="M 600,222 C 630,214 675,196 708,190 C 696,225 696,265 708,300 C 675,294 630,276 600,268 Z"/></clipPath>
+    <path d="M 600,222 C 630,214 675,196 708,190 C 696,225 696,265 708,300 C 675,294 630,276 600,268 Z" fill="#1E2D4E"/>
+    <g clip-path="url(#m-fanR)" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round">
+      <line x1="629.9" y1="216.4" x2="732" y2="194.0"/><line x1="629.9" y1="226.0" x2="732" y2="211.0"/><line x1="629.9" y1="235.5" x2="732" y2="228.0"/><line x1="629.9" y1="245.0" x2="732" y2="245.0"/><line x1="629.9" y1="254.5" x2="732" y2="262.0"/><line x1="629.9" y1="264.0" x2="732" y2="279.0"/><line x1="629.9" y1="273.6" x2="732" y2="296.0"/>
+    </g>
+    <clipPath id="m-body">
+      <rect x="400" y="195" width="200" height="100" rx="50.0"/>
+    </clipPath>
+    <rect x="400" y="195" width="200" height="100" rx="50.0" fill="#F4F8FC"/>
+    <g clip-path="url(#m-body)" stroke="#1E2D4E" stroke-width="5"><line x1="400" y1="209.0" x2="600" y2="209.0"/><line x1="400" y1="219.4" x2="600" y2="219.4"/><line x1="400" y1="229.8" x2="600" y2="229.8"/><line x1="400" y1="240.2" x2="600" y2="240.2"/><line x1="400" y1="250.6" x2="600" y2="250.6"/><line x1="400" y1="261.0" x2="600" y2="261.0"/><line x1="400" y1="271.4" x2="600" y2="271.4"/><line x1="400" y1="281.8" x2="600" y2="281.8"/></g>
+    <rect x="400" y="195" width="200" height="100" rx="50.0"
+          fill="none" stroke="#1E2D4E" stroke-width="10"/>
+    <path d="M 472,212 L 472,278 L 550,245 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M 472,212 L 472,278 L 550,245 Z" fill="#1E2D4E" stroke="#1E2D4E" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="425" cy="115" r="72.5" fill="#1E2D4E"/>
+    <circle cx="425" cy="115" r="61.9875" fill="#FFFFFF"/>
+    <circle cx="425" cy="115" r="52.5625" fill="#1E2D4E"/>
+    <circle cx="425" cy="115" r="45.82" fill="#FFFFFF"/>
+    <circle cx="425" cy="115" r="10.5125" fill="#1E2D4E"/>
+    <circle cx="425" cy="89.2625" r="11.2375" fill="#1E2D4E"/>
+    <circle cx="449.478" cy="107.047" r="11.2375" fill="#1E2D4E"/>
+    <circle cx="440.128" cy="135.822" r="11.2375" fill="#1E2D4E"/>
+    <circle cx="409.872" cy="135.822" r="11.2375" fill="#1E2D4E"/>
+    <circle cx="400.522" cy="107.047" r="11.2375" fill="#1E2D4E"/>
+    <circle cx="578" cy="106" r="76" fill="#1E2D4E"/>
+    <circle cx="578" cy="106" r="64.98" fill="#FFFFFF"/>
+    <circle cx="578" cy="106" r="55.1" fill="#1E2D4E"/>
+    <circle cx="578" cy="106" r="48.032" fill="#FFFFFF"/>
+    <circle cx="578" cy="106" r="11.02" fill="#1E2D4E"/>
+    <circle cx="578" cy="79.02" r="11.78" fill="#1E2D4E"/>
+    <circle cx="603.66" cy="97.6627" r="11.78" fill="#1E2D4E"/>
+    <circle cx="593.858" cy="127.827" r="11.78" fill="#1E2D4E"/>
+    <circle cx="562.142" cy="127.827" r="11.78" fill="#1E2D4E"/>
+    <circle cx="552.34" cy="97.6627" r="11.78" fill="#1E2D4E"/>
+    <circle cx="500" cy="162" r="11" fill="#1E2D4E"/>
+    <circle cx="500" cy="162" r="4.5" fill="#FFFFFF"/>
+    <path d="M 232,394 Q 500,432 768,394" fill="none" stroke="#8095BA" stroke-width="4"/>
+    <path d="M 235,307 L 765,307 L 765,396 Q 500,416 235,396 Z" fill="#EDF2F9" stroke="#8095BA" stroke-width="4"/>
+    <circle cx="251" cy="356" r="23" fill="#EDF2F9" stroke="#6C80A7" stroke-width="5"/><circle cx="251" cy="356" r="10" fill="#FFFFFF" stroke="#6C80A7" stroke-width="3"/>
+    <circle cx="749" cy="356" r="23" fill="#EDF2F9" stroke="#6C80A7" stroke-width="5"/><circle cx="749" cy="356" r="10" fill="#FFFFFF" stroke="#6C80A7" stroke-width="3"/>
+    <path d="M407.50 395.00V349.00H420.51V384.68H442.46V395.00ZM468.92 395.00V349.00H490.67Q498.29 349.00 504.07 351.83Q509.86 354.65 513.11 359.78Q516.36 364.90 516.36 372.00Q516.36 379.03 513.11 384.19Q509.86 389.35 504.07 392.17Q498.29 395.00 490.67 395.00ZM481.93 384.62H490.14Q494.09 384.62 497.01 383.14Q499.93 381.66 501.58 378.80Q503.22 375.94 503.22 372.00Q503.22 367.99 501.58 365.17Q499.93 362.34 497.01 360.86Q494.09 359.38 490.14 359.38H481.93ZM539.01 395.00 559.31 349.00H572.13L592.50 395.00H578.96L563.06 355.37H568.19L552.28 395.00ZM550.11 386.06 553.47 376.47H575.94L579.29 386.06Z" fill="#1E2D4E"/>
+  </g>
+</svg>
