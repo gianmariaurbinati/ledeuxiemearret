@@ -24,7 +24,6 @@ jobs:
           cat codex-tree.part-* > codex-tree.zip
           unzip -o codex-tree.zip
           rm codex-tree.part-* codex-tree.zip
-          rm .github/workflows/apply-codex-bundle.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
