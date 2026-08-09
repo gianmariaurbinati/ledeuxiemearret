@@ -31,61 +31,23 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     <div class="home-fade-top"></div>
 
     <article class="manifesto">
-      <header class="manifesto-header">
-        <p class="section-caption">
-          <span>Film manifesto</span>
-          <span>01 / 00:19</span>
-        </p>
-        <h2>Ogni anno in Italia si finiscono film che non vedrà nessuno.</h2>
-      </header>
-
-      <figure class="manifesto-film">
-        <div class="film-frame">
-          <video
-            id="manifestoVideo"
-            src={`${base}/video/uccello-manifesto.mp4`}
-            poster={`${base}/video/uccello-poster.jpg`}
-            preload="metadata"
-            playsinline
-          ></video>
-          <button class="film-play" id="manifestoPlay" type="button" aria-label="Riproduci il film manifesto con audio">
-            <span class="play-mark" aria-hidden="true">▶</span>
-            <span class="play-copy">
-              <small>Le deuxième arrêt presenta</small>
-              <strong>Il viaggio ricomincia qui</strong>
-            </span>
-          </button>
-          <div class="film-index" aria-hidden="true">
-            <span>LDA / 01</span>
-            <span>Italia · 2026</span>
-          </div>
-        </div>
-        <figcaption>
-          <span>Un film può fermarsi.</span>
-          <strong>Il suo viaggio no.</strong>
-        </figcaption>
-      </figure>
-
-      <div class="manifesto-copy">
-        <p>Non film sbagliati. Film compiuti, pagati, premiati dentro sale da duecento posti — e poi fermi.</p>
-        <p>Noi torniamo a guardarli. E facciamo in modo che li guardino gli altri.</p>
-        <p class="manifesto-note">Per gli autori e i produttori che hanno un'opera ferma.</p>
-      </div>
+      <p>In Italia può capitare che grandi film vengano riconosciuti come tali, ma che non prendano il volo.</p>
+      <p>Noi non stiamo a indagare le cause. Torniamo a guardarli e facciamo in modo che li guardino anche gli altri.</p>
     </article>
 
-    <figure class="quote">
-      <blockquote>La pittura è silenziosa, il cinema ha una voce che viene dal colore e dalla luce.</blockquote>
-      <div class="quote-rule"></div>
-      <figcaption>Michelangelo Antonioni</figcaption>
-    </figure>
+    <section class="mid-hero" aria-label="Il viaggio dei film riprende">
+      <video
+        src={`${base}/video/uccello-manifesto.mp4`}
+        poster={`${base}/video/uccello-poster.jpg`}
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
+    </section>
 
-    <nav class="site-nav">
-      <a href="#">Il Treno</a>
-      <a href={`${base}/rubriche`}>Rubriche</a>
-      <a href="#">News</a>
-      <a href="#">Autori Emergenti</a>
-      <a href={`${base}/passeggeri`}>Passeggeri</a>
-    </nav>
+    <a class="menu-entry" href={`${base}/menu`}>Menu</a>
   </section>
 </Layout>
 
@@ -179,24 +141,6 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     });
   }
 
-  const manifestoVideo = document.getElementById('manifestoVideo') as HTMLVideoElement | null;
-  const manifestoPlay = document.getElementById('manifestoPlay') as HTMLButtonElement | null;
-
-  if (manifestoVideo && manifestoPlay) {
-    manifestoPlay.addEventListener('click', () => {
-      manifestoVideo.controls = true;
-      manifestoVideo.muted = false;
-      manifestoVideo.play().then(() => {
-        manifestoPlay.hidden = true;
-      }).catch(() => {});
-    });
-
-    manifestoVideo.addEventListener('ended', () => {
-      manifestoVideo.controls = false;
-      manifestoVideo.currentTime = 0;
-      manifestoPlay.hidden = false;
-    });
-  }
 </script>
 
 <style>
@@ -646,6 +590,84 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     .site-nav {
       flex-direction: column;
       row-gap: 10px;
+    }
+  }
+
+  .manifesto {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1080px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(40px, 7vw, 108px);
+    padding: clamp(28px, 4vw, 52px) 0;
+    border-top: 1px solid rgba(43,38,32,0.3);
+    border-bottom: 1px solid rgba(43,38,32,0.3);
+  }
+  .manifesto p {
+    margin: 0;
+    font-size: clamp(25px, 2.65vw, 40px);
+    font-weight: 500;
+    line-height: 1.16;
+    letter-spacing: -0.35px;
+    color: #211d18;
+    text-wrap: balance;
+  }
+  .mid-hero {
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: min(76vh, 820px);
+    min-height: 480px;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    background: #0f0d0b;
+  }
+  .mid-hero video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .menu-entry {
+    position: relative;
+    z-index: 1;
+    align-self: center;
+    display: inline-block;
+    padding: 10px 28px 16px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(44px, 8vw, 112px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: clamp(6px, 1vw, 16px);
+    text-transform: uppercase;
+    color: #211d18;
+    border-bottom: 1px solid rgba(43,38,32,0.42);
+    transition: letter-spacing 260ms ease, color 260ms ease;
+  }
+  .menu-entry:hover,
+  .menu-entry:focus-visible {
+    color: #000;
+    letter-spacing: clamp(8px, 1.3vw, 20px);
+  }
+
+  @media (max-width: 760px) {
+    .manifesto {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .manifesto p {
+      font-size: clamp(25px, 7.5vw, 36px);
+      line-height: 1.2;
+    }
+    .mid-hero {
+      height: 58vh;
+      min-height: 360px;
+    }
+    .menu-entry {
+      font-size: clamp(42px, 16vw, 76px);
+      letter-spacing: 7px;
     }
   }
 </style>

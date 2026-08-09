@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
+
+const voices = [
+  { label: 'Il Treno', href: null },
+  { label: 'Rubriche', href: `${base}/rubriche` },
+  { label: 'News', href: null },
+  { label: 'Autori Emergenti', href: null },
+  { label: 'Passeggeri', href: `${base}/passeggeri` },
+];
+---
+
+<Layout title="Menu — Le deuxième arrêt">
+  <main class="menu-page">
+    <header class="menu-header">
+      <a href={`${base}/`} class="back">Le deuxième arrêt</a>
+      <span>Indice generale</span>
+    </header>
+
+    <div class="brand-mark">
+      <img src={`${base}/img/logo-cicogna.png`} alt="Le deuxième arrêt" />
+    </div>
+
+    <nav class="menu-list" aria-label="Menu principale">
+      {voices.map((voice, index) => (
+        voice.href ? (
+          <a href={voice.href} class="menu-item">
+            <span class="number">{String(index + 1).padStart(2, '0')}</span>
+            <span class="label">{voice.label}</span>
+          </a>
+        ) : (
+          <div class="menu-item is-coming" aria-label={`${voice.label}, prossimamente`}>
+            <span class="number">{String(index + 1).padStart(2, '0')}</span>
+            <span class="label">{voice.label}</span>
+            <span class="status">Prossimamente</span>
+          </div>
+        )
+      ))}
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .menu-page {
+    min-height: 100vh;
+    padding: clamp(28px, 5vw, 72px) clamp(22px, 6vw, 96px) clamp(60px, 9vw, 120px);
+    background: #e8dfd0;
+  }
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: clamp(28px, 5vw, 58px);
+    border-bottom: 1px solid rgba(43,38,32,0.4);
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #514a40;
+  }
+  .back { color: #211d18; }
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    padding: clamp(44px, 7vw, 92px) 0;
+    border-bottom: 1px solid rgba(43,38,32,0.28);
+  }
+  .brand-mark img {
+    display: block;
+    width: min(62vw, 420px);
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+  .menu-item {
+    min-height: clamp(110px, 15vw, 190px);
+    display: grid;
+    grid-template-columns: clamp(44px, 7vw, 96px) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(14px, 3vw, 42px);
+    border-bottom: 1px solid rgba(43,38,32,0.28);
+    color: #211d18;
+  }
+  a.menu-item {
+    transition: padding-left 260ms ease, color 260ms ease;
+  }
+  a.menu-item:hover,
+  a.menu-item:focus-visible {
+    padding-left: clamp(8px, 1.3vw, 20px);
+    color: #6d1f2f;
+  }
+  .number,
+  .status {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .number { color: #7b7265; }
+  .label {
+    font-size: clamp(38px, 6.6vw, 96px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -1.5px;
+  }
+  .status { color: #8a8174; }
+  .is-coming { color: rgba(33,29,24,0.46); }
+
+  @media (max-width: 680px) {
+    .menu-header { align-items: flex-start; }
+    .menu-item {
+      grid-template-columns: 34px minmax(0, 1fr);
+      min-height: 112px;
+    }
+    .label {
+      font-size: clamp(34px, 12vw, 58px);
+      letter-spacing: -0.5px;
+    }
+    .status {
+      grid-column: 2;
+      margin-top: -24px;
+      padding-bottom: 18px;
+    }
+  }
+</style>
