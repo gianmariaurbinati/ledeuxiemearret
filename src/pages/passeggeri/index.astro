@@ -93,8 +93,8 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
   /* Occupa esattamente lo spazio del pennello + gap, così i due titoli
      restano sulla stessa riga di base in ogni stato. */
   .spacer {
-    height: 64px;
-    margin-bottom: 6px;
+    height: 56px;
+    margin-bottom: 0;
   }
 
   .toggle-btn {
@@ -148,5 +148,23 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     font-size: clamp(14px, 1.6vw, 19px);
     font-style: italic;
     opacity: 0.85;
+  }
+
+  @media (max-width: 700px) {
+    .inner { padding: 0 14px; }
+    .row { gap: 10px; }
+    .col { min-width: 0; }
+    .brush { width: 44px; height: 44px; }
+    .toggle-btn { gap: 5px; }
+    .spacer { height: 35px; }
+    .titolo {
+      font-size: clamp(11px, 3.25vw, 15px);
+      letter-spacing: 1.15px;
+    }
+    .reveal {
+      width: min(88vw, 520px);
+      margin-top: 34px;
+      font-size: clamp(15px, 4.2vw, 19px);
+    }
   }
 </style>
