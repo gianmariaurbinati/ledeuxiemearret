@@ -1,0 +1,32 @@
+name: Apply Codex bundle
+on:
+  push:
+    branches: [main]
+    paths:
+      - "codex-tree.part-*"
+      - ".github/workflows/apply-codex-bundle.yml"
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild and apply files
+        shell: bash
+        run: |
+          shopt -s nullglob
+          parts=(codex-tree.part-*)
+          if [ ${#parts[@]} -eq 0 ]; then
+            echo "No bundle parts yet"
+            exit 0
+          fi
+          cat codex-tree.part-* > codex-tree.zip
+          unzip -o codex-tree.zip
+          rm codex-tree.part-* codex-tree.zip
+          rm .github/workflows/apply-codex-bundle.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Publish Rubriche, News and new Menu hero"
+          git push
