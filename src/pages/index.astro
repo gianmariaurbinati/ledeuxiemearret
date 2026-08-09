@@ -30,12 +30,48 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     <img src={`${base}/img/monet-bg.jpg`} alt="" class="home-bg" />
     <div class="home-fade-top"></div>
 
-    <div class="mission">
-      <p>Ogni anno in Italia si finiscono film che non vedrà nessuno.</p>
-      <p>Non film sbagliati. Film compiuti, pagati, premiati dentro sale da duecento posti — e poi fermi.</p>
-      <p>Noi torniamo a guardarli. E facciamo in modo che li guardino gli altri.</p>
-      <p class="mission-note">Per gli autori e i produttori che hanno un'opera ferma.</p>
-    </div>
+    <article class="manifesto">
+      <header class="manifesto-header">
+        <p class="section-caption">
+          <span>Film manifesto</span>
+          <span>01 / 00:19</span>
+        </p>
+        <h2>Ogni anno in Italia si finiscono film che non vedrà nessuno.</h2>
+      </header>
+
+      <figure class="manifesto-film">
+        <div class="film-frame">
+          <video
+            id="manifestoVideo"
+            src={`${base}/video/uccello-manifesto.mp4`}
+            poster={`${base}/video/uccello-poster.jpg`}
+            preload="metadata"
+            playsinline
+          ></video>
+          <button class="film-play" id="manifestoPlay" type="button" aria-label="Riproduci il film manifesto con audio">
+            <span class="play-mark" aria-hidden="true">▶</span>
+            <span class="play-copy">
+              <small>Le deuxième arrêt presenta</small>
+              <strong>Il viaggio ricomincia qui</strong>
+            </span>
+          </button>
+          <div class="film-index" aria-hidden="true">
+            <span>LDA / 01</span>
+            <span>Italia · 2026</span>
+          </div>
+        </div>
+        <figcaption>
+          <span>Un film può fermarsi.</span>
+          <strong>Il suo viaggio no.</strong>
+        </figcaption>
+      </figure>
+
+      <div class="manifesto-copy">
+        <p>Non film sbagliati. Film compiuti, pagati, premiati dentro sale da duecento posti — e poi fermi.</p>
+        <p>Noi torniamo a guardarli. E facciamo in modo che li guardino gli altri.</p>
+        <p class="manifesto-note">Per gli autori e i produttori che hanno un'opera ferma.</p>
+      </div>
+    </article>
 
     <figure class="quote">
       <blockquote>La pittura è silenziosa, il cinema ha una voce che viene dal colore e dalla luce.</blockquote>
@@ -140,6 +176,25 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
 
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden && front.paused) front.play().catch(() => {});
+    });
+  }
+
+  const manifestoVideo = document.getElementById('manifestoVideo') as HTMLVideoElement | null;
+  const manifestoPlay = document.getElementById('manifestoPlay') as HTMLButtonElement | null;
+
+  if (manifestoVideo && manifestoPlay) {
+    manifestoPlay.addEventListener('click', () => {
+      manifestoVideo.controls = true;
+      manifestoVideo.muted = false;
+      manifestoVideo.play().then(() => {
+        manifestoPlay.hidden = true;
+      }).catch(() => {});
+    });
+
+    manifestoVideo.addEventListener('ended', () => {
+      manifestoVideo.controls = false;
+      manifestoVideo.currentTime = 0;
+      manifestoPlay.hidden = false;
     });
   }
 </script>
@@ -255,9 +310,9 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 96px;
-    padding: clamp(72px,12vh,140px) 40px clamp(90px,14vh,150px);
+    justify-content: flex-start;
+    gap: clamp(64px, 8vw, 112px);
+    padding: clamp(128px, 18vh, 200px) clamp(24px, 6vw, 96px) clamp(72px, 10vh, 120px);
     overflow: hidden;
   }
   .home-bg {
@@ -277,28 +332,169 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     pointer-events: none;
   }
 
-  .mission {
+  .manifesto {
     position: relative;
-    align-self: center;
+    z-index: 1;
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.58fr);
+    grid-template-areas:
+      "header header"
+      "film copy";
+    column-gap: clamp(40px, 6vw, 88px);
+    row-gap: clamp(40px, 5vw, 72px);
+  }
+  .manifesto-header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: minmax(170px, 0.35fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 80px);
+    align-items: start;
+    padding-bottom: clamp(28px, 4vw, 48px);
+    border-bottom: 1px solid rgba(43,38,32,0.34);
+  }
+  .section-caption {
+    margin: 9px 0 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: #5b5348;
+  }
+  .manifesto-header h2 {
+    margin: 0;
+    max-width: 900px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(40px, 5.4vw, 76px);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -1.5px;
+    color: #211d18;
+    text-wrap: balance;
+  }
+  .manifesto-film {
+    grid-area: film;
+    margin: 0;
+    min-width: 0;
+  }
+  .film-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #0f0d0b;
+    box-shadow: 0 24px 70px rgba(28,23,17,0.22);
+  }
+  .film-frame video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .film-play {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: clamp(22px, 4vw, 46px);
+    border: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(18px, 2.5vw, 32px);
+    color: #fffaf0;
+    background: linear-gradient(180deg, rgba(12,10,8,0.06) 30%, rgba(12,10,8,0.78) 100%);
+    text-align: left;
+    cursor: pointer;
+  }
+  .film-play[hidden] { display: none; }
+  .play-mark {
+    flex: 0 0 auto;
+    width: clamp(48px, 5vw, 68px);
+    height: clamp(48px, 5vw, 68px);
+    border: 1px solid rgba(255,250,240,0.76);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    padding-left: 4px;
+    font-family: Arial, sans-serif;
+    font-size: clamp(14px, 1.4vw, 20px);
+    transition: transform 220ms ease, background-color 220ms ease;
+  }
+  .film-play:hover .play-mark,
+  .film-play:focus-visible .play-mark {
+    transform: scale(1.08);
+    background: rgba(255,250,240,0.16);
+  }
+  .play-copy {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 42px;
-    margin: 16vh 0 0;
-    max-width: min(76vw, 820px);
-    text-align: center;
+    gap: 4px;
   }
-  .mission p {
-    margin: 0;
-    font-size: clamp(18px,1.9vw,26px);
+  .play-copy small {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: rgba(255,250,240,0.72);
+  }
+  .play-copy strong {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(25px, 3vw, 42px);
     font-weight: 500;
-    line-height: 1.55;
+    line-height: 1;
+  }
+  .film-index {
+    position: absolute;
+    top: clamp(16px, 2vw, 26px);
+    left: clamp(18px, 2.5vw, 32px);
+    right: clamp(18px, 2.5vw, 32px);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: rgba(255,250,240,0.7);
+    pointer-events: none;
+  }
+  .manifesto-film figcaption {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(10px, 1vw, 12px);
+    line-height: 1.4;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #5a5146;
+  }
+  .manifesto-film figcaption strong { color: #211d18; }
+  .manifesto-copy {
+    grid-area: copy;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3vw, 38px);
+    padding: clamp(8px, 1vw, 16px) 0 0 clamp(20px, 3vw, 40px);
+    border-left: 1px solid rgba(43,38,32,0.34);
+  }
+  .manifesto-copy p {
+    margin: 0;
+    font-size: clamp(20px, 2vw, 27px);
+    font-weight: 500;
+    line-height: 1.38;
     color: #2b2620;
     text-wrap: pretty;
   }
-  .mission-note {
-    margin: 26px 0 0 !important;
-    font-size: clamp(15px,1.4vw,18px) !important;
+  .manifesto-note {
+    margin: 12px 0 0 !important;
+    padding-top: 22px;
+    border-top: 1px solid rgba(43,38,32,0.22);
+    font-size: clamp(15px, 1.4vw, 18px) !important;
     font-style: italic;
     font-weight: 400 !important;
     line-height: 1.5 !important;
@@ -307,18 +503,20 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
 
   .quote {
     position: relative;
-    margin: 12vh 0 0;
-    align-self: center;
+    margin: clamp(80px, 12vh, 148px) 0 0;
     display: flex;
     flex-direction: column;
+    z-index: 1;
+    width: min(100%, 980px);
+    align-self: center;
     align-items: center;
-    gap: 18px;
+    gap: 22px;
   }
   .quote blockquote {
     position: relative;
     margin: 0;
-    max-width: min(70vw, 900px);
-    font-size: min(3.4vw, 48px);
+    max-width: 900px;
+    font-size: clamp(30px, 3.1vw, 48px);
     letter-spacing: 0.5px;
     font-family: 'Cormorant', Georgia, serif;
     font-weight: 500;
@@ -332,7 +530,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     position: relative;
     width: clamp(80px,10vw,160px);
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(43,38,32,0.45), transparent);
+    background: rgba(43,38,32,0.42);
   }
   .quote figcaption {
     position: relative;
@@ -345,7 +543,11 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
 
   .site-nav {
     position: relative;
+    z-index: 1;
     align-self: center;
+    width: min(100%, 1180px);
+    padding-top: clamp(28px, 4vw, 52px);
+    border-top: 1px solid rgba(43,38,32,0.28);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -366,5 +568,84 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
   .site-nav a:hover {
     color: #000000;
     border-bottom-color: rgba(43,38,32,0.55);
+  }
+
+  @media (max-width: 900px) {
+    .home {
+      gap: 64px;
+      padding: 120px 24px 72px;
+    }
+    .manifesto {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "film"
+        "copy";
+      gap: 52px;
+    }
+    .manifesto-header {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .section-caption { max-width: 300px; }
+    .manifesto-copy {
+      max-width: 680px;
+      padding-left: 24px;
+    }
+    .quote {
+      margin: 0;
+    }
+    .quote blockquote {
+      max-width: 620px;
+      text-align: center;
+    }
+    .quote figcaption {
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero-content {
+      gap: 14px;
+      padding: 0 20px;
+    }
+    .hero-content h1 { font-size: clamp(48px, 16vw, 72px); }
+    .hero-subtitle {
+      white-space: normal;
+      font-size: 15px;
+      line-height: 1.5;
+      letter-spacing: 2px;
+    }
+    .hero-date {
+      top: 20px;
+      right: 16px;
+      padding: 12px 16px;
+    }
+    .hero-day { font-size: 15px; }
+    .hero-time { font-size: 14px; }
+    .manifesto-header h2 {
+      font-size: clamp(42px, 13vw, 62px);
+      line-height: 1;
+    }
+    .manifesto-film figcaption {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .film-index { display: none; }
+    .film-play { padding: 18px; }
+    .play-copy small { letter-spacing: 1.4px; }
+    .manifesto-copy p {
+      font-size: 20px;
+      line-height: 1.45;
+    }
+    .quote blockquote {
+      font-size: 30px;
+      line-height: 1.32;
+    }
+    .site-nav {
+      flex-direction: column;
+      row-gap: 10px;
+    }
   }
 </style>
