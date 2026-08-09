@@ -37,6 +37,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
 
     <section class="mid-hero" aria-label="Il viaggio dei film riprende">
       <video
+        id="midHeroVideo"
         src={`${base}/video/uccello-manifesto.mp4`}
         poster={`${base}/video/uccello-poster.jpg`}
         autoplay
@@ -138,6 +139,17 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
 
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden && front.paused) front.play().catch(() => {});
+    });
+  }
+
+  const midHeroVideo = document.getElementById('midHeroVideo') as HTMLVideoElement | null;
+  if (midHeroVideo) {
+    midHeroVideo.muted = true;
+    midHeroVideo.loop = true;
+    midHeroVideo.play().catch(() => {});
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && midHeroVideo.paused) midHeroVideo.play().catch(() => {});
     });
   }
 
