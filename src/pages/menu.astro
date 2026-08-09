@@ -24,7 +24,7 @@ const voices = [
     </header>
 
     <div class="brand-mark">
-      <img class="brand-logo" src={`${base}/img/logo-cicogna-bianco.png`} alt="Cicogna bianca con ali d'alloro — Le deuxième arrêt" />
+      <img class="brand-logo" src={`${base}/img/logo-cicogna-contorno-blu.png`} alt="Cicogna bianca con ali d'alloro — Le deuxième arrêt" />
       <div class="brand-wordmark">
         <strong>Le deuxième arrêt</strong>
         <span>Films · regards · secondes vies</span>
@@ -158,40 +158,40 @@ const voices = [
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(8px, 1.4vw, 16px);
-    padding: clamp(38px, 5vw, 64px) clamp(24px, 5vw, 72px);
-    background: #111a2d;
-    border-bottom: 0;
+    gap: 6px;
+    padding: clamp(24px, 3vw, 40px) 0 clamp(28px, 4vw, 50px);
+    background: transparent;
+    border-bottom: 1px solid rgba(43,38,32,0.28);
   }
   .brand-logo {
     display: block;
-    width: clamp(92px, 10vw, 128px);
+    width: clamp(68px, 7vw, 92px);
     height: auto;
   }
   .brand-wordmark {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    color: #fff;
+    gap: 6px;
+    color: #19233c;
     text-align: center;
   }
   .brand-wordmark strong {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(31px, 4.2vw, 54px);
+    font-size: clamp(24px, 2.8vw, 36px);
     font-style: italic;
     font-weight: 300;
     line-height: 1;
   }
   .brand-wordmark span {
     font-family: 'Cinzel', Georgia, serif;
-    font-size: 9px;
+    font-size: 8px;
     letter-spacing: .28em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.62);
+    color: rgba(25,35,60,.58);
   }
   .menu-item {
-    min-height: clamp(110px, 15vw, 190px);
+    min-height: clamp(84px, 9vw, 118px);
     display: grid;
     grid-template-columns: clamp(44px, 7vw, 96px) minmax(0, 1fr) auto;
     align-items: center;
@@ -216,10 +216,12 @@ const voices = [
   }
   .number { color: #7b7265; }
   .label {
-    font-size: clamp(38px, 6.6vw, 96px);
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -1.5px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(30px, 4.4vw, 62px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.025em;
   }
   .status { color: #8a8174; }
   .is-coming { color: rgba(33,29,24,0.46); }
@@ -228,11 +230,11 @@ const voices = [
     .menu-header { align-items: flex-start; }
     .menu-item {
       grid-template-columns: 34px minmax(0, 1fr);
-      min-height: 112px;
+      min-height: 82px;
     }
     .label {
-      font-size: clamp(34px, 12vw, 58px);
-      letter-spacing: -0.5px;
+      font-size: clamp(26px, 8.5vw, 38px);
+      letter-spacing: -.02em;
     }
     .status {
       grid-column: 2;
