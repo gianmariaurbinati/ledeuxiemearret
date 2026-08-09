@@ -11,6 +11,20 @@
   --text-meta: #9a978f;
   --ink: #0f0d0b;
   --ink-warm: #2b2620;
+
+  /* ---- Card rubriche: leve di design ---- */
+  /* altezza e cornice della miniatura */
+  --card-media-height: 240px;
+  --card-border: 1px solid rgba(212,175,55,0.3);
+  --card-radius: 4px;
+  /* velo colorato sopra il video: alza i valori per smorzarlo, abbassali per accenderlo */
+  --card-video-tint-top: rgba(109,31,47,0.20);
+  --card-video-tint-mid: rgba(43,31,31,0.26);
+  --card-video-tint-bottom: rgba(23,27,43,0.34);
+  /* sfumatura scura in basso, serve a rendere leggibile il nome del regista */
+  --card-scrim: linear-gradient(180deg, transparent 60%, rgba(15,13,11,0.8));
+  /* quanto sono smorzate le card ancora non pubblicate */
+  --card-placeholder-opacity: 0.7;
 }
 
 * { box-sizing: border-box; }
