@@ -45,7 +45,7 @@ const rubriche = [
 
       <div class="grid">
         {rubriche.map((r) => (
-          <article class:list={['card', { placeholder: !r.live }]}>
+          <article class:list={['card', { placeholder: !r.live, 'has-video': !!r.video }]}>
             <a href={r.live ? `${base}/rubriche/${r.slug}` : '#'} class="card-link">
               <div class="card-image" style={r.img ? `background-image:url('${base}${r.img}')` : `background:${r.gradient}`}>
                 {r.video && (
@@ -152,6 +152,7 @@ const rubriche = [
   }
   .card-link:hover { transform: translateY(-6px); }
   .card.placeholder { opacity: 0.7; }
+  .card.placeholder.has-video { opacity: 1; }
   .card.placeholder .card-link { cursor: default; }
   .card.placeholder .card-link:hover { transform: none; }
 
@@ -258,7 +259,7 @@ const rubriche = [
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(180deg, rgba(109,31,47,0.55) 0%, rgba(43,31,31,0.72) 55%, rgba(23,27,43,0.88) 100%);
+    background: linear-gradient(180deg, rgba(109,31,47,0.20) 0%, rgba(43,31,31,0.26) 55%, rgba(23,27,43,0.34) 100%);
   }
   .card-image .card-scrim { z-index: 2; }
   .card-image .card-tag { z-index: 3; }
