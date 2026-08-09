@@ -28,6 +28,7 @@ const rubriche = [
     descrizione: "Prossimamente. La rubrica di Francesco Munzi.",
     live: false,
     gradient: 'linear-gradient(135deg, #6d1f2f, #2b1f1f)',
+    video: '/video/kripton-card-bg',
   },
 ];
 ---
@@ -47,6 +48,13 @@ const rubriche = [
           <article class:list={['card', { placeholder: !r.live }]}>
             <a href={r.live ? `${base}/rubriche/${r.slug}` : '#'} class="card-link">
               <div class="card-image" style={r.img ? `background-image:url('${base}${r.img}')` : `background:${r.gradient}`}>
+                {r.video && (
+                  <video class="card-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                    <source src={`${base}${r.video}.webm`} type="video/webm" />
+                    <source src={`${base}${r.video}.mp4`} type="video/mp4" />
+                  </video>
+                )}
+                {r.video && <div class="card-video-tint"></div>}
                 {!r.live && <span class="badge-placeholder">In preparazione</span>}
                 <div class="card-scrim"></div>
                 <span class="card-tag">{r.regista}</span>
@@ -236,5 +244,26 @@ const rubriche = [
     text-transform: uppercase;
     color: #d4af37;
     font-weight: 500;
+  }
+
+  .card-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .card-video-tint {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(109,31,47,0.55) 0%, rgba(43,31,31,0.72) 55%, rgba(23,27,43,0.88) 100%);
+  }
+  .card-image .card-scrim { z-index: 2; }
+  .card-image .card-tag { z-index: 3; }
+  .badge-placeholder { position: relative; z-index: 3; }
+  @media (prefers-reduced-motion: reduce) {
+    .card-video { display: none; }
   }
 </style>
