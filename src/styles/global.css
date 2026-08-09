@@ -17,10 +17,10 @@
   --card-media-height: 240px;
   --card-border: 1px solid rgba(212,175,55,0.3);
   --card-radius: 4px;
-  /* velo colorato sopra il video: alza i valori per smorzarlo, abbassali per accenderlo */
-  --card-video-tint-top: rgba(109,31,47,0.20);
-  --card-video-tint-mid: rgba(43,31,31,0.26);
-  --card-video-tint-bottom: rgba(23,27,43,0.34);
+  /* velo neutro: conserva i blu originali del filmato di Kripton */
+  --card-video-tint-top: rgba(5,10,30,0);
+  --card-video-tint-mid: rgba(5,10,30,0.04);
+  --card-video-tint-bottom: rgba(5,10,30,0.12);
   /* sfumatura scura in basso, serve a rendere leggibile il nome del regista */
   --card-scrim: linear-gradient(180deg, transparent 60%, rgba(15,13,11,0.8));
   /* quanto sono smorzate le card ancora non pubblicate */
