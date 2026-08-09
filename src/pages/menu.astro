@@ -13,6 +13,11 @@ const voices = [
 
 <Layout title="Menu — Le deuxième arrêt">
   <main class="menu-page">
+    <div class="menu-media" aria-hidden="true">
+      <video id="menuVideoA" src={`${base}/video/menu-background.mp4`} muted playsinline preload="auto"></video>
+      <video id="menuVideoB" src={`${base}/video/menu-background.mp4`} muted playsinline preload="auto"></video>
+      <div class="menu-video-veil"></div>
+    </div>
     <header class="menu-header">
       <a href={`${base}/`} class="back">Le deuxième arrêt</a>
       <span>Indice generale</span>
@@ -45,11 +50,92 @@ const voices = [
   </main>
 </Layout>
 
+<script>
+  const videoA = document.getElementById('menuVideoA') as HTMLVideoElement | null;
+  const videoB = document.getElementById('menuVideoB') as HTMLVideoElement | null;
+  const fadeDuration = 1.2;
+
+  if (videoA && videoB) {
+    let front = videoA;
+    let back = videoB;
+    let fading = false;
+
+    [videoA, videoB].forEach((video) => {
+      video.muted = true;
+      video.loop = false;
+      video.style.transition = `opacity ${fadeDuration}s linear`;
+      video.addEventListener('ended', () => {
+        if (video === front) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        }
+      });
+    });
+
+    videoA.style.opacity = '1';
+    videoB.style.opacity = '0';
+    videoA.play().catch(() => {});
+
+    const keepLooping = () => {
+      if (front.duration && !fading && front.duration - front.currentTime <= fadeDuration) {
+        fading = true;
+        back.currentTime = 0;
+        back.play().catch(() => {});
+        back.style.opacity = '1';
+        front.style.opacity = '0';
+        const previous = front;
+        setTimeout(() => {
+          previous.pause();
+          previous.currentTime = 0;
+          [front, back] = [back, previous];
+          fading = false;
+        }, fadeDuration * 1000);
+      }
+      requestAnimationFrame(keepLooping);
+    };
+    requestAnimationFrame(keepLooping);
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && front.paused) front.play().catch(() => {});
+    });
+  }
+</script>
+
 <style>
   .menu-page {
+    position: relative;
     min-height: 100vh;
     padding: clamp(28px, 5vw, 72px) clamp(22px, 6vw, 96px) clamp(60px, 9vw, 120px);
     background: #e8dfd0;
+  }
+  .menu-media {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    background: #e8dfd0;
+    pointer-events: none;
+  }
+  .menu-media video {
+    position: absolute;
+    inset: -4%;
+    width: 108%;
+    height: 108%;
+    object-fit: cover;
+    filter: saturate(.72) contrast(.9);
+  }
+  .menu-video-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(232,223,208,.72), rgba(232,223,208,.78)),
+      radial-gradient(circle at 50% 20%, transparent 0%, rgba(232,223,208,.25) 78%);
+  }
+  .menu-header,
+  .brand-mark,
+  .menu-list {
+    position: relative;
+    z-index: 1;
   }
   .menu-header {
     display: flex;
