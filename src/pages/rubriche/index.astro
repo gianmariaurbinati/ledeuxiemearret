@@ -51,11 +51,12 @@ const rubriche = [
 
       <div class="grid">
         {rubriche.map((r) => (
-          <article class:list={['card', { placeholder: !r.live, 'has-video': !!r.video }]}>
+          <article class:list={['card', { placeholder: !r.live, 'has-video': !!r.video, 'has-image': !!r.img }]}>
             <a href={r.live ? `${base}/rubriche/${r.slug}` : '#'} class="card-link">
-              <div class="card-image" style={r.img ? `background-image:url('${base}${r.img}')` : `background:${r.gradient}`}>
+              <div class="card-image" style={!r.img && !r.video ? `background:${r.gradient}` : undefined}>
+                {r.img && <div class="card-photo" style={`background-image:url('${base}${r.img}')`}></div>}
                 {r.video && (
-                  <video class="card-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                  <video class="card-video" autoplay muted loop playsinline preload="auto" poster={`${base}${r.video}.jpg`} aria-hidden="true">
                     <source src={`${base}${r.video}.webm`} type="video/webm" />
                     <source src={`${base}${r.video}.mp4`} type="video/mp4" />
                   </video>
@@ -104,6 +105,24 @@ const rubriche = [
       if (!document.hidden) ensurePlayback();
     });
   }
+
+  document.querySelectorAll<HTMLVideoElement>('.card-video').forEach((video) => {
+    const ensurePlayback = () => {
+      video.muted = true;
+      video.loop = true;
+      if (video.paused) video.play().catch(() => {});
+    };
+
+    ensurePlayback();
+    video.addEventListener('canplay', ensurePlayback);
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      ensurePlayback();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) ensurePlayback();
+    });
+  });
 </script>
 
 <style>
@@ -346,6 +365,17 @@ const rubriche = [
   @keyframes title-in {
     to { opacity: 1; transform: translateY(0); }
   }
+  .card-photo {
+    position: absolute;
+    inset: -5%;
+    z-index: 0;
+    background-position: center;
+    background-size: cover;
+    will-change: transform;
+    animation: comandante-drift 15s ease-in-out infinite alternate;
+    transition: filter .7s ease;
+  }
+  .card-link:hover .card-photo { filter: contrast(1.04) brightness(1.05); }
   @keyframes rule-in {
     to { transform: scaleX(1); }
   }
@@ -355,9 +385,14 @@ const rubriche = [
   @keyframes card-in {
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
+  @keyframes comandante-drift {
+    from { transform: scale(1.02) translate3d(-1.2%, .3%, 0); }
+    to { transform: scale(1.11) translate3d(1.4%, -1.2%, 0); }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .card-video { display: none; }
+    .card-photo { animation: none; transform: scale(1.04); }
     .page-media video { display: none; }
     header h1,
     .rule,
