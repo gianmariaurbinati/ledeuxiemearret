@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Le deuxième arrêt — cicogna d'alloro</title>
+  <desc id="desc">Una cicogna bianca in volo con le ali formate da rami d'alloro.</desc>
+  <g fill="#fff">
+    <path d="M439 292c29-15 64-14 94 3 31 18 48 48 53 80-34 16-75 21-114 10-33-10-58-31-72-57 7-15 20-27 39-36Z"/>
+    <path d="M420 317c-28-16-47-40-53-70-5-27 3-57 21-84 6-9 15-16 26-18 13-2 26 3 35 13 7 8 10 19 7 29-3 11-12 20-24 22-8 2-16 0-22-5-5 22-1 45 12 65 10 15 24 27 42 36Z"/>
+    <circle cx="418" cy="173" r="7" fill="#111a2d"/>
+    <path d="M389 165 278 186l105 4Z"/>
+    <path d="M575 374c57 10 109 27 157 52l-5 8c-55-19-108-31-161-35Z"/>
+    <path d="M569 390c49 22 92 49 130 82l-7 7c-45-27-89-48-134-62Z"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round">
+    <path d="M454 310C372 263 299 184 235 72"/>
+    <path d="M522 309C608 260 682 183 749 72"/>
+  </g>
+  <g fill="#fff">
+    <ellipse cx="383" cy="263" rx="15" ry="47" transform="rotate(-48 383 263)"/>
+    <ellipse cx="350" cy="230" rx="14" ry="43" transform="rotate(-52 350 230)"/>
+    <ellipse cx="319" cy="193" rx="13" ry="40" transform="rotate(-57 319 193)"/>
+    <ellipse cx="290" cy="153" rx="12" ry="37" transform="rotate(-61 290 153)"/>
+    <ellipse cx="264" cy="111" rx="11" ry="34" transform="rotate(-66 264 111)"/>
+    <ellipse cx="404" cy="276" rx="15" ry="47" transform="rotate(125 404 276)"/>
+    <ellipse cx="371" cy="243" rx="14" ry="43" transform="rotate(129 371 243)"/>
+    <ellipse cx="340" cy="207" rx="13" ry="40" transform="rotate(133 340 207)"/>
+    <ellipse cx="311" cy="168" rx="12" ry="37" transform="rotate(137 311 168)"/>
+    <ellipse cx="284" cy="126" rx="11" ry="34" transform="rotate(141 284 126)"/>
+    <ellipse cx="591" cy="262" rx="15" ry="47" transform="rotate(48 591 262)"/>
+    <ellipse cx="625" cy="229" rx="14" ry="43" transform="rotate(52 625 229)"/>
+    <ellipse cx="657" cy="192" rx="13" ry="40" transform="rotate(57 657 192)"/>
+    <ellipse cx="687" cy="152" rx="12" ry="37" transform="rotate(61 687 152)"/>
+    <ellipse cx="716" cy="110" rx="11" ry="34" transform="rotate(66 716 110)"/>
+    <ellipse cx="569" cy="276" rx="15" ry="47" transform="rotate(-125 569 276)"/>
+    <ellipse cx="603" cy="242" rx="14" ry="43" transform="rotate(-129 603 242)"/>
+    <ellipse cx="635" cy="206" rx="13" ry="40" transform="rotate(-133 635 206)"/>
+    <ellipse cx="665" cy="167" rx="12" ry="37" transform="rotate(-137 665 167)"/>
+    <ellipse cx="693" cy="125" rx="11" ry="34" transform="rotate(-141 693 125)"/>
+  </g>
+</svg>
