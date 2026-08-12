@@ -3,128 +3,446 @@ import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 
 const voices = [
-  { label: 'Il Treno', href: null },
-  { label: 'Rubriche', href: `${base}/rubriche` },
-  { label: 'News', href: null },
-  { label: 'Autori Emergenti', href: null },
-  { label: 'Passeggeri', href: `${base}/passeggeri` },
+  { label: 'Home', href: `${base}/`, live: true },
+  { label: 'Il Treno', href: null, live: false, icon: `${base}/img/logo-cicogna-treno-oro-scontornato.png` },
+  { label: 'Rubriche', href: `${base}/rubriche`, live: true },
+  { label: 'News', href: `${base}/news`, live: true },
+  { label: 'Autori Emergenti', href: null, live: false },
+  { label: 'Passeggeri', href: `${base}/passeggeri`, live: true },
 ];
 ---
 
 <Layout title="Menu — Le deuxième arrêt">
   <main class="menu-page">
     <div class="menu-media" aria-hidden="true">
-      <video id="menuVideoA" src={`${base}/video/menu-background.mp4`} muted playsinline preload="auto"></video>
-      <video id="menuVideoB" src={`${base}/video/menu-background.mp4`} muted playsinline preload="auto"></video>
+      <video
+        src={`${base}/video/menu-background-light.mp4`}
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
       <div class="menu-video-veil"></div>
     </div>
 
-    <header class="menu-header">
-      <a href={`${base}/`} class="back">Le deuxième arrêt</a>
-      <span>Indice generale</span>
-    </header>
+    <header class="site-header">
+      <a href={`${base}/`} class="brand" aria-label="Le deuxième arrêt — Home">
+        <span>Le deuxième arrêt</span>
+      </a>
 
-    <section class="menu-stage" aria-label="Indice generale">
-      <nav class="menu-list" aria-label="Menu principale">
-        {voices.map((voice) => (
-          voice.href ? (
-            <a href={voice.href} class="menu-item">
-              <span class="label">{voice.label}</span>
-              <span class="arrow" aria-hidden="true">→</span>
+      <nav class="top-nav" aria-label="Menu principale">
+        {voices.map((voice, index) => (
+          voice.live ? (
+            <a href={voice.href} class:list={['nav-item', index === 0 && 'is-active', voice.label === 'News' && 'is-news']}>
+              <span class="nav-mark" aria-hidden="true"></span>
+              <span>{voice.label}</span>
+              {voice.label === 'News' && <span class="nav-news-dot" aria-hidden="true"></span>}
             </a>
+          ) : voice.icon ? (
+            <span class="nav-item is-coming nav-item-icon" title={voice.label}>
+              <img src={voice.icon} alt={voice.label} class="nav-icon" />
+            </span>
           ) : (
-            <div class="menu-item is-coming" aria-label={`${voice.label}, prossimamente`}>
-              <span class="label">{voice.label}</span>
-              <span class="status">Presto</span>
-            </div>
+            <span class="nav-item is-coming" title="Prossimamente">
+              <span class="nav-mark" aria-hidden="true"></span>
+              <span>{voice.label}</span>
+            </span>
           )
         ))}
       </nav>
+
+      <img class="header-seal" src={`${base}/img/logo-cicogna-contorno-blu.png`} alt="" />
+    </header>
+
+    <section class="feature" aria-label="Presentazione">
+
+      <a class="primary-cta" href={`${base}/rubriche`}>
+        <span class="play" aria-hidden="true">▶</span>
+        Scopri le rubriche
+      </a>
     </section>
-    <div class="brand-seal">
-      <img class="brand-logo" src={`${base}/img/logo-cicogna-contorno-blu.png`} alt="Cicogna bianca con ali d'alloro — Le deuxième arrêt" />
+
+    <span class="side-arrow side-arrow-left" aria-hidden="true">‹</span>
+    <span class="side-arrow side-arrow-right" aria-hidden="true">›</span>
+
+    <div class="pagination" aria-hidden="true">
+      <span class="is-current"></span><span></span><span></span>
     </div>
+
+    <footer class="bottom-rail">
+      <h2><span aria-hidden="true">•</span> In evidenza</h2>
+      <p>Film, autori e storie uniche.</p>
+    </footer>
   </main>
 </Layout>
 
-<script>
-  const videoA = document.getElementById('menuVideoA') as HTMLVideoElement | null;
-  const videoB = document.getElementById('menuVideoB') as HTMLVideoElement | null;
-  const fadeDuration = 1.2;
-
-  if (videoA && videoB) {
-    let front = videoA;
-    let back = videoB;
-    let fading = false;
-
-    [videoA, videoB].forEach((video) => {
-      video.muted = true;
-      video.loop = false;
-      video.style.transition = `opacity ${fadeDuration}s linear`;
-      video.addEventListener('ended', () => {
-        if (video === front) {
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        }
-      });
-    });
-
-    videoA.style.opacity = '1';
-    videoB.style.opacity = '0';
-    videoA.play().catch(() => {});
-
-    const keepLooping = () => {
-      if (front.duration && !fading && front.duration - front.currentTime <= fadeDuration) {
-        fading = true;
-        back.currentTime = 0;
-        back.play().catch(() => {});
-        back.style.opacity = '1';
-        front.style.opacity = '0';
-        const previous = front;
-        setTimeout(() => {
-          previous.pause();
-          previous.currentTime = 0;
-          [front, back] = [back, previous];
-          fading = false;
-        }, fadeDuration * 1000);
-      }
-      requestAnimationFrame(keepLooping);
-    };
-    requestAnimationFrame(keepLooping);
-
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden && front.paused) front.play().catch(() => {});
-    });
-  }
-</script>
-
 <style>
-  .menu-page { position: relative; min-height: 100vh; padding: clamp(24px,3.2vw,48px) clamp(20px,5vw,80px) clamp(36px,5vw,72px); overflow: hidden; background: #090909; }
-  .menu-media { position: fixed; inset: 0; overflow: hidden; z-index: 0; background: #11100e; pointer-events: none; }
-  .menu-media video { position: absolute; inset: -2%; width: 104%; height: 104%; object-fit: cover; filter: saturate(.9) contrast(1.04) brightness(.92); }
-  .menu-video-veil { position: absolute; inset: 0; background: linear-gradient(90deg,rgba(0,0,0,.38) 0%,transparent 38%), linear-gradient(180deg,rgba(0,0,0,.18),transparent 34%,rgba(0,0,0,.22)); }
-  .menu-header, .menu-stage, .brand-seal { position: relative; z-index: 1; }
-  .menu-header { display: flex; justify-content: space-between; gap: 24px; font-family: Arial,Helvetica,sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.62); }
-  .back { color: #f7f1e4; }
-  .menu-stage { position: absolute; left: clamp(20px,5vw,80px); bottom: clamp(42px,8vh,92px); width: min(340px,calc(100vw - 40px)); }
-  .menu-list { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
-  .menu-item { display: flex; align-items: baseline; gap: 12px; padding: 2px 0; color: #fff; font-family: Arial,Helvetica,sans-serif; text-shadow: 0 2px 18px rgba(0,0,0,.8); }
-  a.menu-item { transition: opacity 200ms ease,transform 200ms ease; }
-  a.menu-item:hover, a.menu-item:focus-visible { transform: translateX(5px); }
-  .label { font-size: clamp(17px,1.65vw,23px); font-weight: 500; line-height: 1.15; letter-spacing: -.02em; }
-  .status { font-size: 8px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.42); }
-  .arrow { font-size: 13px; color: rgba(255,255,255,.72); transition: transform 200ms ease; }
-  a.menu-item:hover .arrow, a.menu-item:focus-visible .arrow { transform: translateX(4px); }
-  .is-coming { color: rgba(255,255,255,.4); }
-  .brand-seal { position: absolute; right: clamp(20px,5vw,80px); bottom: clamp(36px,6vh,68px); }
-  .brand-logo { display: block; width: 28px; height: auto; }
+  .menu-page {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    background: #090b0c;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-  @media (max-width: 820px) {
-    .menu-header { align-items: flex-start; font-size: 8px; }
-    .menu-stage { left: 20px; bottom: 54px; width: calc(100vw - 74px); }
-    .menu-list { gap: 8px; }
-    .label { font-size: 18px; }
-    .brand-seal { right: 20px; bottom: 54px; }
-    .menu-video-veil { background: linear-gradient(90deg,rgba(0,0,0,.42),transparent 78%), linear-gradient(180deg,rgba(0,0,0,.16),transparent 30%,rgba(0,0,0,.3)); }
+  .menu-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: #141719;
+  }
+
+  .menu-media video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .menu-video-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(3, 7, 9, .72) 0%, rgba(3, 7, 9, .42) 34%, rgba(3, 7, 9, .06) 72%),
+      linear-gradient(180deg, rgba(6, 10, 12, .45) 0%, rgba(6, 10, 12, .04) 34%, rgba(5, 7, 8, .13) 63%, rgba(5, 6, 7, .96) 100%);
+  }
+
+  .site-header {
+    position: relative;
+    z-index: 2;
+    min-height: 82px;
+    padding: 0 clamp(24px, 3.2vw, 54px) 0 52px;
+    display: grid;
+    grid-template-columns: minmax(210px, 1fr) auto minmax(42px, .38fr);
+    align-items: center;
+    gap: clamp(22px, 3vw, 48px);
+    border-bottom: 1px solid rgba(255, 255, 255, .13);
+    background: rgba(5, 12, 16, .24);
+    backdrop-filter: blur(5px);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+    color: #fff;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(21px, 1.8vw, 28px);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -.02em;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, .5);
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+  }
+
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(18px, 2.4vw, 38px);
+  }
+
+  .nav-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 30px 0 27px;
+    color: rgba(255, 255, 255, .8);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .7);
+    transition: color 180ms ease, transform 180ms ease;
+  }
+
+  a.nav-item:hover,
+  a.nav-item:focus-visible {
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .nav-item.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 18px;
+    height: 2px;
+    background: #d63324;
+  }
+
+  .nav-mark {
+    width: 8px;
+    height: 8px;
+    border: 1px solid currentColor;
+    border-radius: 1px;
+    opacity: .8;
+  }
+
+  /* voce "News": più grande e con puntino rosso lampeggiante, per farla notare */
+  .nav-item.is-news {
+    font-size: 17px;
+    color: #fff;
+  }
+  .nav-news-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #ff3b30;
+    animation: nav-news-pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes nav-news-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,59,48,.7); opacity: 1; }
+    50% { box-shadow: 0 0 0 6px rgba(255,59,48,0); opacity: .5; }
+  }
+
+  .is-coming {
+    color: rgba(255, 255, 255, .45);
+    cursor: default;
+  }
+
+  .nav-item-icon { padding: 20px 0; }
+  .nav-icon {
+    width: auto;
+    height: clamp(30px, 3vw, 40px);
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
+    opacity: .92;
+  }
+
+  .header-seal {
+    justify-self: end;
+    width: 33px;
+    height: 33px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: .88;
+  }
+
+  .feature {
+    position: absolute;
+    z-index: 2;
+    left: clamp(32px, 5.2vw, 82px);
+    top: 50%;
+    width: min(490px, calc(100vw - 64px));
+    transform: translateY(-48%);
+    text-shadow: 0 3px 24px rgba(0, 0, 0, .62);
+  }
+
+  .eyebrow {
+    width: fit-content;
+    margin: 0 0 24px;
+    padding: 6px 10px 5px;
+    border: 2px solid rgba(255, 255, 255, .88);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .feature h1 {
+    margin: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(52px, 5.8vw, 86px);
+    font-style: italic;
+    font-weight: 500;
+    line-height: .95;
+    letter-spacing: -.035em;
+    text-wrap: balance;
+  }
+
+  .metadata {
+    margin: 22px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .metadata span + span::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 13px;
+    margin: 0 15px -2px;
+    background: rgba(255, 255, 255, .45);
+  }
+
+  .description {
+    max-width: 460px;
+    margin: 20px 0 0;
+    color: rgba(255, 255, 255, .82);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(19px, 1.6vw, 24px);
+    font-weight: 500;
+    line-height: 1.34;
+  }
+
+  .primary-cta {
+    margin-top: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 27px;
+    border-radius: 3px;
+    background: #d63324;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .25);
+    transition: background 180ms ease, transform 180ms ease;
+  }
+
+  .primary-cta:hover,
+  .primary-cta:focus-visible {
+    background: #ef3e2d;
+    transform: translateY(-2px);
+  }
+
+  .play { font-size: 12px; }
+
+  .side-arrow {
+    position: absolute;
+    z-index: 2;
+    top: 52%;
+    color: rgba(255, 255, 255, .9);
+    font-family: Arial, sans-serif;
+    font-size: 52px;
+    font-weight: 200;
+    line-height: 1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .7);
+  }
+
+  .side-arrow-left { left: 12px; }
+  .side-arrow-right { right: 12px; }
+
+  .pagination {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 115px;
+    display: flex;
+    gap: 8px;
+    transform: translateX(-50%);
+  }
+
+  .pagination span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .42);
+  }
+
+  .pagination .is-current { background: #fff; }
+
+  .bottom-rail {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 92px;
+    padding: 25px clamp(32px, 5.2vw, 82px) 18px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    background: rgba(7, 8, 9, .96);
+  }
+
+  .bottom-rail h2 {
+    margin: 0;
+    font-size: clamp(22px, 2.2vw, 32px);
+    line-height: 1;
+    letter-spacing: -.02em;
+  }
+
+  .bottom-rail h2 span { color: #d63324; }
+
+  .bottom-rail p {
+    margin: 4px 0 0;
+    color: rgba(255, 255, 255, .48);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  @media (max-width: 1080px) {
+    .site-header {
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+    }
+
+    .brand span { display: none; }
+    .top-nav { gap: 18px; }
+    .nav-item { font-size: 11px; }
+  }
+
+  @media (max-width: 760px) {
+    .menu-page { min-height: 760px; }
+
+    .site-header {
+      min-height: 74px;
+      grid-template-columns: auto 1fr auto;
+      padding: 0 18px 0 52px;
+    }
+
+    .brand img { width: 34px; height: 34px; }
+
+    .top-nav {
+      justify-content: flex-start;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 20px;
+    }
+
+    .top-nav::-webkit-scrollbar { display: none; }
+    .nav-item { padding: 28px 0 25px; }
+    .nav-mark { display: none; }
+    .header-seal { width: 28px; height: 28px; }
+
+    .feature {
+      left: 24px;
+      top: 45%;
+      width: calc(100vw - 48px);
+      transform: translateY(-45%);
+    }
+
+    .eyebrow { margin-bottom: 18px; }
+    .feature h1 { font-size: clamp(48px, 15vw, 68px); }
+    .description { font-size: 19px; max-width: 410px; }
+    .side-arrow { display: none; }
+    .pagination { bottom: 118px; }
+
+    .bottom-rail {
+      height: 92px;
+      padding: 24px;
+    }
+
+    .bottom-rail p { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .menu-page { min-height: 700px; }
+    .feature { top: 47%; }
+    .metadata { font-size: 10px; }
+    .metadata span + span::before { margin: 0 9px -2px; }
+    .description { margin-top: 16px; font-size: 17px; }
+    .primary-cta { margin-top: 24px; padding: 14px 20px; }
+    .pagination { display: none; }
   }
 </style>

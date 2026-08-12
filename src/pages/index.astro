@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     </div>
 
     <div class="hero-menu-wrap">
-      <a href="#home" class="hero-menu">Menu</a>
+      <a href={`${base}/menu`} class="hero-menu">Menu</a>
     </div>
 
     <div class="hero-date">
@@ -31,8 +31,11 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     <div class="home-fade-top"></div>
 
     <article class="manifesto">
+      <div class="manifesto-mark">
+        <img src={`${base}/img/logo-cicogna-treno-oro-scontornato.png`} alt="Le deuxième arrêt" />
+      </div>
       <p>In Italia può capitare che grandi film vengano riconosciuti come tali, ma che non prendano il volo.</p>
-      <p>Noi non stiamo a indagare le cause. Torniamo a guardarli e facciamo in modo che li guardino anche gli altri.</p>
+      <p class="manifesto-answer">Noi non stiamo a indagare le cause. Torniamo a guardarli e facciamo in modo che li guardino anche gli altri.</p>
     </article>
 
     <section class="mid-hero" aria-label="Il viaggio dei film riprende">
@@ -270,7 +273,7 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     flex-direction: column;
     justify-content: flex-start;
     gap: clamp(64px, 8vw, 112px);
-    padding: clamp(128px, 18vh, 200px) clamp(24px, 6vw, 96px) clamp(72px, 10vh, 120px);
+    padding: clamp(64px, 9vh, 110px) clamp(24px, 6vw, 96px) clamp(72px, 10vh, 120px);
     overflow: hidden;
   }
   .home-bg {
@@ -613,28 +616,47 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
     }
   }
 
+  .manifesto-mark {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .manifesto-mark img {
+    width: clamp(88px, 9.5vw, 136px);
+    height: auto;
+    display: block;
+    opacity: .94;
+  }
+
   .manifesto {
     position: relative;
     z-index: 1;
-    width: min(100%, 1080px);
+    width: min(100%, 680px);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(40px, 7vw, 108px);
-    padding: clamp(28px, 4vw, 52px) 0;
-    border-top: 1px solid rgba(43,38,32,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 2.6vw, 30px);
+    padding: 0 0 clamp(28px, 4vw, 52px);
     border-bottom: 1px solid rgba(43,38,32,0.3);
+    text-align: center;
   }
   .manifesto p {
     margin: 0;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(24px, 2.35vw, 36px);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.3;
-    letter-spacing: 0;
+    font-family: 'Bodoni Moda', 'Bodoni MT', Didot, Georgia, serif;
+    font-size: clamp(22px, 2.3vw, 31px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.42;
+    letter-spacing: -.012em;
     color: #211d18;
-    text-wrap: balance;
+    text-wrap: pretty;
+  }
+  .manifesto-answer {
+    font-size: clamp(19px, 1.85vw, 24px) !important;
+    font-weight: 400 !important;
+    color: #4a443a !important;
   }
   .mid-hero {
     position: relative;
@@ -680,14 +702,14 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
       padding: 96px 22px 64px;
     }
     .manifesto {
-      grid-template-columns: 1fr;
-      gap: 26px;
+      gap: 22px;
       padding: 30px 0;
     }
     .manifesto p {
       font-size: clamp(21px, 5.8vw, 28px);
       line-height: 1.34;
     }
+    .manifesto-mark img { width: clamp(44px, 11vw, 60px); }
     .mid-hero {
       height: 58vh;
       min-height: 360px;

@@ -3,416 +3,560 @@ import Layout from '../../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 ---
 <Layout title="Comandante — Le deuxième arrêt">
-  <div class="page">
-    <div class="wrap">
+  <main class="paper">
 
-      <div class="eyebrow">
-        <div class="eyebrow-label">Le deuxième arrêt — Dossier film</div>
-        <div class="eyebrow-bar"></div>
+    <header class="masthead">
+      <span class="masthead__brand">Le deuxième arrêt</span>
+      <nav class="masthead__nav" aria-label="Navigazione">
+        <a href={`${base}/`}>Home</a>
+        <a href={`${base}/menu`}>Menu</a>
+        <a href={`${base}/rubriche`} class="is-active">Rubriche</a>
+        <a href={`${base}/news`}>News</a>
+      </nav>
+      <span class="masthead__folio">Rubriche — N°&nbsp;01</span>
+    </header>
+
+    <article class="spread">
+
+      <!-- ═══════════════ APERTURA ═══════════════ -->
+      <div class="opener-text">
+        <p class="kicker">Documentario <span class="sep"></span> Enrico Maisto <span class="sep"></span> 2014</p>
+        <h1>Comandante</h1>
+        <p class="dek">Un profilo dignitoso per l'<em>esordio al lungometraggio</em>. Il giudice <strong>Francesco Maisto</strong> e il vecchio militante <strong>Felice</strong> si parlano attraverso la camera del figlio, e gli anni di piombo tornano a farsi <em>voce, silenzio, penombra</em>.</p>
+        <p class="byline">Rubrica di <strong>Le deuxième arrêt</strong></p>
       </div>
 
-      <article class="card">
+      <figure class="plate plate--opener">
+        <img src={`${base}/img/comandante-prima-immagine.png`} alt="Una mosca posata su un muro chiaro, in piena luce" />
+      </figure>
 
-        <figure class="hero-fig">
-          <img src={`${base}/img/comandante-film-bg.jpg`} alt="" />
-          <span class="hero-bar"></span>
-          <div class="badge">
-            <span>Autori<br />Italiani</span>
-          </div>
-        </figure>
-        <figcaption class="fig-caption">Ninfee, Claude Monet, 1915. Wikimedia Commons</figcaption>
+      <!-- ═══════════════ I. LA MOSCA SUL MURO ═══════════════ -->
+      <h2 class="chapter"><span class="chapter__num">I</span> La mosca sul muro</h2>
 
-        <div class="body">
+      <div class="run run--three">
+        <p><span class="dropcap">I</span>n un gioco di prestigio qui la macchina scompare e, facendosi leggera come una foglia, si poggia sul muro ed ascolta, come la mosca. Eppure è viva, sporca mentre indugia sul giudice che nel ricordo di un vecchio libro ingiallito ne sfoglia le pagine che volano come piume nella penombra. È Francesco Maisto, il padre del ragazzo che continua a chiedere, ha vissuto gli anni di piombo, tra polvere da sparo e i pupi del tempo, gli uomini della politica rinchiusi nel carcere di San Vittore.</p>
 
-          <div class="tags">
-            <span class="tag-doc">Documentario</span>
-            <span class="tag-meta">Enrico Maisto · 2014</span>
-          </div>
+        <p>Io non so chi sia Felice ma lo conosco da molto tempo, il dolce alternarsi dei suoi silenzi alle domande di Enrico mi parla di lui, in quelle poche parole che vengono su dall'anima, perché degli occhi la lente me ne priva. Eccoli, per un istante, poi ancora la nuca riversa di lato me li cela di nuovo, quasi fossero un dono prezioso. E lo sono, me ne accorgo nei piani d'ascolto, quando la macchina si ferma vicino, stretta stretta a fargli compagnia. Sta ascoltando se stesso.</p>
 
-          <h1>Comandante</h1>
+        <p>Chissà quante volte quello sguardo avrà incrociato quello del giudice, al quale una vera amicizia lo ha sempre legato, fin dai tempi in cui prese a far parte di Lotta Continua. Perché l'amico, nonostante le divergenze, come dice Francesco: «non ti crea paratie, non ti crea ostacoli… neanche quando ha fallito come uomo, trascinandosi dietro il Comunismo intero».</p>
+      </div>
 
-          <div class="dek">Un profilo dignitoso per l'esordio al lungometraggio.</div>
+      <!-- ═══════════════ II. LO SPAZIO E LA NOTTE ═══════════════ -->
+      <h2 class="chapter"><span class="chapter__num">II</span> Lo spazio e la notte</h2>
 
-          <div class="para-with-image">
-            <img src={`${base}/img/mosca-sul-muro.jpg`} alt="" class="polaroid polaroid-1" />
-            <div class="text">
-              <p><span class="dropcap">I</span>n un gioco di prestigio qui la macchina scompare e, facendosi leggera come una foglia, si poggia sul muro ed ascolta, come la mosca. Eppure è viva, sporca mentre indugia sul giudice che nel ricordo di un vecchio libro ingiallito ne sfoglia le pagine che volano come piume nella penombra. È Francesco Maisto, il padre del ragazzo che continua a chiedere, ha vissuto gli anni di piombo, tra polvere da sparo e i pupi del tempo, gli uomini della politica rinchiusi nel carcere di San Vittore.</p>
-              <p>Io non so chi sia Felice ma lo conosco da molto tempo, il dolce alternarsi dei suoi silenzi alle domande di Enrico mi parla di lui, in quelle poche parole che vengono su dall'anima, perché degli occhi la lente me ne priva. Eccoli, per un istante, poi ancora la nuca riversa di lato me li cela di nuovo, quasi fossero un dono prezioso. E lo sono, me ne accorgo nei piani d'ascolto, quando la macchina si ferma vicino, stretta stretta a fargli compagnia. Sta ascoltando se stesso.</p>
-            </div>
-          </div>
+      <figure class="plate plate--left">
+        <img src={`${base}/img/comandante-spazio-notte.png`} alt="Una figura seduta in una grande stanza buia, illuminata da una sola lama di luce" />
+      </figure>
 
-          <div class="text-block">
-            <p>Chissà quante volte quello sguardo avrà incrociato quello del giudice, al quale una vera amicizia lo ha sempre legato, fin dai tempi in cui prese a far parte di Lotta Continua. Perché l'amico, nonostante le divergenze, come dice Francesco: «non ti crea paratie, non ti crea ostacoli… neanche quando ha fallito come uomo, trascinandosi dietro il Comunismo intero».</p>
+      <div class="run run--aside">
+        <p>A me piace starmene qui con loro ma ogni tanto la vista mi inganna e per un istante non riesco a distinguere le forme, sarà colpa del fuoco. Ora comincio ad aver paura però, non so più dove sono, le luci sono quelle di casa mia, sento lo stesso suono di quando mio nonno sposta le sedie coi piedi di ferro in cucina. Ora sono in cortile, è notte. No no fermi tutti, non può essere. Devo essere in un sogno, ma è tutto così uguale alla realtà. Devo essere finito nella notte del mondo di Enrico, dove di luce ce n'è abbastanza per vedere chi stiamo seguendo di spalle, come in un film dei fratelli Dardenne, in uno spazio di cui Enrico sembra essere così consapevole da poggiarci il viso del papà per metà di fuori, tagliandolo, come qualche pittore espressionista giapponese componeva il quadro.</p>
 
-            <p>A me piace starmene qui con loro ma ogni tanto la vista mi inganna e per un istante non riesco a distinguere le forme, sarà colpa del fuoco. Ora comincio ad aver paura però, non so più dove sono, le luci sono quelle di casa mia, sento lo stesso suono di quando mio nonno sposta le sedie coi piedi di ferro in cucina. Ora sono in cortile, è notte. No no fermi tutti, non può essere. Devo essere in un sogno, ma è tutto così uguale alla realtà. Devo essere finito nella notte del mondo di Enrico, dove di luce ce n'è abbastanza per vedere chi stiamo seguendo di spalle, come in un film dei fratelli Dardenne, in uno spazio di cui Enrico sembra essere così consapevole da poggiarci il viso del papà per metà di fuori, tagliandolo, come qualche pittore espressionista giapponese componeva il quadro.</p>
+        <p class="lift">Me ne starei seduto in cortile a sentire i passi del giudice per ore, sembrano così morbidi da poterli persino sfiorare.</p>
 
-            <p>Me ne starei seduto in cortile a sentire i passi del giudice per ore, sembrano così morbidi da poterli persino sfiorare.</p>
-          </div>
+        <p>Fuori è buio pesto, Enrico dà una sbirciatina in officina, poi esce di colpo all'esterno dove il racconto non riesce a prendere il dovuto respiro che subito la notte lo colora di blu.</p>
 
-          <div class="para-with-image reverse">
-            <div class="text">
-              <p>Fuori è buio pesto, Enrico dà una sbirciatina in officina, poi esce di colpo all'esterno dove il racconto non riesce a prendere il dovuto respiro che subito la notte lo colora di blu.</p>
-              <p>Di fronte a sé un paesaggio incantevole, qualche briciolo di luce in lontananza fa fatica a distinguersi. Ma che notte, sembrano due opere d'arte quel cielo, una con la notte poggiata sul Rodano e l'altra come quelle che si vedono dagli scorci tra le case proprio prima dell'ospedale di Saint-Rémy.</p>
-            </div>
-            <img src={`${base}/img/parco-groane-illustrazione.png`} alt="" class="polaroid polaroid-2" />
-          </div>
+        <p>Di fronte a sé un paesaggio incantevole, qualche briciolo di luce in lontananza fa fatica a distinguersi. Ma che notte, sembrano due opere d'arte quel cielo, una con la notte poggiata sul Rodano e l'altra come quelle che si vedono dagli scorci tra le case proprio prima dell'ospedale di Saint-Rémy.</p>
+      </div>
 
-          <div class="text-block">
-            <p>Mentre le parole mi accompagnano al Mulino Doppio, ora parte del Parco delle Groane, dove negli anni Settanta ci si vedeva per discutere a prescindere da quale braccio si alzasse per salutarsi, i dolori del giovane Enrico si fanno parola e, rivolgendosi al vecchio Felice, si tramutano di colpo in malinconici pensieri: «(questo luogo) era un po' un mondo fiabesco e adesso stava affiorando la sua zona d'ombra, e pensavo al Mulino Doppio, l'osteria dove tu e mio padre vi siete conosciuti, oggi non esiste più. IO ME LO IMMAGINAVO COME UNA FRONTIERA DOVE SI ORGANIZZAVANO FESTE DI CARNEVALE A CUI PARTECIPAVANO GIUDICI E TERRORISTI, E NON SI CAPIVA PIÙ CHI C'ERA DIETRO ALLE MASCHERE».</p>
+      <!-- ═══════════════ III. IL LINGUAGGIO DEL REALE ═══════════════ -->
+      <h2 class="chapter"><span class="chapter__num">III</span> Il linguaggio del reale</h2>
 
-            <p>Dietro ad una di quelle maschere c'era sicuramente il papà Francesco, fortemente convinto che il giudice fosse prima artista, perché la legge non la si applica come la grammatica: la legge è mutevole e il giudice è il suo vero e proprio ermeneuta. È poeta perché l'interpretazione è attività di ingegno, di mente e di cuore.</p>
+      <div class="run run--two-left">
+        <p>Mentre le parole mi accompagnano al Mulino Doppio, ora parte del Parco delle Groane, dove negli anni Settanta ci si vedeva per discutere a prescindere da quale braccio si alzasse per salutarsi, i dolori del giovane Enrico si fanno parola e, rivolgendosi al vecchio Felice, si tramutano di colpo in malinconici pensieri: «(questo luogo) era un po' un mondo fiabesco e adesso stava affiorando la sua zona d'ombra, e pensavo al Mulino Doppio, l'osteria dove tu e mio padre vi siete conosciuti, oggi non esiste più».</p>
 
-            <p>Scommetto che se la camera inquadrasse una parete vuota per 15 minuti lo spettatore non si accorgerebbe di nulla, anzi. Tranne qualche rara eccezione, ogni volta che la scena passa a quella successiva il suono s'interrompe bruscamente non lasciando lo strascico di un minimo spiffero, ma lo fa con tanta grazia quanta i maestri del paese della luce grigia insegnano.</p>
+        <p>Dietro ad una di quelle maschere c'era sicuramente il papà Francesco, fortemente convinto che il giudice fosse prima artista, perché la legge non la si applica come la grammatica: la legge è mutevole e il giudice è il suo vero e proprio ermeneuta. È poeta perché l'interpretazione è attività di ingegno, di mente e di cuore.</p>
 
-            <p>Il personaggio di Felice è realismo puro, le sue azioni indice di grande maestria nella direzione, come per quanto riguarda il padre di Enrico che, altra cosa degna di nota, non importa dove vada ad occupare lo spazio, troverà sempre una camera calma e precisa nel suo linguaggio ad aspettarlo, comporre e vivere in sua funzione. Per la precisione un certo tipo di camera a spalla, decifrabile nell'autorevolezza, nel comporre e fermarsi e poi tornare a muoversi, mai facendolo sgarbatamente costruendo un linguaggio a posteriori, perché bisogna ricordare che sempre di un documentario stiamo parlando, e per un documentario di quel tipo, anche se si poteva fare diversamente, il linguaggio è venuto ad essere girando, spingendo verso un realismo che sinceramente non mi aspettavo.</p>
+        <p>Scommetto che se la camera inquadrasse una parete vuota per 15 minuti lo spettatore non si accorgerebbe di nulla, anzi. Tranne qualche rara eccezione, ogni volta che la scena passa a quella successiva il suono s'interrompe bruscamente non lasciando lo strascico di un minimo spiffero, ma lo fa con tanta grazia quanta i maestri del paese della luce grigia insegnano.</p>
+      </div>
 
-            <p>Drammaturgicamente il setup è una passeggiata in un giorno soleggiato di primavera. I protagonisti fanno il loro ingresso sempre mano nella mano di un traghettatore, una donna per Felice, Enrico per Francesco; il montaggio all'inizio accoglie, le parole si alternano ai silenzi che qui sì che sono strumento del racconto, non vezzo. La linea del racconto è invisibile, ci si ritrova ad ascoltare l'ex militante comunista che riconosce di non aver mai avuto il coraggio di uccidere, di sparare, senza rendersene conto, guidati da uno sviluppo narrativo lineare che procede come le acque di un ruscello silenzioso. Le parole cadono come gocce d'acqua d'una docile pioggia con la precisione di un metronomo.</p>
+      <figure class="plate plate--right">
+        <img src={`${base}/img/comandante-linguaggio-reale.png`} alt="Un magistrato in toga, di spalle, guarda dalla finestra di uno studio ingombro di fascicoli" />
+      </figure>
 
-            <p>E non sbaglio a ripetermi quando dico che persino l'accenno del suono di un respiro affannato che viene dal più anziano fa tenerezza e racconta allo stesso tempo: è voluto, avrebbe potuto toglierlo e invece lo ha lasciato. È una scelta comunicativa.</p>
+      <blockquote class="pull">
+        <p>Io me lo immaginavo come una frontiera dove si organizzavano feste di carnevale a cui partecipavano giudici e terroristi, e non si capiva più chi c'era dietro alle maschere.</p>
+        <cite>Enrico Maisto</cite>
+      </blockquote>
 
-            <div class="para-with-image inline">
-              <p class="flex-text">Dal punto di vista tematico tutto ruota inevitabilmente attorno all'attuale distinzione politica che fa capo alle dinamiche fascismo-comunismo. Come oggi ci troviamo di fronte alla rivendicazione di attitudine fascista se guardiamo a temi come immigrazione, cittadinanza, discriminazione, integrazione, legittima difesa, patriottismo, nazionalismi, per non parlare del movimento MAGA e dell'ICE negli Stati Uniti. Temi estremamente attuali che meritano di essere trattati quotidianamente, perché l'uomo dimentica tutto.</p>
-              <img src={`${base}/img/maga-illustrazione.png`} alt="" class="polaroid polaroid-3" />
-            </div>
+      <!-- ═══════════════ IV. IL REALISMO IN DIVENIRE ═══════════════ -->
+      <h2 class="chapter"><span class="chapter__num">IV</span> Il realismo in divenire</h2>
 
-            <p>Un bilaterale manicheismo senza freni, la formula fascismo-comunismo, che è propria della nostra storia e torna a ripetersi in politica e nella società odierna negli estremismi sia di destra che di sinistra. Dietro a questo dualismo conflittuale si nasconde la differenza degli antipodi che ritroviamo nelle pericolose ideologie. Comune in tutto il mondo questa fascinazione della distanza incolmabile e del posizionamento nel quale finalmente ci si riconosce, perché finalmente certi che la personalità abbia acquisito una caratteristica. Quella della diversità: non sono più nulla, adesso sono qualcosa. Ho importanza, sono diverso da te. È questa una realtà fittizia, quella propria delle ombre della caverna della quale fanno parte gli individui che aderiscono alla differenziazione totale assoluta che diventerà autocratica; sanno che stanno guardando le ombre, ma uscire fuori dalla caverna fa più paura.</p>
+      <div class="run run--two">
+        <p>Il personaggio di Felice è realismo puro, le sue azioni indice di grande maestria nella direzione, come per quanto riguarda il padre di Enrico che, altra cosa degna di nota, non importa dove vada ad occupare lo spazio, troverà sempre una camera calma e precisa nel suo linguaggio ad aspettarlo, comporre e vivere in sua funzione. Per la precisione un certo tipo di camera a spalla, decifrabile nell'autorevolezza, nel comporre e fermarsi e poi tornare a muoversi, mai facendolo sgarbatamente costruendo un linguaggio a posteriori, perché bisogna ricordare che sempre di un documentario stiamo parlando, e per un documentario di quel tipo, anche se si poteva fare diversamente, il linguaggio è venuto ad essere girando, spingendo verso un realismo che sinceramente non mi aspettavo.</p>
+      </div>
 
-            <p>C'è poi un odisseico ritorno del giudice con il figlio presso il carcere di San Vittore, dove avranno modo di confrontarsi sulla dialettica come strumento di confronto tra uomini di legge come il giudice Francesco e i detenuti, che non deve arrivare mai allo scontro vita-morte, pur raggiungendo a volte un grado feroce di confronto.</p>
+      <!-- ═══════════════ V. UNA DIREZIONE PRECISA ═══════════════ -->
+      <h2 class="chapter"><span class="chapter__num">V</span> Una direzione precisa</h2>
 
-            <p>Il cerchio si chiude in modo commovente, mostrando uomini alle prese con l'attacchinaggio, con tanto di scopa, colla e piccoli manifesti, che rappresenta la più alta espressione di azione politica democratica, pacifica e aggregativa che io conosca. Esprimere il proprio consenso attraverso il rituale, strumento adottato da tutte le civiltà.</p>
-          </div>
+      <div class="run run--two">
+        <p>Drammaturgicamente il setup è una passeggiata in un giorno soleggiato di primavera. I protagonisti fanno il loro ingresso sempre mano nella mano di un traghettatore, una donna per Felice, Enrico per Francesco; il montaggio all'inizio accoglie, le parole si alternano ai silenzi che qui sì che sono strumento del racconto, non vezzo. La linea del racconto è invisibile, ci si ritrova ad ascoltare l'ex militante comunista che riconosce di non aver mai avuto il coraggio di uccidere, di sparare, senza rendersene conto, guidati da uno sviluppo narrativo lineare che procede come le acque di un ruscello silenzioso. Le parole cadono come gocce d'acqua d'una docile pioggia con la precisione di un metronomo.</p>
 
-          <div class="bio">Enrico Maisto, classe '88, è laureato in filosofia estetica presso l'Università degli Studi di Milano, ha un approccio estetico meraviglioso sia in campo figurativo che letterario.</div>
+        <p>E non sbaglio a ripetermi quando dico che persino l'accenno del suono di un respiro affannato che viene dal più anziano fa tenerezza e racconta allo stesso tempo: è voluto, avrebbe potuto toglierlo e invece lo ha lasciato. È una scelta comunicativa.</p>
+      </div>
 
-          <div class="meta-info">Budget: 30.000 euro — stima riportata da IMDb.<br />Dove puoi vederlo: Comandante (2014) è disponibile sul canale CG Collection di Amazon Prime.</div>
+      <!-- ═══════════════ VI. IL TEMA ═══════════════ -->
+      <h2 class="chapter"><span class="chapter__num">VI</span> Il tema</h2>
 
-          <div class="subscribe-block">
-            <div class="subscribe-label">Iscriviti</div>
-            <div class="neon-row">
-              <a href="https://www.primevideo.com/-/it/channel/8a7acb8c-7790-4ae9-9373-1ba9ec81c91f?ref_=atv_sr_fle_c_sr823714_HS4dfa21_1_1" target="_blank" rel="noopener" class="neon-btn neon-btn-a">
-                <span class="neon-inner neon-inner-dark">
-                  <img src={`${base}/img/cg-collection-logo.png`} alt="CG Collection" />
-                </span>
-              </a>
-              <a href="https://www.primevideo.com/offers/nonprimehomepage?gad_source=1&gbraid=0AAAAADQh2XK6uu_eKzYE8Uv3aoRVmQmS4&gad_campaignid=962821359&gclid=Cj0KCQjwp9vTBhCWARIsANaUrjtcquUHwqJq1QZNUsjkKks6akfNwcx7Uqy7N845J3Ks8pJSY5MzVTsaApApEALw_wcB&ref_=dvm_pds_amz_IT_lb_s_g_mkw_p509-kw11023-cr263199-c&mrntrk=go_cmp-962821359_adg-53440325735_ad-766671884087_kwd-799334177443_dev-c_ext-" target="_blank" rel="noopener" class="neon-btn neon-btn-b">
-                <span class="neon-inner neon-inner-blue">
-                  <img src={`${base}/img/prime-video-badge.png`} alt="Iscriviti a Prime" />
-                </span>
-              </a>
-            </div>
-          </div>
+      <div class="run run--two">
+        <p>Dal punto di vista tematico tutto ruota inevitabilmente attorno all'attuale distinzione politica che fa capo alle dinamiche fascismo-comunismo. Come oggi ci troviamo di fronte alla rivendicazione di attitudine fascista se guardiamo a temi come immigrazione, cittadinanza, discriminazione, integrazione, legittima difesa, patriottismo, nazionalismi, per non parlare del movimento MAGA e dell'ICE negli Stati Uniti. Temi estremamente attuali che meritano di essere trattati quotidianamente, perché l'uomo dimentica tutto.</p>
+      </div>
 
-          <a href="https://www.primevideo.com/detail/0JOSEOMZPIGBPBHMD02EKOKY41?ref_=atv_dp_share_cu_r" target="_blank" rel="noopener" class="watch-cta">
-            <span>Guarda su Prime Video</span><span class="arrow">↗</span>
+      <!-- ═══════════════ VII. IDEOLOGIE E MEMORIA ═══════════════ -->
+      <h2 class="chapter"><span class="chapter__num">VII</span> Ideologie e memoria</h2>
+
+      <div class="run run--two-left">
+        <p>Un bilaterale manicheismo senza freni, la formula fascismo-comunismo, che è propria della nostra storia e torna a ripetersi in politica e nella società odierna negli estremismi sia di destra che di sinistra. Dietro a questo dualismo conflittuale si nasconde la differenza degli antipodi che ritroviamo nelle pericolose ideologie. Comune in tutto il mondo questa fascinazione della distanza incolmabile e del posizionamento nel quale finalmente ci si riconosce, perché finalmente certi che la personalità abbia acquisito una caratteristica. Quella della diversità: non sono più nulla, adesso sono qualcosa. Ho importanza, sono diverso da te. È questa una realtà fittizia, quella propria delle ombre della caverna della quale fanno parte gli individui che aderiscono alla differenziazione totale assoluta che diventerà autocratica; sanno che stanno guardando le ombre, ma uscire fuori dalla caverna fa più paura.</p>
+
+        <p>C'è poi un odisseico ritorno del giudice con il figlio presso il carcere di San Vittore, dove avranno modo di confrontarsi sulla dialettica come strumento di confronto tra uomini di legge come il giudice Francesco e i detenuti, che non deve arrivare mai allo scontro vita-morte, pur raggiungendo a volte un grado feroce di confronto.</p>
+
+        <p>Il cerchio si chiude in modo commovente, mostrando uomini alle prese con l'attacchinaggio, con tanto di scopa, colla e piccoli manifesti, che rappresenta la più alta espressione di azione politica democratica, pacifica e aggregativa che io conosca. Esprimere il proprio consenso attraverso il rituale, strumento adottato da tutte le civiltà.</p>
+      </div>
+
+      <figure class="plate plate--right">
+        <img src={`${base}/img/comandante-ideologie-memoria.png`} alt="Un tavolo con quaderni manoscritti, pellicole, libri di Gramsci, Brecht e Benjamin e vecchi manifesti" />
+      </figure>
+
+      <!-- ═══════════════ CODA ═══════════════ -->
+      <div class="coda">
+        <p class="coda__bio"><span class="coda__label">L'autore</span> Enrico Maisto, classe '88, è laureato in filosofia estetica presso l'Università degli Studi di Milano, ha un approccio estetico meraviglioso sia in campo figurativo che letterario.</p>
+
+        <dl class="scheda">
+          <div><dt>Regia</dt><dd>Enrico Maisto</dd></div>
+          <div><dt>Anno</dt><dd>2014</dd></div>
+          <div><dt>Genere</dt><dd>Documentario</dd></div>
+          <div><dt>Budget</dt><dd>30.000 euro — stima IMDb</dd></div>
+          <div><dt>Dove vederlo</dt><dd>Canale CG Collection, Amazon Prime Video</dd></div>
+        </dl>
+      </div>
+
+      <aside class="offer">
+        <p class="offer__label">Iscriviti</p>
+        <div class="offer__row">
+          <a href="https://www.primevideo.com/-/it/channel/8a7acb8c-7790-4ae9-9373-1ba9ec81c91f?ref_=atv_sr_fle_c_sr823714_HS4dfa21_1_1" target="_blank" rel="noopener" class="offer__card offer__card--dark">
+            <img src={`${base}/img/cg-collection-logo.png`} alt="CG Collection" />
           </a>
-
+          <a href="https://www.primevideo.com/offers/nonprimehomepage?gad_source=1&gbraid=0AAAAADQh2XK6uu_eKzYE8Uv3aoRVmQmS4&gad_campaignid=962821359&gclid=Cj0KCQjwp9vTBhCWARIsANaUrjtcquUHwqJq1QZNUsjkKks6akfNwcx7Uqy7N845J3Ks8pJSY5MzVTsaApApEALw_wcB&ref_=dvm_pds_amz_IT_lb_s_g_mkw_p509-kw11023-cr263199-c&mrntrk=go_cmp-962821359_adg-53440325735_ad-766671884087_kwd-799334177443_dev-c_ext-" target="_blank" rel="noopener" class="offer__card offer__card--blue">
+            <img src={`${base}/img/prime-video-badge.png`} alt="Iscriviti a Prime" />
+          </a>
         </div>
-      </article>
+        <a href="https://www.primevideo.com/detail/0JOSEOMZPIGBPBHMD02EKOKY41?ref_=atv_dp_share_cu_r" target="_blank" rel="noopener" class="offer__cta">
+          Guarda <em>Comandante</em> su Prime Video <span aria-hidden="true">↗</span>
+        </a>
+      </aside>
 
-      <div class="footer-note">Le deuxième arrêt — Ridistribuzione film di valore</div>
-    </div>
-  </div>
+    </article>
+
+    <footer class="colophon">
+      <a href={`${base}/rubriche`} class="colophon__back">← Tutte le rubriche</a>
+      <span>Le deuxième arrêt — Ridistribuzione film di valore</span>
+    </footer>
+  </main>
 </Layout>
 
 <style>
-  .page {
-    background: linear-gradient(165deg, var(--purple) 0%, var(--purple-deep) 55%, var(--purple-darkest) 100%);
+  /* ─────────── carta e inchiostro ─────────── */
+  .paper {
+    --paper:      #f6f4ef;
+    --ink:        #17150f;
+    --ink-soft:   #423e36;
+    --ink-faint:  #8b8578;
+    --rule:       rgba(23,21,15,0.16);
+    --rule-soft:  rgba(23,21,15,0.09);
+    --accent:     #6d1f2f;
+    --leaf:       #d4af37;
+
+    --col-gap:    clamp(22px, 2.6vw, 42px);
+    --run-size:   clamp(15.5px, 1.02vw, 17.5px);
+
     min-height: 100vh;
-    padding: clamp(32px,6vh,72px) clamp(16px,4vw,32px) 80px;
+    padding: 0 clamp(18px, 4.4vw, 72px) clamp(48px, 7vw, 96px);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    /* grana di carta, appena percettibile */
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(109,31,47,0.022), transparent 55%),
+      radial-gradient(circle at 82% 78%, rgba(74,43,122,0.02), transparent 55%);
   }
-  .wrap { max-width: 900px; margin: 0 auto; }
 
-  .eyebrow { text-align: center; margin-bottom: 28px; }
-  .eyebrow-label {
+  /* ─────────── testata ─────────── */
+  .masthead {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 22px 0 12px 52px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--ink);
+  }
+  .masthead__brand {
+    font-size: clamp(15px, 1.5vw, 19px);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: .01em;
+  }
+  .masthead__nav {
+    display: flex;
+    gap: clamp(16px, 2vw, 30px);
     font-family: 'Cinzel', Georgia, serif;
-    font-size: 13px;
-    letter-spacing: 4px;
+    font-size: 9.5px;
+    letter-spacing: .19em;
     text-transform: uppercase;
-    color: var(--gold);
   }
-  .eyebrow-bar {
-    height: 4px;
-    width: 120px;
-    margin: 14px auto 0;
-    border-radius: 2px;
-    background: linear-gradient(90deg,#6d1f2f,#d4af37 55%,#4a2b7a);
+  .masthead__nav a { color: var(--ink-faint); padding-bottom: 2px; }
+  .masthead__nav a:hover { color: var(--ink); }
+  .masthead__nav .is-active {
+    color: var(--ink);
+    border-bottom: 1px solid var(--accent);
   }
-
-  .card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  .masthead__folio {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9.5px;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
   }
 
-  .hero-fig {
-    margin: 0;
-    position: relative;
-    height: clamp(220px,38vw,380px);
+  /* ─────────── griglia della doppia pagina ─────────── */
+  .spread {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    align-items: start;
   }
-  .hero-fig img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .spread > * { grid-column: 1 / -1; min-width: 0; }
+
+  /* ─────────── apertura ─────────── */
+  .spread > .opener-text {
+    grid-column: 1 / 7;
+    padding: clamp(34px, 4.4vw, 64px) 0 clamp(28px, 3vw, 44px);
   }
-  .hero-bar {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 5px;
-    background: linear-gradient(90deg,#6d1f2f,#d4af37 55%,#4a2b7a);
-  }
-  .badge {
-    position: absolute;
-    top: 20px; right: 20px;
-    width: 88px; height: 88px;
-    border-radius: 50%;
-    border: 3px solid var(--cream);
+  .kicker {
+    margin: 0 0 clamp(18px, 2vw, 26px);
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    transform: rotate(-12deg);
-    background: rgba(26,15,48,0.55);
-    backdrop-filter: blur(2px);
-  }
-  .badge span {
+    gap: 11px;
     font-family: 'Cinzel', Georgia, serif;
     font-size: 10px;
-    letter-spacing: 1.5px;
-    color: var(--cream);
-    line-height: 1.35;
+    letter-spacing: .21em;
     text-transform: uppercase;
+    color: var(--accent);
   }
-
-  .fig-caption {
-    padding: 10px 32px 0;
-    font-family: ui-monospace, Menlo, monospace;
-    font-size: 9.5px;
-    letter-spacing: 0.5px;
-    color: var(--text-meta);
+  .kicker .sep {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--leaf);
   }
-
-  .body {
-    padding: 22px clamp(24px,5vw,48px) 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .tags { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-  .tag-doc {
-    background: var(--bordeaux);
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 10px;
-    letter-spacing: 1px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    text-transform: uppercase;
-  }
-  .tag-meta {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: var(--text-meta);
-    text-transform: uppercase;
-  }
-
-  h1 {
+  .opener-text h1 {
     margin: 0;
-    font-family: 'Cinzel', Georgia, serif;
-    font-weight: 700;
-    font-size: clamp(34px,5vw,54px);
-    line-height: 1.05;
-    color: var(--purple-darkest);
+    font-size: clamp(52px, 7.4vw, 108px);
+    font-weight: 600;
+    line-height: .92;
+    letter-spacing: -.028em;
+    text-wrap: balance;
   }
-
   .dek {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    margin: clamp(22px, 2.4vw, 32px) 0 0;
+    max-width: 30ch;
+    font-size: clamp(19px, 1.65vw, 25px);
+    font-weight: 300;
     font-style: italic;
-    font-size: clamp(18px,2vw,23px);
-    line-height: 1.5;
-    color: var(--purple-darkest);
-    border-left: 4px solid var(--gold);
-    padding-left: 20px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+  .dek strong { font-weight: 600; font-style: normal; color: var(--ink); }
+  .dek em { font-style: italic; }
+  .byline {
+    margin: clamp(20px, 2.2vw, 30px) 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+    max-width: 30ch;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9.5px;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .byline strong { color: var(--ink); font-weight: 500; }
+
+  /* ─────────── tavole fotografiche ─────────── */
+  .plate { margin: 0; }
+  .plate img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    background: #e9e5dc;
+  }
+  .spread > .plate--opener {
+    grid-column: 7 / -1;
+    padding: clamp(34px, 4.4vw, 64px) 0 clamp(28px, 3vw, 44px);
+  }
+  .plate--opener img { aspect-ratio: 1 / 1; object-fit: cover; object-position: 64% 52%; }
+
+  .spread > .plate--left  { grid-column: 1 / 5;  margin-bottom: clamp(24px, 3vw, 40px); }
+  .spread > .plate--right { grid-column: 9 / -1; margin-bottom: clamp(24px, 3vw, 40px); }
+
+  /* stesso ritmo verticale per tutte le tavole interne */
+  .plate--left img, .plate--right img { aspect-ratio: 4 / 5; object-fit: cover; }
+  .plate--left img  { object-position: 42% 50%; }
+  .plate--right img { object-position: 50% 38%; }
+
+  /* ─────────── titoli di capitolo ─────────── */
+  .chapter {
+    margin: clamp(40px, 5vw, 76px) 0 clamp(20px, 2.4vw, 32px);
+    padding-top: 13px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(12px, 1.05vw, 14px);
+    font-weight: 500;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .chapter__num {
+    flex-shrink: 0;
+    font-size: 10px;
+    letter-spacing: .1em;
+    color: var(--accent);
   }
 
-  .para-with-image {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    align-items: flex-start;
-    margin-top: 8px;
+  /* ─────────── colonne di testo ─────────── */
+  .run {
+    font-size: var(--run-size);
+    font-weight: 400;
+    line-height: 1.66;
+    color: var(--ink-soft);
+    text-align: justify;
+    hyphens: auto;
+    column-gap: var(--col-gap);
+    column-rule: 1px solid var(--rule-soft);
+    orphans: 2;
+    widows: 2;
   }
-  .para-with-image.reverse { flex-wrap: wrap-reverse; margin-top: 4px; }
-  .para-with-image.inline { display: flex; flex-wrap: wrap-reverse; gap: 24px; align-items: flex-start; }
-  .para-with-image .text {
-    flex: 1;
-    min-width: 240px;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(17px,1.6vw,19px);
-    font-weight: 500;
-    line-height: 1.75;
-    color: var(--text-body);
-    text-wrap: pretty;
-  }
-  .para-with-image .text p { margin: 0 0 18px; }
-  .para-with-image .text p:last-child { margin-bottom: 0; }
-  .flex-text {
-    margin: 0;
-    flex: 1;
-    min-width: 240px;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(17px,1.6vw,19px);
-    font-weight: 500;
-    line-height: 1.75;
-    color: var(--text-body);
-    text-wrap: pretty;
-  }
+  .run p { margin: 0 0 1.05em; }
+  .run p:last-child { margin-bottom: 0; }
+
+  .run--three     { columns: 3; }
+  .run--two       { columns: 2; }
+  .spread > .run--two-left  { grid-column: 1 / 9;  columns: 2; }
+  .spread > .run--aside     { grid-column: 5 / -1; columns: 2; }
 
   .dropcap {
     float: left;
+    margin: .06em .14em -.04em 0;
+    font-size: 4.1em;
+    font-weight: 600;
+    line-height: .78;
+    color: var(--accent);
+  }
+
+  /* frase isolata, respiro nel mezzo del testo */
+  .lift {
+    margin-top: 1.4em;
+    padding-left: 16px;
+    border-left: 2px solid var(--leaf);
+    font-size: 1.1em;
+    font-style: italic;
+    text-align: left;
+    color: var(--ink);
+    break-inside: avoid;
+  }
+
+  /* ─────────── citazione a tutta pagina ─────────── */
+  .pull {
+    margin: clamp(30px, 3.6vw, 54px) 0;
+    padding: clamp(24px, 3vw, 38px) 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    text-align: center;
+  }
+  .pull p {
+    margin: 0 auto;
+    max-width: 32ch;
+    font-size: clamp(24px, 2.9vw, 42px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.24;
+    letter-spacing: -.012em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .pull cite {
+    display: block;
+    margin-top: clamp(16px, 1.8vw, 24px);
     font-family: 'Cinzel', Georgia, serif;
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 0.8;
-    padding: 6px 10px 0 0;
-    color: var(--bordeaux);
+    font-size: 9.5px;
+    font-style: normal;
+    letter-spacing: .21em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 
-  .polaroid {
-    width: 170px;
-    height: 210px;
-    flex-shrink: 0;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.28);
-    border: 6px solid #fff;
-    align-self: flex-start;
+  /* ─────────── coda ─────────── */
+  .coda {
+    margin-top: clamp(48px, 6vw, 88px);
+    padding-top: clamp(24px, 2.8vw, 38px);
+    border-top: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    row-gap: 30px;
   }
-  .polaroid-1 { transform: rotate(-3deg); }
-  .polaroid-2 { transform: rotate(3deg); }
-  .polaroid-3 { transform: rotate(-2deg); }
-
-  .text-block {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(17px,1.6vw,19px);
-    font-weight: 500;
-    line-height: 1.75;
-    color: var(--text-body);
+  .coda__bio {
+    grid-column: 1 / 7;
+    margin: 0;
+    font-size: clamp(16px, 1.15vw, 19px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--ink-soft);
     text-wrap: pretty;
+  }
+  .coda__label {
+    display: block;
+    margin-bottom: 9px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9.5px;
+    font-style: normal;
+    letter-spacing: .21em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .scheda {
+    grid-column: 8 / -1;
+    margin: 0;
+    display: grid;
+    gap: 0;
+  }
+  .scheda > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 18px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .scheda > div:first-child { border-top: 1px solid var(--rule-soft); }
+  .scheda dt {
+    flex-shrink: 0;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9px;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .scheda dd {
+    margin: 0;
+    text-align: right;
+    font-size: 15.5px;
+    color: var(--ink);
+  }
+
+  /* ─────────── blocco iscrizione ─────────── */
+  .offer {
+    margin-top: clamp(40px, 4.6vw, 66px);
+    padding-top: clamp(24px, 2.8vw, 36px);
+    border-top: 1px solid var(--rule);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .offer__label {
+    margin: 0;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .offer__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 18px;
   }
-  .text-block p { margin: 0; }
+  .offer__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 176px;
+    height: 62px;
+    padding: 12px;
+    border: 1px solid var(--rule);
+    transition: border-color .25s ease, transform .25s ease;
+  }
+  .offer__card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .offer__card--dark { background: #0b0b0b; }
+  .offer__card--blue { background: #1774c4; }
+  .offer__card img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-  .bio {
-    margin-top: 6px;
-    padding-top: 22px;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    font-family: 'Cormorant Garamond', Georgia, serif;
+  .offer__cta {
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--accent);
+    font-size: clamp(17px, 1.35vw, 20px);
     font-style: italic;
-    font-size: clamp(16px,1.5vw,18px);
-    line-height: 1.7;
-    color: var(--text-body);
+    color: var(--ink);
+    transition: color .25s ease;
   }
+  .offer__cta:hover { color: var(--accent); }
 
-  .meta-info {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--text-meta);
-    text-transform: uppercase;
-  }
-
-  .watch-cta {
-    align-self: center;
+  /* ─────────── colophon ─────────── */
+  .colophon {
+    max-width: 1240px;
+    margin: clamp(40px, 5vw, 70px) auto 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--ink);
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 14px;
-    background: #ffd400;
-    color: var(--text-on-gold);
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding: 15px 30px;
-    border-radius: 999px;
-    text-transform: uppercase;
-    transition: background .3s;
-  }
-  .watch-cta:hover { background: #ffe14d; }
-  .watch-cta .arrow { font-size: 15px; }
-
-  .subscribe-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    margin-top: 8px;
-  }
-  .subscribe-label {
-    font-family: 'Cinzel', Georgia, serif;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--bordeaux);
-    animation: subscribe-blink 1.6s ease-in-out infinite;
-  }
-  .neon-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 36px;
-    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
     flex-wrap: wrap;
-  }
-  .neon-btn {
-    padding: 4px;
-    border-radius: 18px;
-    background: linear-gradient(270deg,#ff2d75,#ffd400,#00e5ff,#7cff00,#ff2d75);
-    background-size: 400% 400%;
-    animation: neon-shift 4s linear infinite, neon-pulse 1.8s ease-in-out infinite;
-    transition: transform .2s;
-    display: inline-block;
-  }
-  .neon-btn:hover { transform: translateY(-2px); }
-  .neon-btn-b { animation: neon-shift 4s linear infinite reverse, neon-pulse 1.8s ease-in-out infinite; }
-  .neon-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 180px;
-    height: 64px;
-    border-radius: 14px;
-    overflow: hidden;
-  }
-  .neon-inner-dark { background: #0b0b0b; }
-  .neon-inner-blue { background: #1774c4; }
-  .neon-inner img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-  }
-
-  @keyframes subscribe-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-  @keyframes neon-shift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-  @keyframes neon-pulse { 0%, 100% { box-shadow: 0 0 6px 2px rgba(255,255,255,0.25); } 50% { box-shadow: 0 0 20px 7px rgba(255,255,255,0.55); } }
-
-  .footer-note {
-    text-align: center;
-    margin-top: 28px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: rgba(226,213,190,0.55);
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9.5px;
+    letter-spacing: .19em;
     text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .colophon__back { color: var(--accent); }
+  .colophon__back:hover { color: var(--ink); }
+
+  /* ─────────── tablet ─────────── */
+  @media (max-width: 1000px) {
+    .run--three { columns: 2; }
+    .spread > .opener-text,
+    .spread > .plate--opener,
+    .spread > .plate--left,
+    .spread > .plate--right,
+    .spread > .run--two-left,
+    .spread > .run--aside { grid-column: 1 / -1; }
+    .spread > .plate--opener { padding-top: 0; }
+    .plate--opener img { aspect-ratio: 16 / 10; }
+    .coda__bio, .scheda { grid-column: 1 / -1; }
+  }
+
+  /* ─────────── mobile ─────────── */
+  @media (max-width: 660px) {
+    .run--three, .run--two { columns: 1; }
+    .run { text-align: left; }
+    .masthead { padding-left: 0; padding-top: 62px; }
+    .opener-text { padding-top: 26px; }
+    .chapter { flex-direction: column; gap: 6px; }
+    .scheda > div { flex-direction: column; gap: 2px; }
+    .scheda dd { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .offer__card, .offer__cta { transition: none; }
   }
 </style>

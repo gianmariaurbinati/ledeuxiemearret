@@ -1,0 +1,382 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
+
+// Se manca ancora il file dell'immagine, lo sfondo resta comunque scuro
+// e coerente — nessuna icona di immagine rotta.
+const hero = `${base}/img/news-cookie-queens-hero.png`;
+const trailer = 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K';
+---
+<Layout title="Cookie Queens, il commercio infantile messo a fuoco — Le Deuxième Arrêt">
+  <main class="article" id="top">
+
+    <!-- ═══════════════ TESTATA ═══════════════ -->
+    <header class="ar-header">
+      <a href={`${base}/`} class="ar-brand" aria-label="Le Deuxième Arrêt, home">
+        <span class="ar-mark" aria-hidden="true">II</span>
+        <span class="ar-brand-name">Le deuxième arrêt</span>
+      </a>
+      <a href={`${base}/news#al-cinema`} class="ar-back">← News</a>
+    </header>
+
+    <!-- ═══════════════ SFONDO CONDIVISO ═══════════════ -->
+    <!-- una sola immagine dietro apertura, corpo e scheda finale -->
+    <div class="ar-page-bg" style={`--hero-img:url('${hero}')`} aria-hidden="true"></div>
+
+    <!-- ═══════════════ APERTURA ═══════════════ -->
+    <section class="ar-hero" aria-labelledby="ar-title">
+      <div class="ar-hero-copy">
+        <p class="ar-kicker">
+          <span>Le deuxième arrêt</span>
+        </p>
+
+        <h1 id="ar-title">Cookie Queens, il commercio infantile messo a fuoco</h1>
+
+        <p class="ar-dek">Il documentario di Alysa Nahmias, presentato al Sundance e prodotto esecutivamente anche da Harry e Meghan, segue quattro giovanissime venditrici durante le sei settimane della stagione dei biscotti delle Girl Scouts.</p>
+
+        <a href={trailer} target="_blank" rel="noopener" class="ar-trailer">
+          <span class="ar-play" aria-hidden="true">▶</span> Guarda il trailer su YouTube
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CORPO ═══════════════ -->
+    <section class="ar-body-section" aria-label="Testo dell'articolo">
+      <div class="ar-layout">
+        <div class="ar-body">
+          <p><span class="dropcap">O</span>gni anno le Girl Scouts vendono circa 250 milioni di scatole di biscotti, per un controvalore che supera gli 800 milioni di dollari, e lo fanno in sei settimane. Su questa cifra, e non su una ricostruzione storica dell'istituzione, si regge integralmente «Cookie Queens», il documentario diretto da Alysa Nahmias che ha debuttato al Sundance Film Festival accolto, secondo quanto riferito, da una lunga ovazione.</p>
+
+          <h2>Un film sul presente, senza archivio</h2>
+          <p>La scelta più netta compiuta dalla regista riguarda il tempo del racconto. «Cookie Queens» si svolge interamente nel presente e rinuncia, deliberatamente, a qualsiasi ricostruzione della genealogia del fenomeno, che pure risale alla Prima guerra mondiale, quando la vendita dei biscotti fu concepita per raccogliere fondi destinati ai soldati statunitensi. L'unica concessione al passato è affidata ai titoli di testa, montati su fotografie in bianco e nero e su spezzoni di pellicola d'epoca che ritraggono generazioni precedenti di Girl Scouts, accompagnati da «Cookie Road» delle Julie Ruin. Terminati i credits, il film abbandona ogni tentazione compilativa. Non un inventario delle nove varietà oggi in commercio, non una rassegna dei gusti dismessi — i Raspberry Rallies fra questi — né una storia del rituale stagionale che ha attraversato decenni di costume americano. Su questo punto le reazioni critiche divergono in modo esplicito: c'è chi ha registrato l'assenza dell'orizzonte storico come una lacuna, e chi ha invece letto la stessa omissione come la condizione che consente al film di concentrarsi su ciò che accade adesso, dentro le case e sui marciapiedi.</p>
+
+          <h2>Quattro protagoniste, una stagione, un obiettivo</h2>
+          <p>Il dispositivo narrativo è semplice e rigoroso. Nahmias, già premiata con un Emmy per «Art &amp; Krimes by Krimes», segue quattro ragazze di età compresa fra i cinque e i dodici anni, e le rispettive famiglie, lungo l'intera durata della campagna: ciascuna fissa il proprio obiettivo di vendita e tenta di raggiungerlo. Olive G., dodici anni, del North Carolina, è la venditrice di punta del suo gruppo, descritta come matura oltre la sua età. Ara E., cinque anni, è la più piccola e convive con il diabete di tipo 1; in una sequenza incontra un potenziale acquirente che, diabetico a sua volta, si interroga sull'opportunità di comprare biscotti, e la bambina risponde preparando dolci senza zucchero per entrambi — continuando però a farglieli pagare. L'episodio è stato indicato come emblematico della doppia natura del film, tenero e insieme lucido sull'apprendimento precoce delle regole dello scambio. Nel complesso il cast è stato giudicato diversificato e accuratamente selezionato, e la durata resta contenuta in un'ora e trentuno minuti.</p>
+
+          <h2>Ciò che il film lascia affiorare</h2>
+          <p>Sotto la superficie affabile, la regia lascia emergere note più acide. Vengono sfiorate, con misura e senza enfasi dimostrativa, la disuguaglianza di reddito, le dinamiche complicate fra genitori e figlie, questioni di razza e di percezione della bellezza. Vi si trova inoltre una domanda implicita di natura economica: sul prezzo di listino di circa sei dollari per scatola, poco più di un dollaro resta al gruppo che ha materialmente venduto, mentre la parte restante confluisce nei consigli locali e nell'organizzazione nazionale, che la destinano ad amministrazione e attività secondo criteri propri. Altre letture insistono su un versante diverso: la vendita dei biscotti non come hobby o attività accessoria, ma come impegno totalizzante, apprendistato accelerato al marketing e all'imprenditorialità, dentro il quale le protagoniste diventano venditrici, promotrici e strateghe. È stato osservato che il film non si occupa della gara interna a chi venda di più, né si sofferma sui biscotti in quanto tali, ma su sorellanza, aspettative e ambizione. Fra la definizione di ritratto eccessivamente zuccherino e quella di indagine su una macchina di pressione, la distanza è considerevole, e le fonti non la ricompongono.</p>
+
+          <p>Resta aperta la questione che il film pone senza risolverla: quando l'iniziazione alla vendita comincia a cinque anni e si misura in obiettivi dichiarati, che cosa si sta effettivamente trasmettendo alle bambine, e a chi giova per davvero il margine che esse non trattengono?</p>
+        </div>
+
+        <aside class="ar-badge" aria-label="In evidenza">
+          <p class="ar-badge-label">In evidenza</p>
+          <p class="ar-badge-main">Sundance<br />Film Festival</p>
+          <p class="ar-badge-sub">Accolto da una lunga ovazione del pubblico</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ═══════════════ SCHEDA ═══════════════ -->
+    <footer class="ar-footer">
+      <div class="ar-footer-row">
+        <p class="ar-footer-left">Regia di <strong>Alysa Nahmias</strong> <span aria-hidden="true">·</span> Documentario</p>
+        <p class="ar-footer-right">91 minuti <span aria-hidden="true">·</span> Sundance Film Festival</p>
+      </div>
+      <p class="ar-sources">
+        Fonti: Variety <span aria-hidden="true">·</span> The Hollywood Reporter <span aria-hidden="true">·</span> GeekVibesNation <span aria-hidden="true">·</span> POV Magazine <span aria-hidden="true">·</span> Yahoo/AOL <span aria-hidden="true">·</span> RealityTea <span aria-hidden="true">·</span> Loud And Clear Reviews <span aria-hidden="true">·</span> CineDump
+      </p>
+    </footer>
+
+  </main>
+</Layout>
+
+<style>
+  .article {
+    --ar-black:  #08090a;
+    --ar-yellow: #f2ec3c;
+    --ar-white:  #ffffff;
+    --ar-dim:    rgba(255,255,255,.62);
+    --ar-line:   rgba(255,255,255,.15);
+
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--ar-black);
+    color: var(--ar-white);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* ─────────── testata ─────────── */
+  .ar-header {
+    position: relative;
+    z-index: 5;
+    min-height: 74px;
+    padding: 0 clamp(20px, 3.2vw, 46px) 0 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid var(--ar-line);
+  }
+  .ar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    color: var(--ar-white);
+    white-space: nowrap;
+    text-shadow: 0 1px 10px rgba(0,0,0,.85);
+  }
+  .ar-mark {
+    display: grid;
+    place-items: center;
+    width: 32px; height: 32px;
+    border: 2px solid var(--ar-yellow);
+    border-radius: 50%;
+    color: var(--ar-yellow);
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .ar-brand-name {
+    font-size: clamp(11px, 1vw, 14px);
+    font-weight: 700;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+  }
+  .ar-back {
+    color: var(--ar-dim);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 10px rgba(0,0,0,.85);
+    transition: color .2s ease;
+  }
+  .ar-back:hover { color: var(--ar-yellow); }
+
+  /* ─────────── sfondo condiviso: una sola immagine dietro
+     testata, apertura, corpo e scheda finale ─────────── */
+  .ar-page-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(6,7,8,.1) 0%, rgba(6,7,8,.16) 26%, rgba(6,7,8,.8) 34%, rgba(6,7,8,.88) 55%, rgba(6,7,8,.93) 100%),
+      var(--hero-img) top center / 100% auto no-repeat,
+      linear-gradient(160deg, #1c1204, #08090a 68%);
+  }
+
+  /* ─────────── apertura ─────────── */
+  .ar-hero {
+    position: relative;
+    z-index: 1;
+    padding: clamp(48px, 8vw, 96px) clamp(24px, 5vw, 82px) clamp(56px, 7vw, 92px);
+  }
+
+  .ar-hero-copy { max-width: 780px; }
+
+  .ar-kicker {
+    margin: 0 0 clamp(18px, 2.2vw, 30px);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-shadow: 0 2px 14px rgba(0,0,0,.85);
+  }
+  .ar-kicker span:first-child {
+    color: var(--ar-white);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    opacity: .9;
+  }
+  .ar-kicker span:last-child {
+    color: var(--ar-yellow);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+
+  .ar-hero h1 {
+    margin: 0;
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-size: clamp(34px, 4.8vw, 64px);
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -.012em;
+    text-wrap: balance;
+    text-shadow: 0 3px 22px rgba(0,0,0,.8);
+  }
+
+  .ar-dek {
+    margin: clamp(20px, 2.4vw, 30px) 0 0;
+    max-width: 58ch;
+    color: var(--ar-white);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(18px, 1.7vw, 23px);
+    line-height: 1.5;
+    text-wrap: pretty;
+    text-shadow: 0 1px 3px rgba(0,0,0,.95), 0 2px 18px rgba(0,0,0,.85);
+  }
+
+  .ar-trailer {
+    margin-top: clamp(26px, 3vw, 38px);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border: 1px solid rgba(255,255,255,.3);
+    color: var(--ar-white);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .ar-trailer:hover { border-color: var(--ar-yellow); color: var(--ar-yellow); }
+  .ar-play {
+    display: grid;
+    place-items: center;
+    width: 18px; height: 18px;
+    padding-left: 1px;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    font-size: 7px;
+  }
+
+  /* ─────────── corpo ─────────── */
+  .ar-body-section {
+    position: relative;
+    z-index: 1;
+    padding: clamp(52px, 6.6vw, 84px) clamp(24px, 5vw, 82px) clamp(20px, 3vw, 40px);
+  }
+
+  .ar-section-label {
+    margin: 0 0 clamp(34px, 4vw, 54px);
+    text-align: center;
+    color: var(--ar-yellow);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+  }
+
+  .ar-layout {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+    gap: clamp(40px, 5vw, 76px);
+    align-items: start;
+  }
+
+  .ar-body {
+    max-width: 68ch;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(18px, 1.5vw, 21px);
+    font-weight: 700;
+    line-height: 1.62;
+    color: var(--ar-white);
+    text-align: justify;
+    hyphens: auto;
+    text-wrap: pretty;
+    text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 2px 18px rgba(0,0,0,.9);
+  }
+  .ar-body p { margin: 0 0 1.15em; }
+  .ar-body p:last-child { margin-bottom: 0; }
+
+  .ar-body h2 {
+    margin: 1.5em 0 .6em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ar-yellow);
+    text-shadow: 0 1px 12px rgba(0,0,0,.85);
+  }
+
+  .dropcap {
+    float: left;
+    margin: .04em .12em -.06em 0;
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-weight: 700;
+    font-size: 3.6em;
+    line-height: .82;
+    color: var(--ar-yellow);
+  }
+
+  /* ─────────── badge laterale: galleggia sull'immagine, nessuna scheda ─────────── */
+  .ar-badge {
+    position: sticky;
+    top: 28px;
+    padding: 0;
+    text-shadow: 0 2px 18px rgba(0,0,0,.85);
+  }
+  .ar-badge-label {
+    margin: 0 0 16px;
+    color: var(--ar-dim);
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+  .ar-badge-main {
+    margin: 0;
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(32px, 3vw, 42px);
+    line-height: 1.04;
+    color: var(--ar-yellow);
+  }
+  .ar-badge-sub {
+    margin: 18px 0 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ar-dim);
+  }
+
+  /* ─────────── scheda finale ─────────── */
+  .ar-footer {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(40px, 5vw, 64px);
+    padding: clamp(22px, 2.6vw, 32px) clamp(24px, 5vw, 82px) clamp(44px, 5.4vw, 72px);
+    border-top: 1px solid var(--ar-line);
+  }
+  .ar-footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ar-dim);
+    text-shadow: 0 1px 10px rgba(0,0,0,.85);
+  }
+  .ar-footer-row strong { color: var(--ar-white); font-weight: 800; }
+
+  .ar-sources {
+    margin: 18px 0 0;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: none;
+    color: rgba(255,255,255,.42);
+    text-shadow: 0 1px 10px rgba(0,0,0,.9);
+    line-height: 1.6;
+  }
+  .ar-sources span { margin: 0 2px; }
+
+  /* ─────────── tablet / mobile ─────────── */
+  @media (max-width: 900px) {
+    .ar-layout { grid-template-columns: 1fr; }
+    .ar-badge { position: static; }
+  }
+
+  @media (max-width: 640px) {
+    .ar-header { padding: 0 18px 0 52px; }
+    .ar-brand-name { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ar-trailer, .ar-back { transition: none; }
+  }
+</style>

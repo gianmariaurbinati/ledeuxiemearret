@@ -1,414 +1,446 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
-
-const rubriche = [
-  {
-    slug: 'comandante',
-    titolo: 'Comandante',
-    regista: 'Enrico Maisto, 2014',
-    descrizione: "Il giudice e il militante. Un'amicizia attraverso gli anni di piombo.",
-    img: '/img/comandante-bg.jpg',
-    live: true,
-    registaNome: 'Enrico Maisto',
-    registaUrl: '/registi/enrico-maisto',
-  },
-  {
-    slug: 'arianna',
-    titolo: 'Arianna',
-    regista: 'Arianna Lavagna, 2015',
-    descrizione: "Prossimamente. La rubrica di Arianna Lavagna.",
-    live: false,
-    gradient: 'linear-gradient(135deg, #4a2b7a, #0e3a54)',
-  },
-  {
-    slug: 'kripton',
-    titolo: 'Kripton',
-    regista: 'Francesco Munzi, 2024',
-    descrizione: "Prossimamente. La rubrica di Francesco Munzi.",
-    live: false,
-    gradient: 'linear-gradient(135deg, #6d1f2f, #2b1f1f)',
-    video: '/video/kripton-card-bg',
-  },
-];
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 ---
-<Layout title="Rubriche — Le deuxième arrêt">
-  <section class="rubriche">
-    <div class="page-media" style={`--rubriche-poster: url('${base}/video/rubriche-background-poster.jpg')`} aria-hidden="true">
-      <video id="rubricheBackground" autoplay muted loop playsinline preload="auto" poster={`${base}/video/rubriche-background-poster.jpg`}>
-        <source src={`${base}/video/rubriche-background.webm`} type="video/webm" />
-        <source src={`${base}/video/rubriche-background.mp4`} type="video/mp4" />
-      </video>
-      <div class="page-scrim"></div>
-    </div>
 
-    <div class="inner">
-      <header>
-        <h1>Rubriche</h1>
-        <div class="rule"></div>
-        <p>Film compiuti che meritano una seconda lettura</p>
+<Layout title="Rubriche — Le deuxième arrêt">
+  <main class="rubriche-page">
+    <section class="hero" aria-labelledby="kripton-title">
+      <div class="hero-media" style={`--hero-poster: url('${base}/video/kripton-card-bg.jpg')`} aria-hidden="true">
+        <video id="kriptonHero" autoplay muted loop playsinline preload="auto" poster={`${base}/video/kripton-card-bg.jpg`}>
+          <source src={`${base}/video/kripton-card-bg.webm`} type="video/webm" />
+          <source src={`${base}/video/kripton-card-bg.mp4`} type="video/mp4" />
+        </video>
+        <div class="hero-veil"></div>
+      </div>
+
+      <header class="site-header">
+        <a href={`${base}/`} class="brand" aria-label="Le deuxième arrêt — Home">
+          <span>Le deuxième arrêt</span>
+        </a>
+        <nav aria-label="Navigazione principale">
+          <a href={`${base}/`}>Home</a>
+          <a href={`${base}/menu`}>Menu</a>
+          <a href={`${base}/rubriche`} class="is-active">Rubriche</a>
+          <a href={`${base}/news`}>News</a>
+          <span>Prossimamente</span>
+        </nav>
       </header>
 
-      <div class="grid">
-        {rubriche.map((r) => (
-          <article class:list={['card', { placeholder: !r.live, 'has-video': !!r.video, 'has-image': !!r.img }]}>
-            <a href={r.live ? `${base}/rubriche/${r.slug}` : '#'} class="card-link">
-              <div class="card-image" style={!r.img && !r.video ? `background:${r.gradient}` : undefined}>
-                {r.img && <div class="card-photo" style={`background-image:url('${base}${r.img}')`}></div>}
-                {r.video && (
-                  <video class="card-video" autoplay muted loop playsinline preload="auto" poster={`${base}${r.video}.jpg`} aria-hidden="true">
-                    <source src={`${base}${r.video}.webm`} type="video/webm" />
-                    <source src={`${base}${r.video}.mp4`} type="video/mp4" />
-                  </video>
-                )}
-                {r.video && <div class="card-video-tint"></div>}
-                {!r.live && <span class="badge-placeholder">In preparazione</span>}
-                <div class="card-scrim"></div>
-                <span class="card-tag">{r.regista}</span>
-              </div>
-              <div class="card-body">
-                <h2>{r.titolo}</h2>
-                <p>{r.descrizione}</p>
-                <span class="cta">{r.live ? 'Leggi la rubrica →' : 'Presto →'}</span>
-              </div>
-            </a>
-            {r.registaUrl && (
-              <a href={`${base}${r.registaUrl}`} class="regista-link">
-                <span class="regista-eyebrow">Biografia</span>
-                <span class="regista-nome">{r.registaNome} →</span>
-              </a>
-            )}
+      <div class="hero-copy">
+        <p class="eyebrow">Prossimamente</p>
+        <h1 id="kripton-title">Kripton</h1>
+        <p class="byline">Francesco Munzi <span></span> 2024</p>
+        <p class="description">Munzi e Travaglioli mostrano i muscoli lasciando il vuoto. Tandem da brividi.</p>
+        <span class="hero-cta" aria-label="Kripton, prossimamente">In preparazione</span>
+      </div>
+    </section>
+
+    <section class="catalogue" aria-labelledby="catalogue-title">
+      <div class="catalogue-heading">
+        <h2 id="catalogue-title"><span aria-hidden="true">•</span> Le nostre rubriche</h2>
+        <p>Storie scelte da Le deuxième arrêt</p>
+      </div>
+
+      <div class="poster-row">
+        <article class="poster-card is-live">
+          <a href={`${base}/rubriche/comandante`}>
+            <div class="poster-frame">
+              <img src={`${base}/img/comandante-cover.jpg`} alt="Locandina del film Comandante" />
+              <div class="poster-shade"></div>
+              <span class="poster-status">Leggi</span>
+            </div>
+            <h3>Comandante</h3>
+            <p>Enrico Maisto, 2014</p>
+          </a>
+        </article>
+
+        <article class="poster-card">
+          <div class="poster-frame">
+            <img src={`${base}/img/futura-cover.jpg`} alt="Locandina del film Futura" />
+            <div class="poster-shade"></div>
+            <span class="poster-status">Prossimamente</span>
+          </div>
+          <h3>Futura</h3>
+          <p>Pietro Marcello, Francesco Munzi, Alice Rohrwacher</p>
+        </article>
+
+        {Array.from({ length: 5 }).map((_, index) => (
+          <article class="poster-card is-empty" aria-label={`Spazio rubrica ${index + 3}, prossimamente`}>
+            <div class="poster-frame"><span class="empty-mark"></span></div>
+            <h3 aria-hidden="true">&nbsp;</h3>
+            <p aria-hidden="true">&nbsp;</p>
           </article>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 </Layout>
 
 <script>
-  const rubricheBackground = document.getElementById('rubricheBackground') as HTMLVideoElement | null;
+  const kriptonHero = document.getElementById('kriptonHero') as HTMLVideoElement | null;
 
-  if (rubricheBackground) {
+  if (kriptonHero) {
     const ensurePlayback = () => {
-      rubricheBackground.muted = true;
-      rubricheBackground.loop = true;
-      if (rubricheBackground.paused) rubricheBackground.play().catch(() => {});
+      kriptonHero.muted = true;
+      kriptonHero.loop = true;
+      if (kriptonHero.paused) kriptonHero.play().catch(() => {});
     };
 
     ensurePlayback();
-    rubricheBackground.addEventListener('canplay', ensurePlayback);
-    rubricheBackground.addEventListener('ended', () => {
-      rubricheBackground.currentTime = 0;
-      ensurePlayback();
-    });
+    kriptonHero.addEventListener('canplay', ensurePlayback);
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) ensurePlayback();
     });
   }
-
-  document.querySelectorAll<HTMLVideoElement>('.card-video').forEach((video) => {
-    const ensurePlayback = () => {
-      video.muted = true;
-      video.loop = true;
-      if (video.paused) video.play().catch(() => {});
-    };
-
-    ensurePlayback();
-    video.addEventListener('canplay', ensurePlayback);
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      ensurePlayback();
-    });
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) ensurePlayback();
-    });
-  });
 </script>
 
 <style>
-  .rubriche {
-    position: relative;
+  .rubriche-page {
     min-height: 100vh;
-    overflow: hidden;
-    background: #111523;
-    padding: clamp(72px,12vh,140px) 40px;
+    overflow-x: hidden;
+    background: #08090a;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
   }
-  .page-media {
-    position: fixed;
+
+  .hero {
+    position: relative;
+    min-height: clamp(520px, 66vh, 720px);
+    overflow: hidden;
+    background: #11171b;
+  }
+
+  .hero-media {
+    position: absolute;
     inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    background: #111523 var(--rubriche-poster) center / cover no-repeat;
   }
-  .page-media video {
+
+  .hero-media video {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
+    object-position: center;
   }
-  .page-scrim {
+
+  .hero-veil {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(7,10,25,0.34) 0%, rgba(6,9,24,0.48) 100%),
-      radial-gradient(circle at 50% 30%, rgba(10,15,36,0.08) 0%, rgba(4,7,20,0.42) 100%);
+      linear-gradient(90deg, rgba(4, 9, 12, .84) 0%, rgba(4, 9, 12, .48) 32%, rgba(4, 9, 12, .08) 68%),
+      linear-gradient(180deg, rgba(4, 7, 9, .47) 0%, transparent 24%, transparent 67%, rgba(6, 7, 8, .92) 100%);
   }
-  .inner {
+
+  .site-header {
     position: relative;
-    z-index: 1;
-    max-width: 1400px;
-    margin: 0 auto;
+    z-index: 2;
+    min-height: 72px;
+    padding: 0 clamp(24px, 3.2vw, 52px) 0 52px;
     display: flex;
-    flex-direction: column;
-    gap: 64px;
-  }
-  header {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 24px;
-  }
-  header h1 {
-    margin: 0;
-    font-size: clamp(58px, 7vw, 96px);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1;
-    color: #f7f1e4;
-    text-align: center;
-    letter-spacing: -.025em;
-    opacity: 0;
-    transform: translateY(28px);
-    animation: title-in 1.15s cubic-bezier(.16,1,.3,1) .08s forwards;
-  }
-  .rule {
-    width: clamp(80px,10vw,160px);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
-    transform: scaleX(0);
-    animation: rule-in 1s cubic-bezier(.16,1,.3,1) .28s forwards;
-  }
-  header p {
-    margin: 0;
-    max-width: 700px;
-    font-size: clamp(16px, 1.5vw, 22px);
-    color: #d4af37;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(16px);
-    animation: copy-in .9s cubic-bezier(.16,1,.3,1) .42s forwards;
+    justify-content: space-between;
+    gap: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    background: rgba(4, 9, 12, .18);
+    backdrop-filter: blur(4px);
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 32px;
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    opacity: 0;
-    transform: translateY(42px) scale(.985);
-    animation: card-in 1s cubic-bezier(.16,1,.3,1) forwards;
-  }
-  .card:nth-child(1) { animation-delay: .52s; }
-  .card:nth-child(2) { animation-delay: .66s; }
-  .card:nth-child(3) { animation-delay: .80s; }
-  .card-link {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    text-decoration: none;
-    transition: transform .55s cubic-bezier(.16,1,.3,1);
-    cursor: pointer;
-  }
-  .card-link:hover { transform: translateY(-10px); }
-  .card.placeholder { opacity: var(--card-placeholder-opacity); }
-  .card.placeholder.has-video { opacity: 1; }
-  .card.placeholder .card-link { cursor: default; }
-  .card.placeholder .card-link:hover { transform: none; }
-
-  .regista-link {
-    align-self: flex-start;
+  .brand {
     display: inline-flex;
-    align-items: baseline;
-    gap: 10px;
-    padding: 7px 12px;
-    border: 1px solid rgba(212,175,55,0.28);
-    border-radius: 3px;
-    background: rgba(0,0,0,0.22);
-    transition: border-color .3s, background .3s;
-  }
-  .regista-link:hover {
-    border-color: rgba(212,175,55,0.65);
-    background: rgba(0,0,0,0.35);
-  }
-  .regista-eyebrow {
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-meta);
-  }
-  .regista-nome {
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #d4af37;
+    align-items: center;
+    gap: 11px;
+    color: #fff;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 23px;
+    font-style: italic;
+    font-weight: 500;
+    white-space: nowrap;
   }
 
-  .card-image {
-    position: relative;
-    width: 100%;
-    height: var(--card-media-height);
-    border: var(--card-border);
-    border-radius: var(--card-radius);
-    overflow: hidden;
-    background-color: #1a1a1a;
-    background-size: cover;
-    background-position: center;
+  .brand img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+  }
+
+  .site-header nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    transform: translateZ(0);
-    transition: border-color .45s ease, box-shadow .55s ease;
+    gap: clamp(18px, 2.5vw, 40px);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .03em;
   }
-  .card-image::after {
+
+  .site-header nav a,
+  .site-header nav span {
+    position: relative;
+    padding: 29px 0 27px;
+    color: rgba(255, 255, 255, .72);
+    white-space: nowrap;
+  }
+
+  .site-header nav a:hover,
+  .site-header nav a:focus-visible,
+  .site-header nav .is-active { color: #fff; }
+
+  .site-header nav .is-active::after {
     content: '';
     position: absolute;
-    inset: 0;
-    z-index: 4;
-    background: linear-gradient(110deg, transparent 20%, rgba(247,241,228,.15) 46%, transparent 72%);
-    transform: translateX(-125%);
-    transition: transform .9s cubic-bezier(.16,1,.3,1);
-    pointer-events: none;
-  }
-  .card-link:hover .card-image {
-    border-color: rgba(212,175,55,.62);
-    box-shadow: 0 24px 54px rgba(0,0,0,.34);
-  }
-  .card-link:hover .card-image::after {
-    transform: translateX(125%);
-  }
-  .card-scrim {
-    position: absolute;
-    inset: 0;
-    background: var(--card-scrim);
-  }
-  .card-tag {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #d4af37;
-    font-weight: 600;
-  }
-  .badge-placeholder {
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: rgba(247,241,228,0.4);
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    height: 1px;
+    background: #e34525;
   }
 
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  .site-header nav span { color: rgba(255, 255, 255, .36); }
+
+  .hero-copy {
+    position: absolute;
+    z-index: 2;
+    left: clamp(30px, 5.2vw, 82px);
+    top: 52%;
+    width: min(430px, calc(100vw - 60px));
+    transform: translateY(-42%);
+    text-shadow: 0 3px 20px rgba(0, 0, 0, .75);
   }
-  .card-body h2 {
-    margin: 0;
-    font-size: clamp(18px, 2vw, 26px);
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #f7f1e4;
-    font-family: 'Cinzel', Georgia, serif;
-    transition: color .35s ease, letter-spacing .45s cubic-bezier(.16,1,.3,1);
-  }
-  .card-link:hover .card-body h2 {
-    color: #edcd63;
-    letter-spacing: 1.8px;
-  }
-  .card-body p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #b8a88a;
-  }
-  .cta {
-    margin-top: 8px;
-    font-size: 12px;
-    letter-spacing: 2px;
+
+  .eyebrow {
+    margin: 0 0 8px;
+    color: rgba(255, 255, 255, .67);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    color: #d4af37;
+  }
+
+  .hero-copy h1 {
+    margin: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(54px, 5vw, 78px);
     font-weight: 500;
+    line-height: .98;
+    letter-spacing: -.025em;
   }
 
-  .card-video {
-    position: absolute;
-    inset: 0;
+  .byline {
+    margin: 18px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, .9);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .byline span {
+    width: 1px;
+    height: 13px;
+    background: rgba(255, 255, 255, .4);
+  }
+
+  .description {
+    margin: 17px 0 0;
+    color: rgba(255, 255, 255, .75);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(18px, 1.5vw, 22px);
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .hero-cta {
+    margin-top: 25px;
+    display: inline-flex;
+    padding: 12px 20px;
+    border-radius: 2px;
+    background: #e34525;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    box-shadow: 0 9px 24px rgba(0, 0, 0, .28);
+  }
+
+  .catalogue {
+    position: relative;
+    z-index: 3;
+    padding: 16px 0 38px;
+    background: #08090a;
+  }
+
+  .catalogue-heading {
+    padding: 0 clamp(26px, 4.2vw, 66px) 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .catalogue-heading h2 {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .015em;
+  }
+
+  .catalogue-heading h2 span { color: #e34525; }
+
+  .catalogue-heading p {
+    margin: 0;
+    color: rgba(255, 255, 255, .35);
+    font-size: 9px;
+  }
+
+  .poster-row {
+    padding: 0 clamp(26px, 4.2vw, 66px) 12px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(142px, 13.5vw, 208px);
+    gap: clamp(16px, 1.7vw, 27px);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-color: rgba(255, 255, 255, .22) transparent;
+    scrollbar-width: thin;
+  }
+
+  .poster-card {
+    min-width: 0;
+    color: #fff;
+  }
+
+  .poster-card > a { display: block; color: inherit; }
+
+  .poster-frame {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: linear-gradient(145deg, #171a1c, #0d0e0f);
+    border: 1px solid rgba(255, 255, 255, .08);
+    box-shadow: 0 15px 34px rgba(0, 0, 0, .22);
+  }
+
+  .poster-frame img {
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: cover;
-    z-index: 0;
+    transition: transform .65s cubic-bezier(.16, 1, .3, 1), filter .45s ease;
   }
-  .card-video-tint {
+
+  .poster-shade {
     position: absolute;
     inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg, var(--card-video-tint-top) 0%, var(--card-video-tint-mid) 55%, var(--card-video-tint-bottom) 100%);
+    background: linear-gradient(180deg, transparent 64%, rgba(0, 0, 0, .68) 100%);
   }
-  .card-image .card-scrim { z-index: 2; }
-  .card-image .card-tag { z-index: 3; }
-  .badge-placeholder { position: relative; z-index: 3; }
 
-  @keyframes title-in {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .card-photo {
+  .poster-status {
     position: absolute;
-    inset: -5%;
-    z-index: 0;
-    background-position: center;
-    background-size: cover;
-    will-change: transform;
-    animation: comandante-drift 15s ease-in-out infinite alternate;
-    transition: filter .7s ease;
+    left: 10px;
+    bottom: 9px;
+    color: rgba(255, 255, 255, .86);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
   }
-  .card-link:hover .card-photo { filter: contrast(1.04) brightness(1.05); }
-  @keyframes rule-in {
-    to { transform: scaleX(1); }
+
+  .poster-card h3 {
+    margin: 10px 0 0;
+    overflow: hidden;
+    color: rgba(255, 255, 255, .9);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  @keyframes copy-in {
-    to { opacity: 1; transform: translateY(0); }
+
+  .poster-card p {
+    margin: 5px 0 0;
+    overflow: hidden;
+    color: rgba(255, 255, 255, .36);
+    font-size: 8px;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  @keyframes card-in {
-    to { opacity: 1; transform: translateY(0) scale(1); }
+
+  .is-live a:hover .poster-frame img,
+  .is-live a:focus-visible .poster-frame img {
+    transform: scale(1.045);
+    filter: brightness(1.08);
   }
-  @keyframes comandante-drift {
-    from { transform: scale(1.02) translate3d(-1.2%, .3%, 0); }
-    to { transform: scale(1.11) translate3d(1.4%, -1.2%, 0); }
+
+  .is-live a:hover h3,
+  .is-live a:focus-visible h3 { color: #e8c85d; }
+
+  .is-empty .poster-frame {
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(140deg, rgba(255, 255, 255, .025), transparent 58%),
+      #0f1112;
+    border-color: rgba(255, 255, 255, .045);
+    box-shadow: none;
+  }
+
+  .empty-mark {
+    width: 18px;
+    height: 1px;
+    background: rgba(255, 255, 255, .09);
+  }
+
+  @media (max-width: 760px) {
+    .hero { min-height: 620px; }
+
+    .site-header {
+      min-height: 66px;
+      padding: 0 18px 0 52px;
+    }
+
+    .brand span { display: none; }
+    .brand img { width: 33px; height: 33px; }
+
+    .site-header nav {
+      max-width: calc(100vw - 78px);
+      justify-content: flex-start;
+      gap: 22px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-header nav::-webkit-scrollbar { display: none; }
+    .site-header nav a,
+    .site-header nav span { padding: 27px 0 25px; }
+
+    .hero-copy {
+      left: 24px;
+      top: 54%;
+      width: calc(100vw - 48px);
+    }
+
+    .hero-veil {
+      background:
+        linear-gradient(90deg, rgba(4, 9, 12, .72), rgba(4, 9, 12, .12)),
+        linear-gradient(180deg, rgba(4, 7, 9, .38), transparent 25%, rgba(6, 7, 8, .9) 100%);
+    }
+
+    .catalogue { padding-top: 18px; }
+    .catalogue-heading { padding-inline: 22px; }
+    .catalogue-heading p { display: none; }
+    .poster-row {
+      padding-inline: 22px;
+      grid-auto-columns: 148px;
+      gap: 16px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .card-video { display: none; }
-    .card-photo { animation: none; transform: scale(1.04); }
-    .page-media video { display: none; }
-    header h1,
-    .rule,
-    header p,
-    .card {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
-    .card-link,
-    .card-image,
-    .card-image::after,
-    .card-body h2 {
-      transition: none;
-    }
+    .hero-media video { display: none; }
+    .hero-media { background: #11171b var(--hero-poster) center / cover no-repeat; }
+    .poster-frame img { transition: none; }
   }
 </style>
