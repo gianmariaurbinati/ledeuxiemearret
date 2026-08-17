@@ -4,18 +4,49 @@ const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.s
 
 // ─────────────────────────────────────────────────────────────
 // NOTIZIE — per aggiungerne una, copia un blocco e cambia i campi.
-//   sezione  : etichetta della sezione (serve solo alla navigazione in alto)
-//   inNav    : true = compare nel menu in alto
+//   sezione  : una delle 4 categorie fisse in NAV_CATEGORIES
 //   regista  : è ciò che si legge in giallo sopra il titolo
 //   articolo : se presente, il pannello porta all'articolo interno
 //              invece che dritto al trailer (il trailer resta linkato
 //              dentro la pagina dell'articolo)
+// Il menu in alto mostra solo le 4 categorie fisse (ordine di
+// NAV_CATEGORIES), ciascuna punta al primo pannello di quella categoria.
 // ─────────────────────────────────────────────────────────────
+const NAV_CATEGORIES = ['Scoperte dal mondo', 'Short movie', 'Festival', 'Al cinema'];
+
 const notizie = [
+  {
+    anchor: 'concorso-locarno',
+    sezione: 'Festival',
+    regista: 'Giovanni Tortorici',
+    titolo: 'Ketticè',
+    trailer: 'https://www.youtube.com/watch?v=sZvP7e70W_U',
+    articolo: `${base}/news/kettice`,
+    img: `${base}/img/news-kettice.jpg`,
+    fuoco: '50% 40%',
+  },
+  {
+    anchor: 'cineasti-del-presente',
+    sezione: 'Festival',
+    regista: 'Natalka Vorozhbyt',
+    titolo: 'Demons',
+    articolo: `${base}/news/demons`,
+    img: `${base}/img/news-demons.png`,
+    fuoco: '50% 45%',
+  },
+  {
+    anchor: 'concorso-internazionale',
+    sezione: 'Festival',
+    regista: 'Cristóbal León e Joaquín Cociña',
+    titolo: 'Donkey Princess',
+    trailer: 'https://www.youtube.com/watch?v=C0evXIPD1Qw',
+    articolo: `${base}/news/donkey-princess`,
+    img: `${base}/img/news-donkey-princess.jpg`,
+    fuoco: '50% 40%',
+  },
   {
     anchor: 'al-cinema',
     sezione: 'Al cinema',
-    inNav: false,
     regista: 'Alysa Nahmias',
     titolo: 'Cookie Queens',
     trailer: 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K',
@@ -25,23 +56,31 @@ const notizie = [
   },
   {
     anchor: 'canali-alternativi',
-    sezione: 'Canali alternativi',
-    inNav: true,
+    sezione: 'Scoperte dal mondo',
     regista: 'Umair Bilal',
     titolo: 'As Light, As Air',
     trailer: 'https://www.youtube.com/watch?v=QqeWzxaxOCg',
+    articolo: `${base}/news/as-light-as-air`,
     img: `${base}/img/news-as-light-as-air.png`,
     fuoco: '50% 42%',
   },
   {
     anchor: 'selezione-corti',
-    sezione: 'Selezione corti',
-    inNav: true,
+    sezione: 'Short movie',
     regista: 'Tizza Covi e Rainer Frimmel',
     titolo: 'Vera',
     trailer: 'https://youtu.be/fbGI9gc6EUA?si=d8O00O_st_upEw56',
     img: `${base}/img/news-vera.jpg`,
     fuoco: '58% 45%',
+  },
+  {
+    anchor: 'prime-mondiali',
+    sezione: 'Festival',
+    regista: 'Erin Vassilopoulos',
+    titolo: 'Destroy All Girls',
+    articolo: `${base}/news/destroy-all-girls`,
+    img: `${base}/img/news-destroy-all-girls.png`,
+    fuoco: '50% 55%',
   },
 ];
 ---
@@ -56,7 +95,18 @@ const notizie = [
       </a>
 
       <nav class="fn-nav" aria-label="Navigazione principale">
-        {notizie.filter((n) => n.inNav).map((n) => <a href={`#${n.anchor}`}>{n.sezione}</a>)}
+        {NAV_CATEGORIES.map((cat) => {
+          if (cat === 'Scoperte dal mondo') {
+            return (
+              <a href={`${base}/news/khozy-rizal`}>
+                {cat}
+                <span class="fn-nav-flag" aria-hidden="true">1</span>
+              </a>
+            );
+          }
+          const target = notizie.find((n) => n.sezione === cat);
+          return target ? <a href={`#${target.anchor}`}>{cat}</a> : null;
+        })}
       </nav>
     </header>
 
@@ -121,15 +171,17 @@ const notizie = [
               </div>
             </a>
 
-            <a
-              href={n.trailer}
-              target="_blank"
-              rel="noopener"
-              class="fn-panel-play"
-              aria-label={`Guarda il trailer di ${n.titolo} su YouTube`}
-            >
-              <span class="fn-play" aria-hidden="true">▶</span>
-            </a>
+            {n.trailer && (
+              <a
+                href={n.trailer}
+                target="_blank"
+                rel="noopener"
+                class="fn-panel-play"
+                aria-label={`Guarda il trailer di ${n.titolo} su YouTube`}
+              >
+                <span class="fn-play" aria-hidden="true">▶</span>
+              </a>
+            )}
           </article>
         ))}
       </div>
@@ -268,6 +320,10 @@ const notizie = [
   }
   .fn-nav::-webkit-scrollbar { display: none; }
   .fn-nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 6px;
     padding: 26px 0;
     color: var(--fn-white);
     font-size: clamp(10px, .85vw, 12.5px);
@@ -278,6 +334,27 @@ const notizie = [
     transition: color .2s ease;
   }
   .fn-nav a:hover, .fn-nav a:focus-visible { color: var(--fn-yellow); }
+
+  .fn-nav-flag {
+    display: inline-grid;
+    place-items: center;
+    margin-top: -2px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ff3b30;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1;
+    animation: fn-nav-flag-blink 1.4s ease-in-out infinite;
+  }
+
+  @keyframes fn-nav-flag-blink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,59,48,.7); }
+    50% { opacity: .35; box-shadow: 0 0 0 5px rgba(255,59,48,0); }
+  }
 
   /* ─────────── apertura ─────────── */
   .fn-hero {

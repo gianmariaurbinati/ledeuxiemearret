@@ -2,12 +2,18 @@
 import Layout from '../../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL.slice(0, -1) : import.meta.env.BASE_URL;
 
-const hero = `${base}/img/news-cookie-queens-hero.png`;
-const side = `${base}/img/news-cookie-queens-side.png`;
-const producers = `${base}/img/news-cookie-queens-couple.png`;
-const trailer = 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K';
+const hero = `${base}/img/news-as-light-as-air-hero.png`;
+const gallery = [
+  { src: `${base}/img/sehwan-01-pellegrino-fiume.jpg`, alt: 'Un pellegrino in preghiera sulla riva, al tramonto' },
+  { src: `${base}/img/sehwan-02-ragazza-candele.jpg`, alt: 'Una ragazza in preghiera davanti alle lampade a olio' },
+  { src: `${base}/img/sehwan-03-santuario-uccelli.jpg`, alt: 'Il santuario di Lal Shahbaz Qalandar, con gli uccelli in volo' },
+  { src: `${base}/img/sehwan-04-dhamal-danza.jpg`, alt: 'Il dhamal, la danza devozionale in trance' },
+  { src: `${base}/img/sehwan-05-malang-rabab.jpg`, alt: 'Un malang con il suo strumento, al tramonto' },
+  { src: `${base}/img/sehwan-06-corridoio-lumi.jpg`, alt: 'Un corridoio del santuario, tra lumi e petali' },
+];
+const trailer = 'https://www.youtube.com/watch?v=QqeWzxaxOCg';
 ---
-<Layout title="Cookie Queens, il commercio infantile messo a fuoco — Le Deuxième Arrêt">
+<Layout title="A Sehwan il documentario si arrende al luogo — Le Deuxième Arrêt">
   <main class="article" id="top">
 
     <!-- ═══════════════ TESTATA ═══════════════ -->
@@ -16,15 +22,15 @@ const trailer = 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K';
         <span class="ar-mark" aria-hidden="true">II</span>
         <span class="ar-brand-name">Le deuxième arrêt</span>
       </a>
-      <a href={`${base}/news#al-cinema`} class="ar-back">← News</a>
+      <a href={`${base}/news#canali-alternativi`} class="ar-back">← News</a>
     </header>
 
     <!-- ═══════════════ APERTURA SCURA ═══════════════ -->
     <section class="ar-hero" style={`--hero-img:url('${hero}')`} aria-labelledby="ar-title">
       <div class="ar-hero-copy">
         <p class="ar-kicker">Le deuxième arrêt</p>
-        <h1 id="ar-title">Cookie Queens, il commercio infantile messo a fuoco</h1>
-        <p class="ar-dek">Il documentario di Alysa Nahmias, presentato al Sundance e prodotto esecutivamente anche da Harry e Meghan, segue quattro giovanissime venditrici durante le sei settimane della stagione dei biscotti delle Girl Scouts.</p>
+        <h1 id="ar-title">A Sehwan il documentario si arrende al luogo</h1>
+        <p class="ar-dek">«As Light as Air», esordio di Umair Bilal, arriva alla Semaine de la Critique del 79° Festival di Locarno: sessantacinque minuti senza trama né protagonista, costruiti attorno ai riti del santuario di Lal Shahbaz Qalandar.</p>
         <a href={trailer} target="_blank" rel="noopener" class="ar-trailer">
           <span class="ar-play" aria-hidden="true">▶</span> Guarda il trailer su YouTube
         </a>
@@ -36,44 +42,62 @@ const trailer = 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K';
       <div class="ar-layout">
 
         <article class="ar-body">
-          <p><span class="dropcap">O</span>gni anno le Girl Scouts vendono circa 250 milioni di scatole di biscotti, per un controvalore che supera gli 800 milioni di dollari, e lo fanno in sei settimane. Su questa cifra, e non su una ricostruzione storica dell'istituzione, si regge integralmente «Cookie Queens», il documentario diretto da Alysa Nahmias che ha debuttato al Sundance Film Festival accolto, secondo quanto riferito, da una lunga ovazione.</p>
+          <p><span class="dropcap">U</span>mair Bilal ha trascorso mesi a Sehwan cercando di dirigere un documentario. Poi ha smesso. Da quella rinuncia, dichiarata e non dissimulata, è nato «As Light as Air», opera prima presentata nella Semaine de la Critique della settantanovesima edizione del Festival di Locarno, in programma dal 5 al 15 agosto, con proiezioni fissate per l'11 e il 12.</p>
 
-          <h2 class="reveal">Un film sul presente, senza archivio</h2>
-          <p class="reveal">La scelta più netta compiuta dalla regista riguarda il tempo del racconto. «Cookie Queens» si svolge interamente nel presente e rinuncia, deliberatamente, a qualsiasi ricostruzione della genealogia del fenomeno, che pure risale alla Prima guerra mondiale, quando la vendita dei biscotti fu concepita per raccogliere fondi destinati ai soldati statunitensi. L'unica concessione al passato è affidata ai titoli di testa, montati su fotografie in bianco e nero e su spezzoni di pellicola d'epoca che ritraggono generazioni precedenti di Girl Scouts, accompagnati da «Cookie Road» delle Julie Ruin. Terminati i credits, il film abbandona ogni tentazione compilativa. Non un inventario delle nove varietà oggi in commercio, non una rassegna dei gusti dismessi — i Raspberry Rallies fra questi — né una storia del rituale stagionale che ha attraversato decenni di costume americano. Su questo punto le reazioni critiche divergono in modo esplicito: c'è chi ha registrato l'assenza dell'orizzonte storico come una lacuna, e chi ha invece letto la stessa omissione come la condizione che consente al film di concentrarsi su ciò che accade adesso, dentro le case e sui marciapiedi.</p>
+          <h2>La rinuncia come metodo</h2>
+          <p>Il racconto che il regista fa della genesi del film coincide con il racconto di un fallimento riconosciuto: la ricerca di personaggi e di una struttura interna alla città santuario non produceva risultati, e ogni tentativo di imporre una logica narrativa si rivelava, nelle sue parole, un lavorare contro il luogo anziché con esso. Alla logica documentaria si è così sostituita la resa. Sessantacinque minuti senza trama, senza protagonista, popolati da pellegrini, da malang — gli asceti erranti che hanno abbandonato la vita convenzionale per consacrarsi al santuario — e dalla trance collettiva del dhamal. Bilal fa risalire il progetto non a una sequenza di eventi, ma a una serie di sensazioni: persone in preghiera in stati di assorbimento quasi trascendente, l'odore dell'incenso che brucia, il bagliore delle lampade a olio, la musica devozionale, e la percezione che quei luoghi obbedissero a una logica diversa da quella del mondo esterno.</p>
 
-          <h2 class="reveal">Quattro protagoniste, una stagione, un obiettivo</h2>
-          <p class="reveal">Il dispositivo narrativo è semplice e rigoroso. Nahmias, già premiata con un Emmy per «Art &amp; Krimes by Krimes», segue quattro ragazze di età compresa fra i cinque e i dodici anni, e le rispettive famiglie, lungo l'intera durata della campagna: ciascuna fissa il proprio obiettivo di vendita e tenta di raggiungerlo. Olive G., dodici anni, del North Carolina, è la venditrice di punta del suo gruppo, descritta come matura oltre la sua età. Ara E., cinque anni, è la più piccola e convive con il diabete di tipo 1; in una sequenza incontra un potenziale acquirente che, diabetico a sua volta, si interroga sull'opportunità di comprare biscotti, e la bambina risponde preparando dolci senza zucchero per entrambi — continuando però a farglieli pagare. L'episodio è stato indicato come emblematico della doppia natura del film, tenero e insieme lucido sull'apprendimento precoce delle regole dello scambio. Nel complesso il cast è stato giudicato diversificato e accuratamente selezionato, e la durata resta contenuta in un'ora e trentuno minuti.</p>
+          <h2 class="reveal">Sehwan, i suoi riti, la sua sinossi</h2>
+          <p class="reveal">La città, nel Sindh, ospita il santuario di Lal Shahbaz Qalandar, tra i siti spirituali più venerati del Pakistan, meta di pellegrini, viandanti e cercatori che vi giungono, secondo la presentazione del film, portando dolore, speranza e desiderio. La sinossi diffusa articola tre scene. Nella prima un asceta va di porta in porta a raccogliere l'elemosina ed è accolto dagli abitanti. Nella seconda si mostra il Malang Mach, spazio comune in cui visitatori differenti arrivano, dormono e mangiano simultaneamente. La terza è il dhamal, danza devozionale che dà il titolo all'opera: quando i tamburi battono e i flauti suonano, i devoti si perdono nella trance, e ne escono, appunto, leggeri come l'aria.</p>
 
-          <!-- SECONDA FOTO: blocco nel testo -->
+          <blockquote class="ar-pull reveal">I devoti si perdono nella trance, e ne escono, appunto, leggeri come l'aria.</blockquote>
+
+          <!-- FOTO GRANDE: il dhamal -->
           <figure class="ar-inline-photo reveal">
-            <img src={side} alt="Cookie Queens — immagine dal film" />
+            <img src={gallery[3].src} alt={gallery[3].alt} loading="lazy" />
           </figure>
 
-          <h2 class="reveal">Ciò che il film lascia affiorare</h2>
-          <p class="reveal">Sotto la superficie affabile, la regia lascia emergere note più acide. Vengono sfiorate, con misura e senza enfasi dimostrativa, la disuguaglianza di reddito, le dinamiche complicate fra genitori e figlie, questioni di razza e di percezione della bellezza. Vi si trova inoltre una domanda implicita di natura economica: sul prezzo di listino di circa sei dollari per scatola, poco più di un dollaro resta al gruppo che ha materialmente venduto, mentre la parte restante confluisce nei consigli locali e nell'organizzazione nazionale, che la destinano ad amministrazione e attività secondo criteri propri. Altre letture insistono su un versante diverso: la vendita dei biscotti non come hobby o attività accessoria, ma come impegno totalizzante, apprendistato accelerato al marketing e all'imprenditorialità, dentro il quale le protagoniste diventano venditrici, promotrici e strateghe.</p>
+          <p class="reveal">Bilal ha spiegato di essere sempre stato attratto dai luoghi in cui ci si raduna per fare esperienza della trascendenza, anche perché la madre, seguace del sufismo, lo portava ai santuari da bambino. In un mondo che può apparire sempre più soffocante, ha osservato, questi spazi offrono qualcosa di prossimo a un rifugio, una liberazione temporanea dal peso della vita quotidiana. Ma la memoria personale, precisa il regista, è stata scavalcata dal luogo: l'infanzia gli avrebbe aperto la porta di Sehwan, salvo poi vedere quelle memorie sostituite dalla realtà della città stessa, alla quale appartiene, alla fine, il mondo emotivo e visivo del film.</p>
 
-          <blockquote class="ar-pull reveal">Il film non si occupa della gara interna a chi venda di più, né si sofferma sui biscotti in quanto tali, ma su sorellanza, aspettative e ambizione.</blockquote>
+          <h2 class="reveal">Un incrocio, otto ore, un montaggio emotivo</h2>
+          <p class="reveal">Il passaggio da regista a partecipante è avvenuto per gradi, non in un istante. Con il co-direttore della fotografia Konstantin Stell, Bilal ha messo a punto un procedimento improvvisato: fermarsi agli incroci, domandarsi quale strada li stesse «chiamando», imboccarla senza razionalizzare la scelta. Spesso ne seguivano otto ore di riprese di quanto accadeva lì. Il medesimo criterio è stato trasferito al montaggio, affidato a Siddhant Sarin, con una struttura iniziale guidata dall'emozione. Bilal, che vive tra Berlino e Abu Dhabi e insegna pratica cinematografica alla New York University, del film è anche produttore e, accanto a Stell, operatore.</p>
 
-          <!-- TERZA FOTO: i produttori esecutivi -->
-          <figure class="ar-inline-photo reveal">
-            <img src={producers} alt="I produttori esecutivi del documentario" />
+          <!-- DITTICO: due volti in preghiera -->
+          <figure class="ar-photo-duo reveal">
+            <div class="ar-photo-duo-item">
+              <img src={gallery[4].src} alt={gallery[4].alt} loading="lazy" />
+            </div>
+            <div class="ar-photo-duo-item">
+              <img src={gallery[0].src} alt={gallery[0].alt} loading="lazy" />
+            </div>
           </figure>
 
-          <p class="reveal">Fra la definizione di ritratto eccessivamente zuccherino e quella di indagine su una macchina di pressione, la distanza è considerevole, e le fonti non la ricompongono. Resta aperta la questione che il film pone senza risolverla: quando l'iniziazione alla vendita comincia a cinque anni e si misura in obiettivi dichiarati, che cosa si sta effettivamente trasmettendo alle bambine, e a chi giova per davvero il margine che esse non trattengono?</p>
+          <h2 class="reveal">Il contesto festivaliero</h2>
+          <p class="reveal">Il titolo è uno dei sette documentari selezionati nella sezione, accanto tra gli altri a «Gabin», «Petrolheads» e «Only The Serpent Knows». La presenza pakistana a Locarno resta rara: l'ultimo film del Paese a esordirvi era stato il cortometraggio «Dia» di Hamza Bangash nel 2018, premiato ai Locarno Shorts Weeks nel 2020, mentre nel 2003 Sabiha Sumar aveva conquistato il Pardo d'oro con «Khamosh Pani».</p>
+
+          <!-- TRITTICO: chiusura -->
+          <figure class="ar-gallery reveal">
+            <div class="ar-gallery-item"><img src={gallery[1].src} alt={gallery[1].alt} loading="lazy" /></div>
+            <div class="ar-gallery-item"><img src={gallery[2].src} alt={gallery[2].alt} loading="lazy" /></div>
+            <div class="ar-gallery-item"><img src={gallery[5].src} alt={gallery[5].alt} loading="lazy" /></div>
+            <figcaption>Pellegrini, malang e la trance del dhamal al santuario di Lal Shahbaz Qalandar</figcaption>
+          </figure>
+
+          <p class="reveal">Resta aperta la questione che il film stesso solleva senza scioglierla: se lo spazio della spiritualità, come sostiene il regista, si colloca al di là della razionalità, che cosa può registrare una macchina da presa che rinuncia deliberatamente a comprendere ciò che riprende? Locarno, l'11 e il 12 agosto, offrirà la prima verifica pubblica.</p>
         </article>
 
         <!-- SCHEDA LATERALE -->
         <aside class="ar-aside reveal">
           <div class="ar-fact-box">
             <p class="ar-fact-label">In evidenza</p>
-            <p class="ar-fact-main">Sundance<br />Film Festival</p>
-            <p class="ar-fact-sub">Accolto da una lunga ovazione del pubblico</p>
+            <p class="ar-fact-main">Locarno<br />Semaine de la Critique</p>
+            <p class="ar-fact-sub">Una delle rare presenze pakistane nella storia del festival</p>
           </div>
           <div class="ar-meta-block">
-            <p class="ar-meta-row"><span class="ar-meta-key">Regia</span><span>Alysa Nahmias</span></p>
+            <p class="ar-meta-row"><span class="ar-meta-key">Regia</span><span>Umair Bilal</span></p>
             <p class="ar-meta-row"><span class="ar-meta-key">Tipo</span><span>Documentario</span></p>
-            <p class="ar-meta-row"><span class="ar-meta-key">Durata</span><span>91 minuti</span></p>
-            <p class="ar-meta-row"><span class="ar-meta-key">Festival</span><span>Sundance</span></p>
+            <p class="ar-meta-row"><span class="ar-meta-key">Durata</span><span>65 minuti</span></p>
+            <p class="ar-meta-row"><span class="ar-meta-key">Festival</span><span>Locarno 2025</span></p>
           </div>
         </aside>
 
@@ -82,14 +106,14 @@ const trailer = 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K';
       <!-- SCHEDA FONTI -->
       <footer class="ar-footer">
         <div class="ar-footer-row">
-          <p>Regia di <strong>Alysa Nahmias</strong> · Documentario</p>
-          <p>91 minuti · Sundance Film Festival</p>
+          <p>Regia di <strong>Umair Bilal</strong> · Documentario</p>
+          <p>65 minuti · Festival di Locarno</p>
         </div>
-        <p class="ar-sources">Fonti: Variety · The Hollywood Reporter · GeekVibesNation · POV Magazine · Yahoo/AOL · RealityTea · Loud And Clear Reviews · CineDump</p>
+        <p class="ar-sources">Fonti: Variety · Dawn Images (Pakistan) · Outlook India · The Express Tribune · Funk and Play (intervista) · The Hollywood Reporter · Yahoo News</p>
 
         <div class="ar-next">
           <span class="ar-next-label">Prossimo articolo</span>
-          <a href={`${base}/news/destroy-all-girls`} class="ar-next-link">Destroy All Girls →</a>
+          <a href={`${base}/news/donkey-princess`} class="ar-next-link">Donkey Princess →</a>
         </div>
       </footer>
     </section>
@@ -324,6 +348,55 @@ const trailer = 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K';
     transform: scale(1.045);
   }
 
+  /* ── GALLERIA FOTO ── */
+  .ar-gallery {
+    margin: 2em 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .ar-gallery-item {
+    overflow: hidden;
+  }
+  .ar-gallery-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.16,1,.3,1);
+  }
+  .ar-gallery-item:hover img {
+    transform: scale(1.06);
+  }
+  .ar-gallery figcaption {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: .01em;
+    color: var(--ink-dim);
+    text-align: center;
+  }
+
+  /* ── DITTICO FOTO ── */
+  .ar-photo-duo {
+    margin: 2em 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+  .ar-photo-duo-item { overflow: hidden; }
+  .ar-photo-duo-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.16,1,.3,1);
+  }
+  .ar-photo-duo-item:hover img { transform: scale(1.045); }
+
   /* ── COLONNA LATERALE ── */
   .ar-aside {
     position: sticky;
@@ -472,6 +545,7 @@ const trailer = 'https://youtu.be/nnSQS43Eil8?si=YAmn9Nftoi8B242K';
   @media (max-width: 640px) {
     .ar-header { margin: 10px 10px 0; padding: 0 8px 0 20px; }
     .ar-brand-name { display: none; }
+    .ar-gallery { grid-template-columns: repeat(2, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) {
     .ar-trailer, .ar-back, .ar-header, .ar-inline-photo img, .ar-fact-box, .ar-next-link, .ar-next-link::after { transition: none; }
